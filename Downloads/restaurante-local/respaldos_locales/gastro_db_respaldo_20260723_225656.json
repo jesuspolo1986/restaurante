@@ -1,0 +1,381 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Platos Fuertes",
+            "iconName": "restaurant"
+        },
+        {
+            "id": 2,
+            "name": "Entradas",
+            "iconName": "fastfood"
+        },
+        {
+            "id": 3,
+            "name": "Bebidas",
+            "iconName": "wine_bar"
+        },
+        {
+            "id": 4,
+            "name": "Postres",
+            "iconName": "cake"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Pabellón Criollo",
+            "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
+            "priceUsd": 8.5,
+            "categoryId": 1,
+            "stock": 26,
+            "isAvailable": true,
+            "imageUri": "pabellon"
+        },
+        {
+            "id": 2,
+            "name": "Asado Negro",
+            "description": "Muchacho redondo horneado lentamente en un almíbar de papelón caramelizado con vino tinto y especias.",
+            "priceUsd": 9.5,
+            "categoryId": 1,
+            "stock": 23,
+            "isAvailable": true,
+            "imageUri": "asado"
+        },
+        {
+            "id": 3,
+            "name": "Arepa Reina Pepiada",
+            "description": "Arepa de maíz tostada rellena de ensalada cremosa de pollo desmechado, aguacate maduro, mayonesa casera y un toque de cilantro.",
+            "priceUsd": 4.5,
+            "categoryId": 1,
+            "stock": 94,
+            "isAvailable": true,
+            "imageUri": "arepa"
+        },
+        {
+            "id": 4,
+            "name": "Tequeños de Queso (5 uds)",
+            "description": "Deditos crujientes de masa rellenos de sabroso queso blanco llanero fritos al momento. Se acompañan con salsa de ajo.",
+            "priceUsd": 3.5,
+            "categoryId": 2,
+            "stock": 53,
+            "isAvailable": true,
+            "imageUri": "tequenos"
+        },
+        {
+            "id": 5,
+            "name": "Empanaditas de Cazón (3 uds)",
+            "description": "Empanadas de masa de maíz dulce rellenas de cazón (tiburón pequeño) desmechado, sofrito y frito.",
+            "priceUsd": 3.0,
+            "categoryId": 2,
+            "stock": 35,
+            "isAvailable": true,
+            "imageUri": "empanadas"
+        },
+        {
+            "id": 6,
+            "name": "Chicha Criolla",
+            "description": "Bebida tradicional cremosa hecha a base de arroz cocido con canela, servida fría con hielo y generosa leche condensada.",
+            "priceUsd": 2.5,
+            "categoryId": 3,
+            "stock": 35,
+            "isAvailable": true,
+            "imageUri": "chicha"
+        },
+        {
+            "id": 7,
+            "name": "Papelón con Limón",
+            "description": "Bebida típica ultra refrescante y natural preparada con papelón y jugo de limón fresco recién exprimido.",
+            "priceUsd": 1.5,
+            "categoryId": 3,
+            "stock": 79,
+            "isAvailable": true,
+            "imageUri": "papelon"
+        },
+        {
+            "id": 8,
+            "name": "Quesillo Tradicional",
+            "description": "El postre favorito: flan cremoso de leche condensada aromatizado con ron venezolano y bañado en caramelo oscuro.",
+            "priceUsd": 2.8,
+            "categoryId": 4,
+            "stock": 19,
+            "isAvailable": true,
+            "imageUri": "quesillo"
+        },
+        {
+            "id": 9,
+            "name": "Tres Leches",
+            "description": "Delicioso bizcocho bañado en tres tipos de leche (evaporada, condensada y crema), decorado con merengue y canela molida.",
+            "priceUsd": 3.2,
+            "categoryId": 4,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "tresleches"
+        }
+    ],
+    "config": {
+        "exchangeRateBs": 737.8816,
+        "totalTables": 10,
+        "installationId": "GL-5CB7-3C9E",
+        "activeLicenseUntil": "2026-08-07",
+        "lastSeenDate": "2026-07-23"
+    },
+    "orders": [
+        {
+            "id": 10,
+            "tableNumber": "3",
+            "status": "DELIVERED",
+            "totalUsd": 4.5,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 10:34 PM",
+            "items": [
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 1,
+                    "priceUsd": 4.5
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "tableNumber": "3",
+            "status": "DELIVERED",
+            "totalUsd": 8.0,
+            "paymentMethod": "Zelle: $8.00",
+            "paymentStatus": "PAID",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 10:32 PM",
+            "items": [
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 1,
+                    "priceUsd": 4.5
+                },
+                {
+                    "productId": 4,
+                    "productName": "Tequeños de Queso (5 uds)",
+                    "quantity": 1,
+                    "priceUsd": 3.5
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "tableNumber": "3",
+            "status": "DELIVERED",
+            "totalUsd": 8.0,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 10:32 PM",
+            "items": [
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 1,
+                    "priceUsd": 4.5
+                },
+                {
+                    "productId": 4,
+                    "productName": "Tequeños de Queso (5 uds)",
+                    "quantity": 1,
+                    "priceUsd": 3.5
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "tableNumber": "5",
+            "status": "DELIVERED",
+            "totalUsd": 2.8,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 10:22 PM",
+            "items": [
+                {
+                    "productId": 8,
+                    "productName": "Quesillo Tradicional",
+                    "quantity": 1,
+                    "priceUsd": 2.8
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "tableNumber": "10",
+            "status": "DELIVERED",
+            "totalUsd": 18.0,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 10:09 PM",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5
+                },
+                {
+                    "productId": 2,
+                    "productName": "Asado Negro",
+                    "quantity": 1,
+                    "priceUsd": 9.5
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "tableNumber": "1",
+            "status": "DELIVERED",
+            "totalUsd": 8.5,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "con todo",
+            "timestamp": "2026-07-23 10:03 PM",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "tableNumber": "8",
+            "status": "DELIVERED",
+            "totalUsd": 13.5,
+            "paymentMethod": "Pago Móvil: $13.50",
+            "paymentStatus": "PAID",
+            "orderType": "DINE_IN",
+            "notes": "con todo",
+            "timestamp": "2026-07-23 09:56 PM",
+            "items": [
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 3,
+                    "priceUsd": 4.5
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "tableNumber": "8",
+            "status": "DELIVERED",
+            "totalUsd": 8.5,
+            "paymentMethod": "Zelle: $8.50",
+            "paymentStatus": "PAID",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-23 09:54 PM",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "tableNumber": "Para llevar",
+            "status": "DELIVERED",
+            "totalUsd": 32.5,
+            "paymentMethod": "Efectivo $: $40.00",
+            "paymentStatus": "PAID",
+            "orderType": "TAKEAWAY",
+            "notes": "con todo",
+            "timestamp": "2026-07-23 09:31 PM",
+            "items": [
+                {
+                    "productId": 4,
+                    "productName": "Tequeños de Queso (5 uds)",
+                    "quantity": 5,
+                    "priceUsd": 3.5
+                },
+                {
+                    "productId": 5,
+                    "productName": "Empanaditas de Cazón (3 uds)",
+                    "quantity": 5,
+                    "priceUsd": 3.0
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "tableNumber": "6",
+            "status": "DELIVERED",
+            "totalUsd": 19.5,
+            "paymentMethod": "Punto de Venta: $19.50",
+            "paymentStatus": "PAID",
+            "orderType": "DINE_IN",
+            "notes": "con todo",
+            "timestamp": "2026-07-23 09:28 PM",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5
+                },
+                {
+                    "productId": 2,
+                    "productName": "Asado Negro",
+                    "quantity": 1,
+                    "priceUsd": 9.5
+                },
+                {
+                    "productId": 7,
+                    "productName": "Papelón con Limón",
+                    "quantity": 1,
+                    "priceUsd": 1.5
+                }
+            ]
+        }
+    ],
+    "tableStates": {
+        "2": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4,
+            "notes": ""
+        },
+        "3": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4
+        },
+        "1": {
+            "status": "OCCUPIED_DECIDING",
+            "pax": 1,
+            "capacity": 6,
+            "notes": ""
+        },
+        "8": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4,
+            "notes": ""
+        },
+        "7": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4
+        }
+    }
+}

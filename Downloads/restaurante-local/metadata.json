@@ -1,0 +1,6 @@
+{
+  "name": "Restaurante Local",
+  "description": "Sistema de gestión local para restaurantes con modos de Administrador, Cocina y Cliente, menú QR y soporte multi-moneda.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

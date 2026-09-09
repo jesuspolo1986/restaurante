@@ -1,0 +1,832 @@
+Server 1 running on port: 8080
+Server 2 successfully bound to fallback port: 8081
+S1 status: 200
+S2 status: 200
+TEST PASSED 100% PERFECTLY!
+HTML length: 250809
+Found 1 scripts
+Script 0 length: 157597
+Node syntax check returncode: 1
+STDOUT: 
+STDERR: /tmp/test_admin.js:2586
+            const footer = (document.getElementById('cfg-ticket-footer')?.value || "¡Gracias por preferirnos!
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+ticketFooter in db: '¡Muchas gracias por su visita y preferencia!\nClave WiFi: Gastro2026\nEscanee el código QR para volver a pedir.'
+Admin HTML scripts: 1
+Admin Script 0 ERROR: /tmp/test_admin.js:2586
+            const footer = (document.getElementById('cfg-ticket-footer')?.value || "¡Gracias por preferirnos!
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0 SYNTAX OK!
+Kitchen Script 0 SYNTAX OK!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2607
+            if (simFooter) simFooter.innerHTML = footer.replace(/
+                                                                ^
+
+SyntaxError: Invalid regular expression: missing /
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2607
+            if (simFooter) simFooter.innerHTML = footer.split('
+                                                              ^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2759
+                        ${footer.replace(/
+                                         ^
+
+SyntaxError: Invalid regular expression: missing /
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2837
+                    <script src="https://cdn.tailwindcss.com">
+                                                              
+
+SyntaxError: Unexpected end of input
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Client Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Kitchen Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Verify 1234 response: {'status': 'success'}
+Verify 9999 response: {'status': 'error', 'message': 'PIN incorrecto'}
+PIN VERIFICATION ENDPOINTS 100% TESTED AND FUNCTIONAL!
+Total buttons with onclick: 101
+Button [1] -> onclick="pressPin('1')"
+Button [2] -> onclick="pressPin('2')"
+Button [3] -> onclick="pressPin('3')"
+Button [4] -> onclick="pressPin('4')"
+Button [5] -> onclick="pressPin('5')"
+Button [6] -> onclick="pressPin('6')"
+Button [7] -> onclick="pressPin('7')"
+Button [8] -> onclick="pressPin('8')"
+Button [9] -> onclick="pressPin('9')"
+Button [BORRAR] -> onclick="clearPin()"
+Button [0] -> onclick="pressPin('0')"
+Button [backspace] -> onclick="deleteLast()"
+Button [save] -> onclick="updateRate()"
+Button [sync] -> onclick="sincronizarTasaDolarApi(this)"
+Button [Guardar] -> onclick="updatePin()"
+Admin Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+--- SIMULANDO FLUJO COMPLETO DE LOGIN Y NAVEGACIÓN ---
+1. Página /admin cargada con éxito (HTTP 200). Tamaño: 252371 bytes
+2. Respuesta de verificación de PIN: {'status': 'success'}
+Traceback (most recent call last):
+  File "<string>", line 45, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+--- SIMULANDO ACCIONES DE ADMINISTRADOR REALES ---
+1. Login PIN: {'status': 'success'}
+2. Agregar Producto: {'status': 'success', 'product': {'id': 10, 'name': 'Pizza Margarita Especial', 'description': 'Queso mozzarella, salsa de tomate y albahaca fresca', 'priceUsd': 12.0, 'categoryId': 1, 'stock': 25, 'isAvailable': True, 'imageUri': 'pizza'}}
+3. Producto guardado: Pizza Margarita Especial Precio: 12.0
+Traceback (most recent call last):
+  File "<string>", line 50, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+=== VALIDACIÓN COMPLETA DE TODAS LAS OPERACIONES ===
+1. Verificación de PIN [1234]: {'status': 'success'}
+2. Actualización de Tasa Cambiaria (54.50 Bs/$): {'status': 'success'}
+3. Producto Creado Exitosamente: Parrilla Mixta Familiar
+Traceback (most recent call last):
+  File "<string>", line 61, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+=== VALIDACIÓN COMPLETA DE TODAS LAS OPERACIONES ===
+1. Verificación de PIN [1234]: {'status': 'success'}
+2. Actualización de Tasa Cambiaria (54.50 Bs/$): {'status': 'success'}
+3. Producto Creado Exitosamente: Parrilla Mixta Familiar
+4. Pedido Creado y Registrado con Exito: {'status': 'success', 'orderId': 1}
+5. Total de Pedidos en Sistema: 1
+=== RESULTADO: 100% DE LAS PRUEBAS APROBADAS Y FUNCIONANDO ===
+Admin Script: SYNTAX 100% CLEAN!
+Client Script: SYNTAX 100% CLEAN!
+Kitchen Script: SYNTAX 100% CLEAN!
+Ticket Script: SYNTAX 100% CLEAN!
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8098/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://10.2.0.2:8098/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_214938.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_205642.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8097/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8097/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_215249.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_211930.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8097/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8097/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_223140.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_214938.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8097/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8097/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_224232.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_215249.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8098/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8098/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_224934.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_223140.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8098/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8098/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_225656.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_224232.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8097/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8097/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_231538.json
+  [Rotación] Respaldo antiguo eliminado en respaldos_locales: gastro_db_respaldo_20260723_224934.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - c:\Users\144DG\Downloads\restaurante-local\respaldos_locales
+=================================================================
+
+Import OK
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+Admin HTML length: 13
+Admin HTML generated: 383985 bytes
+Traceback (most recent call last):
+  File "C:\Users\144DG\Downloads\restaurante-local\test_scripts_syntax.py", line 13, in <module>
+    "kitchen": handler.get_kitchen_html(db),
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'GastroRequestHandler' object has no attribute 'get_kitchen_html'. Did you mean: 'get_ticket_html'?
+['get_admin_panel_html', 'get_client_menu_html', 'get_kitchen_view_html', 'get_license_locked_html', 'get_ticket_html', 'get_waiter_view_html']
+Page 'admin': found 5 scripts
+❌ SYNTAX ERROR in admin script 4:
+C:\Users\144DG\AppData\Local\Temp\tmpvwt23xn9.js:3065
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'client': found 5 scripts
+❌ SYNTAX ERROR in client script 4:
+C:\Users\144DG\AppData\Local\Temp\tmpqppaxt_r.js:950
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'kitchen': found 2 scripts
+❌ SYNTAX ERROR in kitchen script 1:
+C:\Users\144DG\AppData\Local\Temp\tmpy48r9hqp.js:295
+                                    <span class="text-[10px] text-zinc-500 font-mono">(${${o.completedAt || ''})</span>
+                                                                                         ^
+
+SyntaxError: Missing } in template expression
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'waiter': found 2 scripts
+❌ SYNTAX ERROR in waiter script 1:
+C:\Users\144DG\AppData\Local\Temp\tmpu8u7aun5.js:702
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Traceback (most recent call last):
+  File "C:\Users\144DG\Downloads\restaurante-local\test_scripts_syntax.py", line 16, in <module>
+    "license": handler.get_license_locked_html({"installationId": "TEST-1234", "message": "Licencia vencida"})
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\Downloads\restaurante-local\gastro_local_pc_server.py", line 5711, in get_license_locked_html
+    status = state["status"]
+             ~~~~~^^^^^^^^^^
+KeyError: 'status'
+Page 'admin': found 5 scripts
+❌ SYNTAX ERROR in admin script 4:
+C:\Users\144DG\AppData\Local\Temp\tmpgol7vtrz.js:3065
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'client': found 5 scripts
+❌ SYNTAX ERROR in client script 4:
+C:\Users\144DG\AppData\Local\Temp\tmpss420w4m.js:950
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'kitchen': found 2 scripts
+❌ SYNTAX ERROR in kitchen script 1:
+C:\Users\144DG\AppData\Local\Temp\tmpfgv3oifv.js:295
+                                    <span class="text-[10px] text-zinc-500 font-mono">(${${o.completedAt || ''})</span>
+                                                                                         ^
+
+SyntaxError: Missing } in template expression
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'waiter': found 2 scripts
+❌ SYNTAX ERROR in waiter script 1:
+C:\Users\144DG\AppData\Local\Temp\tmprgw39zy1.js:702
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'ticket': found 3 scripts
+❌ SYNTAX ERROR in ticket script 2:
+C:\Users\144DG\AppData\Local\Temp\tmpxhy1dfqd.js:194
+            csv += "ID Pedido;Fecha y Hora;Mesa;Mozo;Productos y Extras;Metodo de Pago;Estado Pago;Total USD;Total Bs
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 5 scripts
+✅ admin script 4: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [FAIL] Ruta admin con token valido actualiza tasa
+  [FAIL] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [FAIL] KDS actualiza comanda a PREPARING
+  [FAIL] KDS actualiza comanda a READY
+  [FAIL] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 7 | FALLIDAS: 5
+FALLO EN AL MENOS UNA PRUEBA
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 5 scripts
+✅ admin script 4: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 5 scripts
+✅ admin script 4: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+get_ip_address(): 192.168.1.151
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Length of admin HTML: 296352
+SUCCESS: {get_ip_address()} was evaluated to: 192.168.1.151
+detectedIp in generated HTML: ['192.168.1.151', '192.168.1.151']
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 5 scripts
+✅ client script 4: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Traceback (most recent call last):
+  File "C:\Users\144DG\Downloads\restaurante-local\test_scripts_syntax.py", line 12, in <module>
+    "client": handler.get_client_menu_html(db, "[]", "[]", 55.0),
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\Downloads\restaurante-local\gastro_local_pc_server.py", line 2064, in get_client_menu_html
+    // Estructura de items en carrito: [{ cartId, productId, productName, quantity, priceUsd, selectedModifiers, unitTotalUsd }]
+                                          ^^^^^^
+NameError: name 'cartId' is not defined
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 3 scripts
+❌ SYNTAX ERROR in client script 2:
+C:\Users\144DG\AppData\Local\Temp\tmptrxdhwyr.js:551
+                        alert("🔔 ¡Llamado enviado!
+                              ^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 3 scripts
+✅ client script 2: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%

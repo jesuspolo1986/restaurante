@@ -1,0 +1,443 @@
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+----------------------------------------
+Exception occurred during processing of request from ('192.168.1.13', 52560)
+Traceback (most recent call last):
+  File "socketserver.py", line 692, in process_request_thread
+  File "socketserver.py", line 362, in finish_request
+  File "socketserver.py", line 761, in __init__
+  File "http\server.py", line 436, in handle
+  File "http\server.py", line 404, in handle_one_request
+  File "socket.py", line 719, in readinto
+ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+----------------------------------------
+
+=================================================================
+      INICIANDO COPIA DE SEGURIDAD AUTOMÁTICA GASTROLOCAL 💾
+=================================================================
+  [Rotación] Respaldo antiguo eliminado en gastro_backups: gastro_db_respaldo_20260723_205642.json
+✅ ¡Copia de seguridad realizada exitosamente! Guardada en:
+   - E:\gastro_backups
+   - C:\Users\144DG\Downloads\restaurante-local\dist\respaldos_locales
+=================================================================
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+----------------------------------------
+Exception occurred during processing of request from ('192.168.1.13', 57376)
+Traceback (most recent call last):
+  File "socketserver.py", line 692, in process_request_thread
+  File "socketserver.py", line 362, in finish_request
+  File "socketserver.py", line 761, in __init__
+  File "http\server.py", line 436, in handle
+  File "http\server.py", line 404, in handle_one_request
+  File "socket.py", line 719, in readinto
+ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+----------------------------------------
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.30:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+----------------------------------------
+Exception occurred during processing of request from ('192.168.1.13', 46236)
+Traceback (most recent call last):
+  File "socketserver.py", line 692, in process_request_thread
+  File "socketserver.py", line 362, in finish_request
+  File "socketserver.py", line 761, in __init__
+  File "http\server.py", line 436, in handle
+  File "http\server.py", line 404, in handle_one_request
+  File "socket.py", line 719, in readinto
+ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+----------------------------------------
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.151:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+

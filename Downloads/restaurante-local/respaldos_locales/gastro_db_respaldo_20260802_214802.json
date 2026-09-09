@@ -1,0 +1,195 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Platos Fuertes",
+            "iconName": "restaurant"
+        },
+        {
+            "id": 2,
+            "name": "Entradas",
+            "iconName": "fastfood"
+        },
+        {
+            "id": 3,
+            "name": "Bebidas",
+            "iconName": "wine_bar"
+        },
+        {
+            "id": 4,
+            "name": "Postres",
+            "iconName": "cake"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Pabellón Criollo",
+            "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
+            "priceUsd": 8.5,
+            "categoryId": 1,
+            "stock": 30,
+            "isAvailable": false,
+            "imageUri": "data:image/jpeg;base64,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"
+        },
+        {
+            "id": 2,
+            "name": "Asado Negro",
+            "description": "Muchacho redondo horneado lentamente en un almíbar de papelón caramelizado con vino tinto y especias.",
+            "priceUsd": 9.5,
+            "categoryId": 1,
+            "stock": 24,
+            "isAvailable": true,
+            "imageUri": "asado"
+        },
+        {
+            "id": 3,
+            "name": "Arepa Reina Pepiada",
+            "description": "Arepa de maíz tostada rellena de ensalada cremosa de pollo desmechado, aguacate maduro, mayonesa casera y un toque de cilantro.",
+            "priceUsd": 4.5,
+            "categoryId": 1,
+            "stock": 100,
+            "isAvailable": true,
+            "imageUri": "arepa"
+        },
+        {
+            "id": 4,
+            "name": "Tequeños de Queso (5 uds)",
+            "description": "Deditos crujientes de masa rellenos de sabroso queso blanco llanero fritos al momento. Se acompañan con salsa de ajo.",
+            "priceUsd": 3.5,
+            "categoryId": 2,
+            "stock": 59,
+            "isAvailable": true,
+            "imageUri": "data:image/jpeg;base64,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"
+        },
+        {
+            "id": 5,
+            "name": "Empanaditas de Cazón (3 uds)",
+            "description": "Empanadas de masa de maíz dulce rellenas de cazón (tiburón pequeño) desmechado, sofrito y frito.",
+            "priceUsd": 3.0,
+            "categoryId": 2,
+            "stock": 40,
+            "isAvailable": true,
+            "imageUri": "empanadas"
+        },
+        {
+            "id": 6,
+            "name": "Chicha Criolla",
+            "description": "Bebida tradicional cremosa hecha a base de arroz cocido con canela, servida fría con hielo y generosa leche condensada.",
+            "priceUsd": 2.5,
+            "categoryId": 3,
+            "stock": 33,
+            "isAvailable": true,
+            "imageUri": "chicha"
+        },
+        {
+            "id": 7,
+            "name": "Papelón con Limón",
+            "description": "Bebida típica ultra refrescante y natural preparada con papelón y jugo de limón fresco recién exprimido.",
+            "priceUsd": 1.5,
+            "categoryId": 3,
+            "stock": 80,
+            "isAvailable": true,
+            "imageUri": "papelon"
+        },
+        {
+            "id": 8,
+            "name": "Quesillo Tradicional",
+            "description": "El postre favorito: flan cremoso de leche condensada aromatizado con ron venezolano y bañado en caramelo oscuro.",
+            "priceUsd": 2.8,
+            "categoryId": 4,
+            "stock": 19,
+            "isAvailable": true,
+            "imageUri": "quesillo"
+        },
+        {
+            "id": 9,
+            "name": "Tres Leches",
+            "description": "Delicioso bizcocho bañado en tres tipos de leche (evaporada, condensada y crema), decorado con merengue y canela molida.",
+            "priceUsd": 3.2,
+            "categoryId": 4,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "tresleches"
+        }
+    ],
+    "config": {
+        "exchangeRateBs": 746.6297,
+        "totalTables": 10,
+        "installationId": "GL-2AF0-C216",
+        "activeLicenseUntil": "2026-08-10",
+        "lastSeenDate": "2026-08-02"
+    },
+    "orders": [
+        {
+            "id": 2,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 5.3,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-08-02 09:02 PM",
+            "items": [
+                {
+                    "productId": 6,
+                    "productName": "Chicha Criolla",
+                    "quantity": 1,
+                    "priceUsd": 2.5
+                },
+                {
+                    "productId": 8,
+                    "productName": "Quesillo Tradicional",
+                    "quantity": 1,
+                    "priceUsd": 2.8
+                }
+            ]
+        },
+        {
+            "id": 1,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 15.5,
+            "paymentMethod": "Punto de Venta: $15.50",
+            "paymentStatus": "PAID",
+            "orderType": "DINE_IN",
+            "notes": "",
+            "timestamp": "2026-07-26 09:18 PM",
+            "items": [
+                {
+                    "productId": 2,
+                    "productName": "Asado Negro",
+                    "quantity": 1,
+                    "priceUsd": 9.5
+                },
+                {
+                    "productId": 4,
+                    "productName": "Tequeños de Queso (5 uds)",
+                    "quantity": 1,
+                    "priceUsd": 3.5
+                },
+                {
+                    "productId": 6,
+                    "productName": "Chicha Criolla",
+                    "quantity": 1,
+                    "priceUsd": 2.5
+                }
+            ]
+        }
+    ],
+    "tableStates": {
+        "1": {
+            "status": "OCCUPIED_DECIDING",
+            "pax": 2,
+            "capacity": 4,
+            "notes": ""
+        },
+        "6": {
+            "status": "RESERVED",
+            "pax": 0,
+            "capacity": 4,
+            "notes": ""
+        }
+    }
+}

@@ -1,0 +1,1261 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Platos Fuertes",
+            "iconName": "restaurant",
+            "station": "kitchen"
+        },
+        {
+            "id": 2,
+            "name": "Entradas",
+            "iconName": "fastfood",
+            "station": "kitchen"
+        },
+        {
+            "id": 3,
+            "name": "Bebidas",
+            "iconName": "wine_bar",
+            "station": "bar"
+        },
+        {
+            "id": 4,
+            "name": "Postres",
+            "iconName": "cake",
+            "station": "kitchen"
+        },
+        {
+            "id": 5,
+            "name": "Especialidades Gourmet",
+            "iconName": "star",
+            "station": "kitchen"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Pabellón Criollo",
+            "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
+            "priceUsd": 8.5,
+            "categoryId": 1,
+            "stock": 30,
+            "isAvailable": true,
+            "imageUri": "pabellon",
+            "modifiers": []
+        },
+        {
+            "id": 2,
+            "name": "Asado Negro",
+            "description": "Muchacho redondo horneado lentamente en un almíbar de papelón caramelizado con vino tinto y especias.",
+            "priceUsd": 9.5,
+            "categoryId": 1,
+            "stock": 25,
+            "isAvailable": true,
+            "imageUri": "asado",
+            "modifiers": []
+        },
+        {
+            "id": 3,
+            "name": "Arepa Reina Pepiada",
+            "description": "Arepa de maíz tostada rellena de ensalada cremosa de pollo desmechado, aguacate maduro, mayonesa casera y un toque de cilantro.",
+            "priceUsd": 4.5,
+            "categoryId": 1,
+            "stock": 100,
+            "isAvailable": true,
+            "imageUri": "arepa",
+            "modifiers": []
+        },
+        {
+            "id": 4,
+            "name": "Tequeños de Queso (5 uds)",
+            "description": "Deditos crujientes de masa rellenos de sabroso queso blanco llanero fritos al momento. Se acompañan con salsa de ajo.",
+            "priceUsd": 3.5,
+            "categoryId": 2,
+            "stock": 60,
+            "isAvailable": true,
+            "imageUri": "tequenos",
+            "modifiers": []
+        },
+        {
+            "id": 5,
+            "name": "Empanaditas de Cazón (3 uds)",
+            "description": "Empanadas de masa de maíz dulce rellenas de cazón (tiburón pequeño) desmechado, sofrito y frito.",
+            "priceUsd": 3.0,
+            "categoryId": 2,
+            "stock": 40,
+            "isAvailable": true,
+            "imageUri": "empanadas",
+            "modifiers": []
+        },
+        {
+            "id": 6,
+            "name": "Chicha Criolla",
+            "description": "Bebida tradicional cremosa hecha a base de arroz cocido con canela, servida fría con hielo y generosa leche condensada.",
+            "priceUsd": 2.5,
+            "categoryId": 3,
+            "stock": 35,
+            "isAvailable": true,
+            "imageUri": "chicha",
+            "modifiers": []
+        },
+        {
+            "id": 7,
+            "name": "Papelón con Limón",
+            "description": "Bebida típica ultra refrescante y natural preparada con papelón y jugo de limón fresco recién exprimido.",
+            "priceUsd": 1.5,
+            "categoryId": 3,
+            "stock": 80,
+            "isAvailable": true,
+            "imageUri": "papelon",
+            "modifiers": []
+        },
+        {
+            "id": 8,
+            "name": "Quesillo Tradicional",
+            "description": "El postre favorito: flan cremoso de leche condensada aromatizado con ron venezolano y bañado en caramelo oscuro.",
+            "priceUsd": 2.8,
+            "categoryId": 4,
+            "stock": 20,
+            "isAvailable": true,
+            "imageUri": "quesillo",
+            "modifiers": []
+        },
+        {
+            "id": 9,
+            "name": "Tres Leches",
+            "description": "Delicioso bizcocho bañado en tres tipos de leche (evaporada, condensada y crema), decorado con merengue y canela molida.",
+            "priceUsd": 3.2,
+            "categoryId": 4,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "tresleches",
+            "modifiers": []
+        },
+        {
+            "id": 10,
+            "name": "Pizza Margarita Especial",
+            "description": "Queso mozzarella, salsa de tomate y albahaca fresca",
+            "priceUsd": 12.0,
+            "categoryId": 1,
+            "stock": 25,
+            "isAvailable": true,
+            "imageUri": "pizza",
+            "modifiers": []
+        },
+        {
+            "id": 11,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "carne",
+            "modifiers": []
+        },
+        {
+            "id": 12,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 14,
+            "isAvailable": true,
+            "imageUri": "carne",
+            "modifiers": []
+        },
+        {
+            "id": 13,
+            "name": "Hamburguesa Mega Crispy",
+            "description": "Doble carne, tocineta y salsa tartara",
+            "priceUsd": 10.0,
+            "categoryId": 5,
+            "stock": 22,
+            "isAvailable": true,
+            "imageUri": "burger",
+            "modifiers": []
+        }
+    ],
+    "config": {
+        "exchangeRateBs": 55.0,
+        "totalTables": 12,
+        "restaurantName": "Gastro Gourmet PRO",
+        "restaurantSlogan": "Excelencia Gastronomica Local",
+        "restaurantLogo": "",
+        "restaurantRif": "J-99887766-0",
+        "restaurantAddress": "Av. Principal, C.C. Gourmet Plaza, Nivel PB, Local 04",
+        "restaurantPhone": "+58 414-1112233",
+        "restaurantInstagram": "@gastrolocal_criollo",
+        "ticketFooter": "Gracias por su visita! Vuelva pronto.",
+        "pagoMovil": {
+            "bank": "0102 - Banco de Venezuela",
+            "phone": "0414-1112233",
+            "idNumber": "J-99887766-0",
+            "accountName": "Gastro Gourmet PRO C.A."
+        },
+        "installationId": "GL-74DD-8CD1",
+        "activeLicenseUntil": "2026-12-31",
+        "lastSeenDate": "2026-09-01",
+        "adminPin": "1234"
+    },
+    "orders": [
+        {
+            "id": 37,
+            "tableNumber": "Para llevar",
+            "status": "DELIVERED",
+            "totalUsd": 40.0,
+            "paymentMethod": "ZELLE: $20.00, PAGO MÓVIL: $20.00",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "TAKEAWAY",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:15.050798",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 4,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 36,
+            "tableNumber": "Mesa 2",
+            "status": "CONFIRMED",
+            "totalUsd": 20.0,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PAID",
+            "paymentReference": "11223344",
+            "paymentOriginBank": "0134 - Banesco",
+            "paymentPhone": "0412-5551234",
+            "paymentVerificationStatus": "VERIFIED",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.984963",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 2,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 35,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 30.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.926689",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 3,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "tableNumber": "Mesa 5",
+            "status": "DELIVERED",
+            "totalUsd": 20.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Bien cocida la carne",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.852565",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 2,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 33,
+            "tableNumber": "Mesa 10",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.837397",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "tableNumber": "Mesa 9",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.825375",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.816449",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "tableNumber": "Mesa 7",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.805548",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "tableNumber": "Mesa 6",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.794171",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.783988",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "tableNumber": "Mesa 4",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.771958",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "tableNumber": "Mesa 2",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.758754",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "tableNumber": "Mesa 3",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.747593",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "tableNumber": "Mesa 1",
+            "status": "PENDING",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.733966",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "tableNumber": "Mesa 10",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.477236",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "tableNumber": "Mesa 9",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.467491",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.459388",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "tableNumber": "Mesa 7",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.450327",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "tableNumber": "Mesa 6",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.443598",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.434723",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "tableNumber": "Mesa 4",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.425986",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "tableNumber": "Mesa 3",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.416115",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "tableNumber": "Mesa 1",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.405309",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "tableNumber": "Mesa 2",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.394118",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "tableNumber": "Mesa 3",
+            "status": "DELIVERED",
+            "totalUsd": 14.0,
+            "paymentMethod": "EFECTIVO $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "Carlos",
+            "notes": "Servir con pitillo ecologico",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.377712",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 2,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [
+                        {
+                            "name": "Doble Ron",
+                            "priceUsd": 2.0
+                        },
+                        {
+                            "name": "Hielo Extra",
+                            "priceUsd": 0.0
+                        }
+                    ],
+                    "unitTotalUsd": 7.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 12,
+            "tableNumber": "Mesa 9",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.283614",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "tableNumber": "Mesa 10",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.276094",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.269882",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "tableNumber": "Mesa 7",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.262129",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "tableNumber": "Mesa 6",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.256035",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "tableNumber": "Mesa 8",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.250061",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "tableNumber": "Mesa 4",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.242396",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "tableNumber": "Mesa 3",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.236669",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "tableNumber": "Mesa 1",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.230916",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "tableNumber": "Mesa 2",
+            "status": "PENDING",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.220404",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "tableNumber": "Mesa 3",
+            "status": "DELIVERED",
+            "totalUsd": 14.0,
+            "paymentMethod": "EFECTIVO $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "Carlos",
+            "notes": "Servir con pitillo ecologico",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.205282",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 2,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [
+                        {
+                            "name": "Doble Ron",
+                            "priceUsd": 2.0
+                        },
+                        {
+                            "name": "Hielo Extra",
+                            "priceUsd": 0.0
+                        }
+                    ],
+                    "unitTotalUsd": 7.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 1,
+            "tableNumber": 4,
+            "status": "PENDING",
+            "totalUsd": 25.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "TAKEAWAY",
+            "notes": "",
+            "timestamp": "2026-08-27 04:49 PM",
+            "items": [
+                {
+                    "productId": 12,
+                    "productName": "Parrilla Mixta Familiar",
+                    "quantity": 1,
+                    "priceUsd": 25.0
+                }
+            ]
+        }
+    ],
+    "tableStates": {
+        "5": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4
+        },
+        "8": {
+            "status": "OCCUPIED_EATING",
+            "pax": 4,
+            "capacity": 4
+        }
+    },
+    "zReports": [
+        {
+            "id": 1,
+            "timestamp": "2026-09-01 01:11:15 PM",
+            "totalOrdersPaid": 5,
+            "totalUsd": 108.0,
+            "totalBs": 5940.0,
+            "exchangeRate": 55.0,
+            "methodBreakdownUsd": {
+                "CASH_USD": 48.0,
+                "CASH_BS": 0.0,
+                "PAGO_MOVIL": 40.0,
+                "PUNTO": 0.0,
+                "ZELLE": 20.0,
+                "OTROS": 0.0
+            },
+            "methodBreakdownBs": {
+                "CASH_USD": 2640.0,
+                "CASH_BS": 0.0,
+                "PAGO_MOVIL": 2200.0,
+                "PUNTO": 0.0,
+                "ZELLE": 1100.0,
+                "OTROS": 0.0
+            },
+            "avgPerTableUsd": 9.0,
+            "notes": "Cierre de Turno de Pruebas"
+        }
+    ]
+}
