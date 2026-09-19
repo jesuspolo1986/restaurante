@@ -1,0 +1,857 @@
+Server 1 running on port: 8080
+Server 2 successfully bound to fallback port: 8081
+S1 status: 200
+S2 status: 200
+TEST PASSED 100% PERFECTLY!
+HTML length: 250809
+Found 1 scripts
+Script 0 length: 157597
+Node syntax check returncode: 1
+STDOUT: 
+STDERR: /tmp/test_admin.js:2586
+            const footer = (document.getElementById('cfg-ticket-footer')?.value || "¡Gracias por preferirnos!
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+ticketFooter in db: '¡Muchas gracias por su visita y preferencia!\nClave WiFi: Gastro2026\nEscanee el código QR para volver a pedir.'
+Admin HTML scripts: 1
+Admin Script 0 ERROR: /tmp/test_admin.js:2586
+            const footer = (document.getElementById('cfg-ticket-footer')?.value || "¡Gracias por preferirnos!
+                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0 SYNTAX OK!
+Kitchen Script 0 SYNTAX OK!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2607
+            if (simFooter) simFooter.innerHTML = footer.replace(/
+                                                                ^
+
+SyntaxError: Invalid regular expression: missing /
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2607
+            if (simFooter) simFooter.innerHTML = footer.split('
+                                                              ^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2759
+                        ${footer.replace(/
+                                         ^
+
+SyntaxError: Invalid regular expression: missing /
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin HTML scripts found: 1
+Admin Script 0 ERROR:
+ /tmp/test_admin.js:2837
+                    <script src="https://cdn.tailwindcss.com">
+                                                              
+
+SyntaxError: Unexpected end of input
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Client Script 0: SYNTAX 100% CLEAN & PASSED!
+Kitchen Script 0: SYNTAX 100% CLEAN & PASSED!
+Admin Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Client Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Kitchen Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+Verify 1234 response: {'status': 'success'}
+Verify 9999 response: {'status': 'error', 'message': 'PIN incorrecto'}
+PIN VERIFICATION ENDPOINTS 100% TESTED AND FUNCTIONAL!
+Total buttons with onclick: 101
+Button [1] -> onclick="pressPin('1')"
+Button [2] -> onclick="pressPin('2')"
+Button [3] -> onclick="pressPin('3')"
+Button [4] -> onclick="pressPin('4')"
+Button [5] -> onclick="pressPin('5')"
+Button [6] -> onclick="pressPin('6')"
+Button [7] -> onclick="pressPin('7')"
+Button [8] -> onclick="pressPin('8')"
+Button [9] -> onclick="pressPin('9')"
+Button [BORRAR] -> onclick="clearPin()"
+Button [0] -> onclick="pressPin('0')"
+Button [backspace] -> onclick="deleteLast()"
+Button [save] -> onclick="updateRate()"
+Button [sync] -> onclick="sincronizarTasaDolarApi(this)"
+Button [Guardar] -> onclick="updatePin()"
+Admin Script: SYNTAX 100% CLEAN & VERIFIED BY NODE!
+--- SIMULANDO FLUJO COMPLETO DE LOGIN Y NAVEGACIÓN ---
+1. Página /admin cargada con éxito (HTTP 200). Tamaño: 252371 bytes
+2. Respuesta de verificación de PIN: {'status': 'success'}
+Traceback (most recent call last):
+  File "<string>", line 45, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+--- SIMULANDO ACCIONES DE ADMINISTRADOR REALES ---
+1. Login PIN: {'status': 'success'}
+2. Agregar Producto: {'status': 'success', 'product': {'id': 10, 'name': 'Pizza Margarita Especial', 'description': 'Queso mozzarella, salsa de tomate y albahaca fresca', 'priceUsd': 12.0, 'categoryId': 1, 'stock': 25, 'isAvailable': True, 'imageUri': 'pizza'}}
+3. Producto guardado: Pizza Margarita Especial Precio: 12.0
+Traceback (most recent call last):
+  File "<string>", line 50, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+=== VALIDACIÓN COMPLETA DE TODAS LAS OPERACIONES ===
+1. Verificación de PIN [1234]: {'status': 'success'}
+2. Actualización de Tasa Cambiaria (54.50 Bs/$): {'status': 'success'}
+3. Producto Creado Exitosamente: Parrilla Mixta Familiar
+Traceback (most recent call last):
+  File "<string>", line 61, in <module>
+  File "/usr/lib/python3.11/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 525, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 634, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 563, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/lib/python3.11/urllib/request.py", line 643, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 404: Not Found
+=== VALIDACIÓN COMPLETA DE TODAS LAS OPERACIONES ===
+1. Verificación de PIN [1234]: {'status': 'success'}
+2. Actualización de Tasa Cambiaria (54.50 Bs/$): {'status': 'success'}
+3. Producto Creado Exitosamente: Parrilla Mixta Familiar
+4. Pedido Creado y Registrado con Exito: {'status': 'success', 'orderId': 1}
+5. Total de Pedidos en Sistema: 1
+=== RESULTADO: 100% DE LAS PRUEBAS APROBADAS Y FUNCIONANDO ===
+Admin Script: SYNTAX 100% CLEAN!
+Client Script: SYNTAX 100% CLEAN!
+Kitchen Script: SYNTAX 100% CLEAN!
+Ticket Script: SYNTAX 100% CLEAN!
+serverSessionToken found: 6c6200d2-43c3-44b5-a869-0cf33e6d0832
+submitPin found: True
+Total script tags: 1
+Script written to /tmp/admin_full_script.js
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 3 scripts
+✅ client script 2: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Traceback (most recent call last):
+  File "<string>", line 6, in <module>
+AttributeError: module 'gastro_local_pc_server' has no attribute 'GastroLocalHTTPHandler'
+imgHtml = "";
+                const imgUri = p.imageUri || p.imageUrl || p.image || "";
+                if (imgUri && (imgUri.startsWith("/") || imgUri.includes("product_images") || imgUri.startsWith("http") || imgUri.startsWith("data:"))) {
+                    const fileName = imgUri.substring(imgUri.lastIndexOf('/') + 1);
+                    const src = (imgUri.startsWith("http") || imgUri.startsWith("data:")) ? imgUri : `/api/images?file=${encodeURIComponent(fileName)}`;
+                    imgHtml = `<img src="${src}" class="w-16 h-16 object-cover rounded-2xl shrink-0 border border-[#cac4d0]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style=
+DB loaded successfully. Total products: 12
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [FAIL] POST /api/order crea pedido exitosamente
+  [FAIL] Descuento de inventario atomico verificado
+  [FAIL] KDS actualiza comanda a PREPARING
+  [FAIL] KDS actualiza comanda a READY
+  [FAIL] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 7 | FALLIDAS: 5
+FALLO EN AL MENOS UNA PRUEBA
+Traceback (most recent call last):
+  File "<string>", line 3, in <module>
+ImportError: cannot import name 'GastroLocalHandler' from 'gastro_local_pc_server' (/app/applet/gastro_local_pc_server.py)
+HTTP Error: 400 {"status": "error", "message": "Inventario insuficiente o carrito vacio"}
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+❌ SYNTAX ERROR in admin script 2:
+/tmp/tmplq7t0hwc.js:1871
+                } else if (aUri.startsWith('/') || aUri.includes('product_images') || aUri.includes('\') || /^[a-zA-Z]:/.test(aUri)) {
+                                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Page 'client': found 2 scripts
+❌ SYNTAX ERROR in client script 1:
+/tmp/tmp6r9ju2pm.js:96
+                const isLocalPath = imgUri.startsWith("/") || imgUri.includes("product_images") || imgUri.includes("\") || /^[a-zA-Z]:/.test(imgUri);
+                                                                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+imgUri line in client_html:
+                const isLocalPath = imgUri.startsWith("/") || imgUri.includes("product_images") || imgUri.includes("\") || /^[a-zA-Z]:/.test(imgUri);
+                } else if (isLocalPath) {
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+❌ SYNTAX ERROR in client script 1:
+/tmp/tmpz06ktxug.js:341
+                alert("Por favor copia los datos manualmente:
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+SyntaxError: Invalid or unexpected token
+    at wrapSafe (node:internal/modules/cjs/loader:1713:18)
+    at checkSyntax (node:internal/main/check_syntax:78:3)
+
+Node.js v22.23.2
+
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+=================================================================
+      GASTROLOCAL - SERVIDOR DE ESCRITORIO PARA TU PC 🚀
+=================================================================
+  ¡Felicidades! Tu servidor GastroLocal está corriendo perfectamente.
+  No necesitas emuladores ni teléfonos de prueba en esta computadora.
+  Funciona de forma completamente local usando tu red Wi-Fi.
+-----------------------------------------------------------------
+  👉 PANEL DE ADMINISTRACIÓN (En esta PC):
+     http://localhost:8080/admin
+-----------------------------------------------------------------
+  👉 MENÚ DIGITAL PARA CLIENTES (Para tablets y teléfonos):
+     Abra este enlace en los dispositivos conectados a tu Wi-Fi:
+     http://192.168.1.116:8080/
+=================================================================
+Presione Ctrl+C en cualquier momento para detener el servidor.
+
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 12 | EXITOSAS: 12 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Traceback (most recent call last):
+  File "C:\Users\144DG\Downloads\restaurante-local\diagnostico_lanzador.py", line 155, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\144DG\Downloads\restaurante-local\diagnostico_lanzador.py", line 137, in main
+    server.serve_forever()
+    ~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 235, in serve_forever
+    ready = selector.select(poll_interval)
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\selectors.py", line 314, in select
+    r, w, _ = self._select(self._readers, self._writers, [], timeout)
+              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\selectors.py", line 305, in _select
+    r, w, x = select.select(r, w, w, timeout)
+              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+----------------------------------------
+Exception occurred during processing of request from ('192.168.1.77', 50452)
+Traceback (most recent call last):
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 692, in process_request_thread
+    self.finish_request(request, client_address)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 362, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 761, in __init__
+    self.handle()
+    ~~~~~~~~~~~^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 436, in handle
+    self.handle_one_request()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 404, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
+  File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
+    return self._sock.recv_into(b)
+           ~~~~~~~~~~~~~~~~~~~~^^^
+ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
+----------------------------------------
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+❌ SYNTAX ERROR in client script 1:
+C:\Users\144DG\AppData\Local\Temp\tmpf_vk488q.js:209
+            });
+             ^
+
+SyntaxError: Unexpected token ')'
+    at wrapSafe (node:internal/modules/cjs/loader:1804:18)
+    at checkSyntax (node:internal/main/check_syntax:76:3)
+
+Node.js v24.18.0
+
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+Empanaditas product loaded: Empanaditas de Cazón (3 uds)
+Current modifiers: [{'name': 'Queso Extra', 'priceUsd': 0.5}, {'name': 'Guasacaca Especial', 'priceUsd': 0.25}, {'name': 'Picante Casero', 'priceUsd': 0.0}]
+Traceback (most recent call last):
+  File "<string>", line 16, in <module>
+    html = server.get_client_menu_html(db)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'gastro_local_pc_server' has no attribute 'get_client_menu_html'
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Updated product modifiers: [
+  {
+    "name": "Queso Telita Extra",
+    "priceUsd": 1.0
+  },
+  {
+    "name": "Guasacaca Especial",
+    "priceUsd": 0.5
+  },
+  {
+    "name": "Sin Cebolla",
+    "priceUsd": 0.0
+  }
+]
+Product modifiers save/load test PASSED 100%!
+Traceback (most recent call last):
+  File "C:\Users\144DG\Downloads\restaurante-local\test_scripts_syntax.py", line 12, in <module>
+    "client": handler.get_client_menu_html(db, "[]", "[]", 55.0),
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\144DG\Downloads\restaurante-local\gastro_local_pc_server.py", line 2305, in get_client_menu_html
+    let cartItems = []; // Array of item objects { cartItemId, productId, productName, basePriceUsd, unitTotalUsd, quantity, selectedModifiers }
+                                                   ^^^^^^^^^^
+NameError: name 'cartItemId' is not defined
+Page 'admin': found 3 scripts
+✅ admin script 2: Syntax OK
+Page 'client': found 2 scripts
+✅ client script 1: Syntax OK
+Page 'kitchen': found 2 scripts
+✅ kitchen script 1: Syntax OK
+Page 'waiter': found 2 scripts
+✅ waiter script 1: Syntax OK
+Page 'ticket': found 3 scripts
+✅ ticket script 2: Syntax OK
+Page 'license': found 2 scripts
+✅ license script 1: Syntax OK
+--- INICIANDO BATERIA DE PRUEBAS DE INTEGRACION GASTROLOCAL ---
+  [PASS] GET /api/config responde 200 con config
+  [PASS] GET /api/products responde 200 con catalogo
+  [PASS] GET /api/categories responde 200 con categorias
+  [PASS] POST /api/verify-pin con PIN incorrecto falla
+  [PASS] POST /api/verify-pin con PIN 1234 genera token admin
+  [PASS] Ruta admin sin token rechaza con 401
+  [PASS] Ruta admin con token valido actualiza tasa
+  [PASS] POST /api/order crea pedido exitosamente
+  [PASS] Descuento de inventario atomico verificado
+  [PASS] KDS actualiza comanda a PREPARING
+  [PASS] KDS actualiza comanda a READY
+  [PASS] Admin cobra comanda con exito
+  [PASS] Mozo actualiza comanda a DELIVERED sin token admin
+  [PASS] GET /api/config no expone adminPin
+  [PASS] Pedido con cantidad negativa rechaza o ignora items invalidos
+-----------------------------------------------------------------
+TOTAL PRUEBAS: 15 | EXITOSAS: 15 | FALLIDAS: 0
+TODAS LAS PRUEBAS DE INTEGRACION SUPERADAS AL 100%
+Cart items count: 1
+Added item: {
+  "cartItemId": "1789792240948_test",
+  "productId": 5,
+  "productName": "Empanaditas de CazÃ³n (3 uds)",
+  "basePriceUsd": 3,
+  "unitTotalUsd": 4.5,
+  "quantity": 1,
+  "selectedModifiers": [
+    {
+      "name": "Queso Telita Extra",
+      "priceUsd": 1
+    },
+    {
+      "name": "Guasacaca Especial",
+      "priceUsd": 0.5
+    }
+  ]
+}
+SUCCESS: Add to cart with extras verified!
+

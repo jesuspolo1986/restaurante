@@ -1,0 +1,2091 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Platos Fuertes",
+            "iconName": "restaurant",
+            "station": "kitchen"
+        },
+        {
+            "id": 2,
+            "name": "Entradas",
+            "iconName": "fastfood",
+            "station": "kitchen"
+        },
+        {
+            "id": 3,
+            "name": "Bebidas",
+            "iconName": "wine_bar",
+            "station": "bar"
+        },
+        {
+            "id": 4,
+            "name": "Postres",
+            "iconName": "cake",
+            "station": "kitchen"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Pabellón Criollo",
+            "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
+            "priceUsd": 8.5,
+            "categoryId": 1,
+            "stock": 26,
+            "isAvailable": true,
+            "imageUri": "data:image/jpeg;base64,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",
+            "modifiers": []
+        },
+        {
+            "id": 2,
+            "name": "Asado Negro",
+            "description": "Muchacho redondo horneado lentamente en un almíbar de papelón caramelizado con vino tinto y especias.",
+            "priceUsd": 9.5,
+            "categoryId": 1,
+            "stock": 24,
+            "isAvailable": true,
+            "imageUri": "asado",
+            "modifiers": []
+        },
+        {
+            "id": 3,
+            "name": "Arepa Reina Pepiada",
+            "description": "Arepa de maíz tostada rellena de ensalada cremosa de pollo desmechado, aguacate maduro, mayonesa casera y un toque de cilantro.",
+            "priceUsd": 4.5,
+            "categoryId": 1,
+            "stock": 98,
+            "isAvailable": true,
+            "imageUri": "arepa",
+            "modifiers": []
+        },
+        {
+            "id": 4,
+            "name": "Tequeños de Queso (5 uds)",
+            "description": "Deditos crujientes de masa rellenos de sabroso queso blanco llanero fritos al momento. Se acompañan con salsa de ajo.",
+            "priceUsd": 3.5,
+            "categoryId": 2,
+            "stock": 59,
+            "isAvailable": true,
+            "imageUri": "tequenos",
+            "modifiers": []
+        },
+        {
+            "id": 5,
+            "name": "Empanaditas de Cazón (3 uds)",
+            "description": "Empanadas de masa de maíz dulce rellenas de cazón (tiburón pequeño) desmechado, sofrito y frito.",
+            "priceUsd": 3.0,
+            "categoryId": 2,
+            "stock": 40,
+            "isAvailable": true,
+            "imageUri": "empanadas",
+            "modifiers": [
+                {
+                    "name": "Queso Telita Extra",
+                    "priceUsd": 1.0
+                },
+                {
+                    "name": "Guasacaca Especial",
+                    "priceUsd": 0.5
+                },
+                {
+                    "name": "Sin Cebolla",
+                    "priceUsd": 0.0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Chicha Criolla",
+            "description": "Bebida tradicional cremosa hecha a base de arroz cocido con canela, servida fría con hielo y generosa leche condensada.",
+            "priceUsd": 2.5,
+            "categoryId": 3,
+            "stock": 35,
+            "isAvailable": true,
+            "imageUri": "chicha",
+            "modifiers": []
+        },
+        {
+            "id": 7,
+            "name": "Papelón con Limón",
+            "description": "Bebida típica ultra refrescante y natural preparada con papelón y jugo de limón fresco recién exprimido.",
+            "priceUsd": 1.5,
+            "categoryId": 3,
+            "stock": 80,
+            "isAvailable": true,
+            "imageUri": "papelon",
+            "modifiers": []
+        },
+        {
+            "id": 8,
+            "name": "Quesillo Tradicional",
+            "description": "El postre favorito: flan cremoso de leche condensada aromatizado con ron venezolano y bañado en caramelo oscuro.",
+            "priceUsd": 2.8,
+            "categoryId": 4,
+            "stock": 20,
+            "isAvailable": true,
+            "imageUri": "quesillo",
+            "modifiers": []
+        },
+        {
+            "id": 9,
+            "name": "Tres Leches",
+            "description": "Delicioso bizcocho bañado en tres tipos de leche (evaporada, condensada y crema), decorado con merengue y canela molida.",
+            "priceUsd": 3.2,
+            "categoryId": 4,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "tresleches",
+            "modifiers": []
+        },
+        {
+            "id": 10,
+            "name": "Pizza Margarita Especial",
+            "description": "Queso mozzarella, salsa de tomate y albahaca fresca",
+            "priceUsd": 12.0,
+            "categoryId": 1,
+            "stock": 25,
+            "isAvailable": true,
+            "imageUri": "pizza",
+            "modifiers": []
+        },
+        {
+            "id": 11,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "carne",
+            "modifiers": []
+        },
+        {
+            "id": 12,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "carne",
+            "modifiers": []
+        }
+    ],
+    "config": {
+        "exchangeRateBs": 55.0,
+        "totalTables": 12,
+        "restaurantName": "Gastro Gourmet PRO",
+        "restaurantSlogan": "Excelencia Gastronomica Local",
+        "restaurantLogo": "",
+        "restaurantRif": "J-99887766-0",
+        "restaurantAddress": "Av. Principal, C.C. Gourmet Plaza, Nivel PB, Local 04",
+        "restaurantPhone": "+58 414-1112233",
+        "restaurantInstagram": "@gastrolocal_criollo",
+        "ticketFooter": "Gracias por su visita! Vuelva pronto.",
+        "pagoMovil": {
+            "bank": "0102 - Banco de Venezuela",
+            "phone": "0414-1112233",
+            "idNumber": "J-99887766-0",
+            "accountName": "Gastro Gourmet PRO C.A."
+        },
+        "installationId": "GL-74DD-8CD1",
+        "activeLicenseUntil": "2026-12-31",
+        "lastSeenDate": "2026-09-19",
+        "adminPin": "1234"
+    },
+    "orders": [
+        {
+            "id": 67,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-19 12:30 AM",
+            "createdAtIso": "2026-09-19T00:30:18.830015",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 66,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-19 12:09 AM",
+            "createdAtIso": "2026-09-19T00:09:23.210234",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 65,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 11:41 PM",
+            "createdAtIso": "2026-09-18T23:41:29.743454",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 64,
+            "tableNumber": "4",
+            "status": "CONFIRMED",
+            "totalUsd": 18.0,
+            "paymentMethod": "Pago Movil",
+            "paymentStatus": "PAID",
+            "paymentReference": "6555",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "VERIFIED",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-18 11:28 PM",
+            "createdAtIso": "2026-09-18T23:28:33.569055",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                },
+                {
+                    "productId": 2,
+                    "productName": "Asado Negro",
+                    "quantity": 1,
+                    "priceUsd": 9.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 9.5
+                }
+            ]
+        },
+        {
+            "id": 63,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 11:23 PM",
+            "createdAtIso": "2026-09-18T23:23:55.370800",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 62,
+            "tableNumber": "1",
+            "status": "DELIVERED",
+            "totalUsd": 8.0,
+            "paymentMethod": "Punto de Venta: $8.00",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-18 11:15 PM",
+            "createdAtIso": "2026-09-18T23:15:57.319093",
+            "items": [
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 1,
+                    "priceUsd": 4.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 4.5
+                },
+                {
+                    "productId": 4,
+                    "productName": "Tequeños de Queso (5 uds)",
+                    "quantity": 1,
+                    "priceUsd": 3.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 3.5
+                }
+            ]
+        },
+        {
+            "id": 61,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 11:13 PM",
+            "createdAtIso": "2026-09-18T23:13:08.445241",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 60,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 11:01 PM",
+            "createdAtIso": "2026-09-18T23:01:10.350879",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 59,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 10:46 PM",
+            "createdAtIso": "2026-09-18T22:46:39.176087",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 58,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 10:33 PM",
+            "createdAtIso": "2026-09-18T22:33:13.219455",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 57,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 10:31 PM",
+            "createdAtIso": "2026-09-18T22:31:06.258627",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 56,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-18 10:21 PM",
+            "createdAtIso": "2026-09-18T22:21:14.136523",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 55,
+            "tableNumber": "2",
+            "status": "DELIVERED",
+            "totalUsd": 13.0,
+            "paymentMethod": "Efectivo $: $13.00",
+            "paymentStatus": "PAID",
+            "paymentReference": "5555",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "VERIFIED",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-17 12:37 PM",
+            "createdAtIso": "2026-09-17T12:37:27.952737",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 1,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                },
+                {
+                    "productId": 3,
+                    "productName": "Arepa Reina Pepiada",
+                    "quantity": 1,
+                    "priceUsd": 4.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 4.5
+                }
+            ]
+        },
+        {
+            "id": 54,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-17 03:45 PM",
+            "createdAtIso": "2026-09-17T15:45:03.492087",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 53,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-09 02:59 AM",
+            "createdAtIso": "2026-09-09T02:59:42.343121",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 52,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-09 02:48 AM",
+            "createdAtIso": "2026-09-09T02:48:49.833863",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 51,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-09 02:48 AM",
+            "createdAtIso": "2026-09-09T02:48:33.483514",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 50,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-09 02:42 AM",
+            "createdAtIso": "2026-09-09T02:42:09.372940",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 49,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-09 02:41 AM",
+            "createdAtIso": "2026-09-09T02:41:35.468039",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 48,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:26 PM",
+            "createdAtIso": "2026-09-08T22:26:15.739014",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 47,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:25 PM",
+            "createdAtIso": "2026-09-08T22:25:55.651529",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 46,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:25 PM",
+            "createdAtIso": "2026-09-08T22:25:32.905834",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 45,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:18 PM",
+            "createdAtIso": "2026-09-08T22:18:18.260032",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 44,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:16 PM",
+            "createdAtIso": "2026-09-08T22:16:08.680967",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 43,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:08 PM",
+            "createdAtIso": "2026-09-08T22:08:31.532752",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 42,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:07 PM",
+            "createdAtIso": "2026-09-08T22:07:33.779898",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 41,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 10:00 PM",
+            "createdAtIso": "2026-09-08T22:00:23.502000",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 40,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 09:59 PM",
+            "createdAtIso": "2026-09-08T21:59:02.259418",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 39,
+            "tableNumber": "Mesa 1",
+            "status": "DELIVERED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 09:43 PM",
+            "createdAtIso": "2026-09-08T21:43:29.655354",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 38,
+            "tableNumber": "Mesa 1",
+            "status": "CANCELLED",
+            "totalUsd": 17.0,
+            "paymentMethod": "CASH_USD",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Prueba de integracion",
+            "timestamp": "2026-09-08 09:41 PM",
+            "createdAtIso": "2026-09-08T21:41:57.005857",
+            "items": [
+                {
+                    "productId": 1,
+                    "productName": "Pabellón Criollo",
+                    "quantity": 2,
+                    "priceUsd": 8.5,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 8.5
+                }
+            ]
+        },
+        {
+            "id": 37,
+            "tableNumber": "Para llevar",
+            "status": "DELIVERED",
+            "totalUsd": 40.0,
+            "paymentMethod": "ZELLE: $20.00, PAGO MÓVIL: $20.00",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "TAKEAWAY",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:15.050798",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 4,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 36,
+            "tableNumber": "Mesa 2",
+            "status": "DELIVERED",
+            "totalUsd": 20.0,
+            "paymentMethod": "Punto de Venta: $20.00",
+            "paymentStatus": "PAID",
+            "paymentReference": "11223344",
+            "paymentOriginBank": "0134 - Banesco",
+            "paymentPhone": "0412-5551234",
+            "paymentVerificationStatus": "VERIFIED",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.984963",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 2,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 35,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 30.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.926689",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 3,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 34,
+            "tableNumber": "Mesa 5",
+            "status": "DELIVERED",
+            "totalUsd": 20.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "Bien cocida la carne",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.852565",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 2,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 33,
+            "tableNumber": "Mesa 10",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.837397",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 32,
+            "tableNumber": "Mesa 9",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.825375",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 31,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.816449",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 30,
+            "tableNumber": "Mesa 7",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.805548",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 29,
+            "tableNumber": "Mesa 6",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.794171",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 28,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.783988",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 27,
+            "tableNumber": "Mesa 4",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.771958",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 26,
+            "tableNumber": "Mesa 2",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.758754",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 25,
+            "tableNumber": "Mesa 3",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.747593",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 24,
+            "tableNumber": "Mesa 1",
+            "status": "CANCELLED",
+            "totalUsd": 10.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:11 PM",
+            "createdAtIso": "2026-09-01T13:11:14.733966",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Hamburguesa Mega Crispy",
+                    "quantity": 1,
+                    "priceUsd": 10.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 10.0
+                }
+            ]
+        },
+        {
+            "id": 23,
+            "tableNumber": "Mesa 10",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.477236",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "tableNumber": "Mesa 9",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.467491",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 21,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.459388",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 20,
+            "tableNumber": "Mesa 7",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.450327",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 19,
+            "tableNumber": "Mesa 6",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.443598",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 18,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.434723",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 17,
+            "tableNumber": "Mesa 4",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.425986",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 16,
+            "tableNumber": "Mesa 3",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.416115",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 15,
+            "tableNumber": "Mesa 1",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.405309",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 14,
+            "tableNumber": "Mesa 2",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.394118",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 13,
+            "tableNumber": "Mesa 3",
+            "status": "DELIVERED",
+            "totalUsd": 14.0,
+            "paymentMethod": "EFECTIVO $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "Carlos",
+            "notes": "Servir con pitillo ecologico",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:52.377712",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 2,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [
+                        {
+                            "name": "Doble Ron",
+                            "priceUsd": 2.0
+                        },
+                        {
+                            "name": "Hielo Extra",
+                            "priceUsd": 0.0
+                        }
+                    ],
+                    "unitTotalUsd": 7.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 12,
+            "tableNumber": "Mesa 9",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.283614",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 11,
+            "tableNumber": "Mesa 10",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.276094",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.269882",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "tableNumber": "Mesa 7",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.262129",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "tableNumber": "Mesa 6",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.256035",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "tableNumber": "Mesa 8",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.250061",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "tableNumber": "Mesa 4",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.242396",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "tableNumber": "Mesa 3",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.236669",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "tableNumber": "Mesa 1",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.230916",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "tableNumber": "Mesa 2",
+            "status": "CANCELLED",
+            "totalUsd": 5.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "",
+            "notes": "",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.220404",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 1,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [],
+                    "unitTotalUsd": 5.0
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "tableNumber": "Mesa 3",
+            "status": "DELIVERED",
+            "totalUsd": 14.0,
+            "paymentMethod": "EFECTIVO $",
+            "paymentStatus": "PAID",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "DINE_IN",
+            "waiterName": "Carlos",
+            "notes": "Servir con pitillo ecologico",
+            "timestamp": "2026-09-01 01:10 PM",
+            "createdAtIso": "2026-09-01T13:10:05.205282",
+            "items": [
+                {
+                    "productId": 13,
+                    "productName": "Mojito Gourmet",
+                    "quantity": 2,
+                    "priceUsd": 5.0,
+                    "selectedModifiers": [
+                        {
+                            "name": "Doble Ron",
+                            "priceUsd": 2.0
+                        },
+                        {
+                            "name": "Hielo Extra",
+                            "priceUsd": 0.0
+                        }
+                    ],
+                    "unitTotalUsd": 7.0
+                }
+            ],
+            "archived": true
+        },
+        {
+            "id": 1,
+            "tableNumber": 4,
+            "status": "CANCELLED",
+            "totalUsd": 25.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "REFUNDED_OR_CANCELLED",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "TAKEAWAY",
+            "notes": "",
+            "timestamp": "2026-08-27 04:49 PM",
+            "items": [
+                {
+                    "productId": 12,
+                    "productName": "Parrilla Mixta Familiar",
+                    "quantity": 1,
+                    "priceUsd": 25.0
+                }
+            ]
+        }
+    ],
+    "tableStates": {
+        "5": {
+            "status": "FREE",
+            "pax": 0,
+            "capacity": 4
+        },
+        "8": {
+            "status": "OCCUPIED_EATING",
+            "pax": 4,
+            "capacity": 4
+        }
+    },
+    "zReports": [
+        {
+            "id": 1,
+            "timestamp": "2026-09-01 01:11:15 PM",
+            "totalOrdersPaid": 5,
+            "totalUsd": 108.0,
+            "totalBs": 5940.0,
+            "exchangeRate": 55.0,
+            "methodBreakdownUsd": {
+                "CASH_USD": 48.0,
+                "CASH_BS": 0.0,
+                "PAGO_MOVIL": 40.0,
+                "PUNTO": 0.0,
+                "ZELLE": 20.0,
+                "OTROS": 0.0
+            },
+            "methodBreakdownBs": {
+                "CASH_USD": 2640.0,
+                "CASH_BS": 0.0,
+                "PAGO_MOVIL": 2200.0,
+                "PUNTO": 0.0,
+                "ZELLE": 1100.0,
+                "OTROS": 0.0
+            },
+            "avgPerTableUsd": 9.0,
+            "notes": "Cierre de Turno de Pruebas"
+        }
+    ]
+}
