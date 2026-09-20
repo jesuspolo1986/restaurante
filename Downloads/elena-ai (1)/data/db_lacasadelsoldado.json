@@ -1,0 +1,4285 @@
+{
+  "perfilNegocio": {
+    "rubro": "FARMACIA",
+    "nombreComercio": "LCS",
+    "slogan": "",
+    "habilitarPreciosMayor": false,
+    "habilitarDecimales": false,
+    "habilitarBalanzas": false,
+    "habilitarVariantes": false,
+    "habilitarLotesVencimiento": true,
+    "habilitarUbicaciones": true,
+    "monedaSimbolo": "$",
+    "tarifaDefault": "detal"
+  },
+  "productos": [
+    {
+      "id": "p_1787251464805",
+      "codigo": "6982024085918",
+      "nombre": "BALA CLAVA NEGRA",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 3.5,
+      "precio_venta": 7,
+      "stock": 17,
+      "stock_tienda": 17,
+      "stock_almacen": 0,
+      "stock_minimo": 5,
+      "costo_bulto": 59.5,
+      "unidades_bulto": 17,
+      "ganancia_perc": 100,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR",
+      "ubicacion_tienda": "MOSTRADOR",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787411211351",
+      "codigo": "6982024008603",
+      "nombre": "BASE DE CAMARA",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 9,
+      "precio_venta": 14.4,
+      "stock": 6,
+      "stock_tienda": 6,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 18,
+      "unidades_bulto": 2,
+      "ganancia_perc": 60,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787411549034",
+      "codigo": "0002",
+      "nombre": "BINOCULARES MEDIANO",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 30,
+      "precio_venta": 45,
+      "stock": 1,
+      "stock_tienda": 1,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 30,
+      "unidades_bulto": 1,
+      "ganancia_perc": 50,
+      "se_vende_por_peso": false,
+      "ubicacion": "MONTRADOR CILINDRO",
+      "ubicacion_tienda": "MONTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787411663995",
+      "codigo": "0003",
+      "nombre": "BINOCULARES GRANDE",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 40,
+      "precio_venta": 60,
+      "stock": 1,
+      "stock_tienda": 1,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 40,
+      "unidades_bulto": 1,
+      "ganancia_perc": 50,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787413005159",
+      "codigo": "0004",
+      "nombre": "TAPA OIDO TIPO PILOTO",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 16,
+      "precio_venta": 27.2,
+      "stock": 1,
+      "stock_tienda": 1,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 16,
+      "unidades_bulto": 1,
+      "ganancia_perc": 70,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787418978725",
+      "codigo": "6956830029466",
+      "nombre": "LINTERNA TIPO ULTRA BRIGHT",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 6.111111111111111,
+      "precio_venta": 12.22,
+      "stock": 9,
+      "stock_tienda": 9,
+      "stock_almacen": 0,
+      "stock_minimo": 4,
+      "costo_bulto": 55,
+      "unidades_bulto": 9,
+      "ganancia_perc": 100,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR",
+      "ubicacion_tienda": "MOSTRADOR",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787419704525",
+      "codigo": "6990892000018",
+      "nombre": "LINTERNA PEQUEÑA USB CHARGEN",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 2.5,
+      "precio_venta": 5,
+      "stock": 34,
+      "stock_tienda": 34,
+      "stock_almacen": 0,
+      "stock_minimo": 5,
+      "costo_bulto": 85,
+      "unidades_bulto": 34,
+      "ganancia_perc": 100,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR",
+      "ubicacion_tienda": "MOSTRADOR",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787420468170",
+      "codigo": "6990892000025",
+      "nombre": "LINTERNA GRANDE USB CHANGER",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 5,
+      "precio_venta": 10,
+      "stock": 5,
+      "stock_tienda": 5,
+      "stock_almacen": 0,
+      "stock_minimo": 3,
+      "costo_bulto": 25,
+      "unidades_bulto": 5,
+      "ganancia_perc": 100,
+      "se_vende_por_peso": false,
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787420782569",
+      "codigo": "022188501032",
+      "nombre": "ESPOSAS SMIITH Y WESSON",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 70,
+      "precio_venta": 109.2,
+      "stock": 2,
+      "stock_tienda": 2,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 140,
+      "unidades_bulto": 2,
+      "ganancia_perc": 56,
+      "se_vende_por_peso": false,
+      "ubicacion": "MONTRADOR CILINDRO",
+      "ubicacion_tienda": "MONTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787421554204",
+      "codigo": "0006",
+      "nombre": "BASE DE LINTERNA",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 6,
+      "precio_venta": 9.3,
+      "stock": 5,
+      "stock_tienda": 5,
+      "stock_almacen": 0,
+      "stock_minimo": 2,
+      "costo_bulto": 30,
+      "unidades_bulto": 5,
+      "ganancia_perc": 55,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787422625869",
+      "codigo": "6982025256652",
+      "nombre": "LINTRENA LLAVERO PLATEADA",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 4,
+      "precio_venta": 6,
+      "stock": 3,
+      "stock_tienda": 3,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 12,
+      "unidades_bulto": 3,
+      "ganancia_perc": 50,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787422790211",
+      "codigo": "6982025256669",
+      "nombre": "LINTERNA LLAVERO DORADA",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 4,
+      "precio_venta": 6,
+      "stock": 4,
+      "stock_tienda": 4,
+      "stock_almacen": 0,
+      "stock_minimo": 2,
+      "costo_bulto": 16,
+      "unidades_bulto": 4,
+      "ganancia_perc": 50,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    },
+    {
+      "id": "p_1787428116807",
+      "codigo": "6982024112201",
+      "nombre": "BRUJULA  MILITAR METAL CASE",
+      "categoria": "MEDICAMENTO",
+      "rubro": "FARMACIA",
+      "unidad_medida": "UND",
+      "permite_decimales": false,
+      "precio_compra": 8,
+      "precio_venta": 15.2,
+      "stock": 3,
+      "stock_tienda": 3,
+      "stock_almacen": 0,
+      "stock_minimo": 1,
+      "costo_bulto": 24,
+      "unidades_bulto": 3,
+      "ganancia_perc": 90,
+      "se_vende_por_peso": false,
+      "ubicacion": "MOSTRADOR CILINDRO",
+      "ubicacion_tienda": "MOSTRADOR CILINDRO",
+      "tiene_variantes": false
+    }
+  ],
+  "clientes": [
+    {
+      "cedula": "V-12345678",
+      "nombre": "María",
+      "apellido": "Pérez",
+      "telefono": "04141112233",
+      "direccion": "Av. Principal Guanare",
+      "saldo_pendiente": 15.5
+    },
+    {
+      "cedula": "V-87654321",
+      "nombre": "Juan",
+      "apellido": "Rodríguez",
+      "telefono": "04124445566",
+      "direccion": "Barrio La Peñita",
+      "saldo_pendiente": 0
+    }
+  ],
+  "proveedores": [
+    {
+      "id": "1",
+      "rif": "J-30123456-7",
+      "razon_social": "Droguería Nena C.A.",
+      "telefono": "02123556677",
+      "correo": "ventas@droguerianena.com",
+      "direccion": "Zona Industrial Caracas",
+      "dias_credito": 15,
+      "saldo": 120
+    },
+    {
+      "id": "2",
+      "rif": "J-40123456-8",
+      "razon_social": "Distribuidora FarmaOriente",
+      "telefono": "02812889900",
+      "correo": "contacto@farmaoriente.com",
+      "direccion": "Barcelona, Anzoátegui",
+      "dias_credito": 30,
+      "saldo": 0
+    }
+  ],
+  "compras": [
+    {
+      "id": "c1",
+      "proveedor_id": "1",
+      "numero_factura": "000843",
+      "numero_control": "00-11234",
+      "fecha_emision": "2026-06-25",
+      "fecha_vencimiento": "2026-07-10",
+      "tipo_pago": "CREDITO",
+      "subtotal": 103.45,
+      "iva": 16.55,
+      "total": 120,
+      "monto_pendiente": 120,
+      "estado": "PENDIENTE"
+    }
+  ],
+  "ventas": [
+    {
+      "id": "v_1787174548211_581",
+      "factura_numero": "NOT-P00001",
+      "cliente_id": "1233344",
+      "cliente_nombre": "polo polo",
+      "tasa": 775.3356,
+      "monto_exento": 10,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 10,
+      "total_bs": 7753.36,
+      "fecha": "2026-08-19T21:22:28.211Z",
+      "pagos": [
+        {
+          "metodo": "EFECTIVO_USD",
+          "monto_original": 10,
+          "moneda": "USD",
+          "montoUSD": 10,
+          "montoBS": 7753.36,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: logo...",
+          "cantidad": 1,
+          "precio_unitario": 10,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787176926279_455",
+      "factura_numero": "NOT-P00002",
+      "cliente_id": "1233344",
+      "cliente_nombre": "polo polo",
+      "tasa": 775.3356,
+      "monto_exento": 40,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 40,
+      "total_bs": 31013.42,
+      "fecha": "2026-08-19T22:02:06.279Z",
+      "pagos": [
+        {
+          "metodo": "EFECTIVO_USD",
+          "monto_original": 40,
+          "moneda": "USD",
+          "montoUSD": 40,
+          "montoBS": 31013.42,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "LIQUIDACION TRABAJO: logo...",
+          "cantidad": 1,
+          "precio_unitario": 40,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787231762803_785",
+      "factura_numero": "NOT-P00003",
+      "cliente_id": "123456789",
+      "cliente_nombre": "Otoniel Romero",
+      "tasa": 777.4161,
+      "monto_exento": 6978.02,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6978.02,
+      "total_bs": 5424825.09,
+      "fecha": "2026-08-20T13:16:02.803Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 5424825.09,
+          "moneda": "BS",
+          "montoUSD": 6978.02,
+          "montoBS": 5424825.09,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 VENEZUELA RENACE DE CHALECO NEGRO\n2 PORTANO...",
+          "cantidad": 1,
+          "precio_unitario": 6978.02,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787233130891_102",
+      "factura_numero": "NOT-P00004",
+      "cliente_id": "123456",
+      "cliente_nombre": "Varela",
+      "tasa": 777.4161,
+      "monto_exento": 7753.3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 7753.3,
+      "total_bs": 6027540.25,
+      "fecha": "2026-08-20T13:38:50.891Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 6027540.25,
+          "moneda": "BS",
+          "montoUSD": 7753.3,
+          "montoBS": 6027540.25,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 2 renace Tiuna...",
+          "cantidad": 1,
+          "precio_unitario": 7753.3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787233380474_886",
+      "factura_numero": "NOT-P00005",
+      "cliente_id": "12345678",
+      "cliente_nombre": "Varela",
+      "tasa": 777.4161,
+      "monto_exento": 6,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6,
+      "total_bs": 4664.5,
+      "fecha": "2026-08-20T13:43:00.474Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 4664.5,
+          "moneda": "BS",
+          "montoUSD": 6,
+          "montoBS": 4664.5,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 2 RENACE CHALECO NEGRO...",
+          "cantidad": 1,
+          "precio_unitario": 6,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787234346895_520",
+      "factura_numero": "NOT-P00006",
+      "cliente_id": "26453932",
+      "cliente_nombre": "YUBELSI PACHECO",
+      "tasa": 777.4161,
+      "monto_exento": 6,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6,
+      "total_bs": 4664.5,
+      "fecha": "2026-08-20T13:59:06.895Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 4664.5,
+          "moneda": "BS",
+          "montoUSD": 6,
+          "montoBS": 4664.5,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 3 REDI OCCIDENTAL CON CIERRE MÁGICO...",
+          "cantidad": 1,
+          "precio_unitario": 6,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787236096128_53",
+      "factura_numero": "NOT-P00007",
+      "cliente_id": "16415492",
+      "cliente_nombre": "OTONIEL ROMERO",
+      "tasa": 777.4161,
+      "monto_exento": 7.5,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 7.5,
+      "total_bs": 5830.62,
+      "fecha": "2026-08-20T14:28:16.128Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 5830.62,
+          "moneda": "BS",
+          "montoUSD": 7.5,
+          "montoBS": 5830.62,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 3 RENACE DE CHALECO NEGRO...",
+          "cantidad": 1,
+          "precio_unitario": 7.5,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787236388814_161",
+      "factura_numero": "NOT-P00008",
+      "cliente_id": "32328181",
+      "cliente_nombre": "YOHENNI MEJIAS",
+      "tasa": 777.4161,
+      "monto_exento": 9,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 9,
+      "total_bs": 6996.74,
+      "fecha": "2026-08-20T14:33:08.814Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 6996.74,
+          "moneda": "BS",
+          "montoUSD": 9,
+          "montoBS": 6996.74,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: TIUNA: Y. MEJIAS A. S/2 REDI LOS LLANOS GN CO...",
+          "cantidad": 1,
+          "precio_unitario": 9,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787240366599_450",
+      "factura_numero": "NOT-P00009",
+      "cliente_id": "18296805",
+      "cliente_nombre": "FRANCELYS RIVERO",
+      "tasa": 777.4161,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9328.99,
+      "fecha": "2026-08-20T15:39:26.599Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 9328.99,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9328.99,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE  GRANDE DESUR  C. NUÑEZ R. CZGNB ...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787240769320_241",
+      "factura_numero": "NOT-P00010",
+      "cliente_id": "12648743",
+      "cliente_nombre": "RUVEN PINTO",
+      "tasa": 777.4161,
+      "monto_exento": 2,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 2,
+      "total_bs": 1554.83,
+      "fecha": "2026-08-20T15:46:09.320Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 1554.83,
+          "moneda": "BS",
+          "montoUSD": 2,
+          "montoBS": 1554.83,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 LOGO DE LA POLICIA ESTADAL FONDO AZUL BORDE...",
+          "cantidad": 1,
+          "precio_unitario": 2,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787241253936_786",
+      "factura_numero": "NOT-P00011",
+      "cliente_id": "22099615",
+      "cliente_nombre": "LUIS  MENDOZA",
+      "tasa": 777.4161,
+      "monto_exento": 14,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 14,
+      "total_bs": 10883.83,
+      "fecha": "2026-08-20T15:54:13.936Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 10883.83,
+          "moneda": "BS",
+          "montoUSD": 14,
+          "montoBS": 10883.83,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: MENDOZA L.  \nPOLICIA NACIONAL BOLIVARIANA  GR...",
+          "cantidad": 1,
+          "precio_unitario": 14,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787245904726_859",
+      "factura_numero": "NOT-P00012",
+      "cliente_id": "27939165",
+      "cliente_nombre": "JULIO MORILLO",
+      "tasa": 777.4161,
+      "monto_exento": 7,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 7,
+      "total_bs": 5441.91,
+      "fecha": "2026-08-20T17:11:44.726Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 5441.91,
+          "moneda": "BS",
+          "montoUSD": 7,
+          "montoBS": 5441.91,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: TIUNA: J. MORILLO C. S/1 LLANOS GN S/C...",
+          "cantidad": 1,
+          "precio_unitario": 7,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787246187500_696",
+      "factura_numero": "NOT-P00013",
+      "cliente_id": "29995664",
+      "cliente_nombre": "CARLOS SALAS",
+      "tasa": 777.4161,
+      "monto_exento": 8,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 8,
+      "total_bs": 6219.33,
+      "fecha": "2026-08-20T17:16:27.500Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 6219.33,
+          "moneda": "BS",
+          "montoUSD": 8,
+          "montoBS": 6219.33,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: ESCUDO DE LA GN, PORTANOMBRE C. SALAS C. << C...",
+          "cantidad": 1,
+          "precio_unitario": 8,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787246469008_66",
+      "factura_numero": "NOT-P00014",
+      "cliente_id": "27939165",
+      "cliente_nombre": "JULIO MORILLO",
+      "tasa": 777.4161,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2332.25,
+      "fecha": "2026-08-20T17:21:09.008Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 2332.25,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2332.25,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE CHALECO NEGRO S/1 P-114 J. MORILL...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787247388345_271",
+      "factura_numero": "NOT-P00015",
+      "cliente_id": "16415492",
+      "cliente_nombre": "OTONIEL ROMERO",
+      "tasa": 777.4161,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2332.25,
+      "fecha": "2026-08-20T17:36:28.346Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 2332.25,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2332.25,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 PORTANOMBRE CHALECO NEGRO  P-132  J. REAÑEZ...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787314544615_543",
+      "factura_numero": "NOT-P00016",
+      "cliente_id": "123456",
+      "cliente_nombre": "L LOPEZ",
+      "tasa": 777.4161,
+      "monto_exento": 15,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 15,
+      "total_bs": 11661.24,
+      "fecha": "2026-08-21T12:15:44.615Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 11661.24,
+          "moneda": "BS",
+          "montoUSD": 15,
+          "montoBS": 11661.24,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: LOPEZ L., POLICIA NACIONAL BOLIVARIANA, OFICI...",
+          "cantidad": 1,
+          "precio_unitario": 15,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787314627650_46",
+      "factura_numero": "NOT-P00017",
+      "cliente_id": "21492984",
+      "cliente_nombre": "ANGEL SOTO",
+      "tasa": 777.4161,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2332.25,
+      "fecha": "2026-08-21T12:17:07.651Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 2332.25,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2332.25,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE CHALECO NEGRO // SM/2 P-95 A. SOT...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787314772365_970",
+      "factura_numero": "NOT-P00018",
+      "cliente_id": "31145834",
+      "cliente_nombre": "KEIVER UZCATEGUI",
+      "tasa": 777.4161,
+      "monto_exento": 24,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 24,
+      "total_bs": 18657.99,
+      "fecha": "2026-08-21T12:19:32.365Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 18657.99,
+          "moneda": "BS",
+          "montoUSD": 24,
+          "montoBS": 18657.99,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 2 BRAZALETES PEQUEÑOS// <<< P-107 E. BLANCO H...",
+          "cantidad": 1,
+          "precio_unitario": 24,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787316014282_236",
+      "factura_numero": "NOT-P00019",
+      "cliente_id": "21526324",
+      "cliente_nombre": "CARLOS CARDOZO",
+      "tasa": 779.9522,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2339.86,
+      "fecha": "2026-08-21T12:40:14.282Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 2339.86,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2339.86,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE CHALECO VERDE NEON TIPO GLADEADOR...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787323839318_400",
+      "factura_numero": "NOT-P00020",
+      "cliente_id": "18296805",
+      "cliente_nombre": "FRANCELIS RIVERO",
+      "tasa": 779.9522,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9359.43,
+      "fecha": "2026-08-21T14:50:39.318Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 9359.43,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9359.43,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE GRANDE DESUR D. PIÑERO A.  CZGNAB...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787325273717_151",
+      "factura_numero": "NOT-P00021",
+      "cliente_id": "32129251",
+      "cliente_nombre": "DAIFREN  PERDOMO",
+      "tasa": 779.9522,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9359.43,
+      "fecha": "2026-08-21T15:14:33.717Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 9359.43,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9359.43,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE  S/2 P-129 D. PERDOMO P. CZGNB -5...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787326469513_626",
+      "factura_numero": "NOT-P00022",
+      "cliente_id": "25895737",
+      "cliente_nombre": "WUILDER GONZALEZ",
+      "tasa": 779.9522,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9359.43,
+      "fecha": "2026-08-21T15:34:29.513Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 9359.43,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9359.43,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE  <<<IIII  P- 74  W. LOPEZ R. D-31...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787335567757_612",
+      "factura_numero": "NOT-P00023",
+      "cliente_id": "32655020",
+      "cliente_nombre": "ROSA  LINARES",
+      "tasa": 779.9522,
+      "monto_exento": 10,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 10,
+      "total_bs": 7799.52,
+      "fecha": "2026-08-21T18:06:07.758Z",
+      "pagos": [
+        {
+          "metodo": "EFECTIVO_USD",
+          "monto_original": 10,
+          "moneda": "USD",
+          "montoUSD": 10,
+          "montoBS": 7799.52,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE GRANDE < P-130 R. LINARES P. DESU...",
+          "cantidad": 1,
+          "precio_unitario": 10,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787336175575_62",
+      "factura_numero": "NOT-P00024",
+      "cliente_id": "16073105",
+      "cliente_nombre": "FUENTE J.",
+      "tasa": 779.9522,
+      "monto_exento": 15,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 15,
+      "total_bs": 11699.28,
+      "fecha": "2026-08-21T18:16:15.575Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 11699.28,
+          "moneda": "BS",
+          "montoUSD": 15,
+          "montoBS": 11699.28,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: FUENTES J. POLICIA ESTADAL PRIMER INSP (GRIS ...",
+          "cantidad": 1,
+          "precio_unitario": 15,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787339776339_652",
+      "factura_numero": "NOT-P00025",
+      "cliente_id": "25000638",
+      "cliente_nombre": "FELIX MENDOZA",
+      "tasa": 779.9522,
+      "monto_exento": 24,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 24,
+      "total_bs": 18718.85,
+      "fecha": "2026-08-21T19:16:16.339Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 18718.85,
+          "moneda": "BS",
+          "montoUSD": 24,
+          "montoBS": 18718.85,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 12 LOGOS DE DGCIM PARA DISEÑAR ( KARINA TIENE...",
+          "cantidad": 1,
+          "precio_unitario": 24,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787340386080_157",
+      "factura_numero": "NOT-P00026",
+      "cliente_id": "25000638",
+      "cliente_nombre": "FELIX  MENDOZA",
+      "tasa": 779.9522,
+      "monto_exento": 6,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6,
+      "total_bs": 4679.71,
+      "fecha": "2026-08-21T19:26:26.080Z",
+      "pagos": [
+        {
+          "metodo": "EFECTIVO_USD",
+          "monto_original": 6,
+          "moneda": "USD",
+          "montoUSD": 6,
+          "montoBS": 4679.71,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BANDERA VZLA\n LOGO DGCIM\nDIGCIM...",
+          "cantidad": 1,
+          "precio_unitario": 6,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787340516936_977",
+      "factura_numero": "NOT-P00027",
+      "cliente_id": "14570297",
+      "cliente_nombre": "JOSE  QUINTERO",
+      "tasa": 779.9522,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2339.86,
+      "fecha": "2026-08-21T19:28:36.936Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 2339.86,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2339.86,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 PAR DE JERARQUIA S/1 REFLECTIVO PARA CASCO...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787341350918_833",
+      "factura_numero": "NOT-P00028",
+      "cliente_id": "25938792",
+      "cliente_nombre": "CARLOS ALVAREZ",
+      "tasa": 779.9522,
+      "monto_exento": 32,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 32,
+      "total_bs": 24958.47,
+      "fecha": "2026-08-21T19:42:30.918Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 24958.47,
+          "moneda": "BS",
+          "montoUSD": 32,
+          "montoBS": 24958.47,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 PORTANOMBRE DE CHALECO PRIMER TENIENTTE J. ...",
+          "cantidad": 1,
+          "precio_unitario": 32,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787341804137_75",
+      "factura_numero": "NOT-P00029",
+      "cliente_id": "25938792",
+      "cliente_nombre": "CARLOS ALVAREZ",
+      "tasa": 779.9522,
+      "monto_exento": 32,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 32,
+      "total_bs": 24958.47,
+      "fecha": "2026-08-21T19:50:04.137Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 24958.47,
+          "moneda": "BS",
+          "montoUSD": 32,
+          "montoBS": 24958.47,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 PORTANOMBRE DE CHALECO NEGRO PTRIMER TENIEN...",
+          "cantidad": 1,
+          "precio_unitario": 32,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787344830506_103",
+      "factura_numero": "NOT-P00030",
+      "cliente_id": "32277535",
+      "cliente_nombre": "CONTRERAS  PACHECO",
+      "tasa": 779.9522,
+      "monto_exento": 7,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 7,
+      "total_bs": 5459.67,
+      "fecha": "2026-08-21T20:40:30.506Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 5459.67,
+          "moneda": "BS",
+          "montoUSD": 7,
+          "montoBS": 5459.67,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: JUEGO DE PARCHO PATRIOTA E. CONTRERAS P. ALUM...",
+          "cantidad": 1,
+          "precio_unitario": 7,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787345917118_539",
+      "factura_numero": "NOT-P00031",
+      "cliente_id": "30637624",
+      "cliente_nombre": "NOURYEL ANDUEZA",
+      "tasa": 779.9522,
+      "monto_exento": 6,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6,
+      "total_bs": 4679.71,
+      "fecha": "2026-08-21T20:58:37.118Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 4679.71,
+          "moneda": "BS",
+          "montoUSD": 6,
+          "montoBS": 4679.71,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 POTANOMBRE DE CHALECO NEGRO << P-120 N. AND...",
+          "cantidad": 1,
+          "precio_unitario": 6,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787346599654_167",
+      "factura_numero": "NOT-P00032",
+      "cliente_id": "21623312",
+      "cliente_nombre": "ARELIS  CASTILLO",
+      "tasa": 779.9522,
+      "monto_exento": 72,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 72,
+      "total_bs": 56156.56,
+      "fecha": "2026-08-21T21:09:59.654Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 56156.56,
+          "moneda": "BS",
+          "montoUSD": 72,
+          "montoBS": 56156.56,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 6 BRAZALETE GRANDE DESUR  CZGNB- 33BARINAS \nA...",
+          "cantidad": 1,
+          "precio_unitario": 72,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787409022218_504",
+      "factura_numero": "NOT-P00033",
+      "cliente_id": "123456",
+      "cliente_nombre": "ESKARLE VAZQUEZ",
+      "tasa": 779.9522,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9359.43,
+      "fecha": "2026-08-22T14:30:22.218Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 9359.43,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9359.43,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: BRAZALETE PEQUEÑO // < E. VASQUEZ V. D-311 CZ...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787410246144_926",
+      "factura_numero": "NOT-P00034",
+      "cliente_id": "26572567",
+      "cliente_nombre": "miguel  maseo",
+      "tasa": 779.9522,
+      "monto_exento": 9359.4,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 9359.4,
+      "total_bs": 7299884.62,
+      "fecha": "2026-08-22T14:50:46.144Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 7299884.62,
+          "moneda": "BS",
+          "montoUSD": 9359.4,
+          "montoBS": 7299884.62,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: brazalete   <\n       M. MASEO V.  \n        DC...",
+          "cantidad": 1,
+          "precio_unitario": 9359.4,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787413652500_779",
+      "factura_numero": "NOT-P00035",
+      "cliente_id": "18072947",
+      "cliente_nombre": "NILSON  MONTAÑA",
+      "tasa": 779.9522,
+      "monto_exento": 6,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 6,
+      "total_bs": 4679.71,
+      "fecha": "2026-08-22T15:47:32.500Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 4679.71,
+          "moneda": "BS",
+          "montoUSD": 6,
+          "montoBS": 4679.71,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE GRANDE \nDESUR\nCZGNB -33 BARINAS...",
+          "cantidad": 1,
+          "precio_unitario": 6,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787426939831_108",
+      "factura_numero": "NOT-P00036",
+      "cliente_id": "16415492",
+      "cliente_nombre": "OTONIEL ROMERO",
+      "tasa": 779.9522,
+      "monto_exento": 7.5,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 7.5,
+      "total_bs": 5849.64,
+      "fecha": "2026-08-22T19:28:59.831Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 5849.64,
+          "moneda": "BS",
+          "montoUSD": 7.5,
+          "montoBS": 5849.64,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 3 PORTA NOMBRE DE CHALECO NEGRO P-132 Y 1 VZL...",
+          "cantidad": 1,
+          "precio_unitario": 7.5,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787428680097_103",
+      "factura_numero": "NOT-P00037",
+      "cliente_id": "16415492",
+      "cliente_nombre": "OTONIEL  ROMERO",
+      "tasa": 779.9522,
+      "monto_exento": 5,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 5,
+      "total_bs": 3899.76,
+      "fecha": "2026-08-22T19:58:00.097Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 3899.76,
+          "moneda": "BS",
+          "montoUSD": 5,
+          "montoBS": 3899.76,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 2 PORTA NOMBRE DE CHALECO NEGRO P - 132 J. RI...",
+          "cantidad": 1,
+          "precio_unitario": 5,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787432415783_33",
+      "factura_numero": "NOT-P00038",
+      "cliente_id": "32427781",
+      "cliente_nombre": "LOPEZ YOAN",
+      "tasa": 779.9522,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2339.86,
+      "fecha": "2026-08-22T21:00:15.783Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 2339.86,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2339.86,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE DE CHALECO NEGRO // S/2 P-124 Y. ...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787574442851_42",
+      "factura_numero": "NOT-P00039",
+      "cliente_id": "25424722",
+      "cliente_nombre": "YOHEL MEJIA",
+      "tasa": 784.6633,
+      "monto_exento": 3,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 3,
+      "total_bs": 2353.99,
+      "fecha": "2026-08-24T12:27:22.851Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 2353.99,
+          "moneda": "BS",
+          "montoUSD": 3,
+          "montoBS": 2353.99,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE DE CHALECO NEGRO PNB // OFICIAL J...",
+          "cantidad": 1,
+          "precio_unitario": 3,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787574548719_792",
+      "factura_numero": "NOT-P00040",
+      "cliente_id": "25424722",
+      "cliente_nombre": "YOHEL MEJIA",
+      "tasa": 784.6633,
+      "monto_exento": 2,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 2,
+      "total_bs": 1569.33,
+      "fecha": "2026-08-24T12:29:08.719Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 1569.33,
+          "moneda": "BS",
+          "montoUSD": 2,
+          "montoBS": 1569.33,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: PORTANOMBRE BORDADO BUSO // OF/JEFE MEJIA Y....",
+          "cantidad": 1,
+          "precio_unitario": 2,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787576525248_268",
+      "factura_numero": "NOT-P00041",
+      "cliente_id": "10724881",
+      "cliente_nombre": "LUIS PACHECO",
+      "tasa": 784.6633,
+      "monto_exento": 15,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 15,
+      "total_bs": 11769.95,
+      "fecha": "2026-08-24T13:02:05.248Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 11769.95,
+          "moneda": "BS",
+          "montoUSD": 15,
+          "montoBS": 11769.95,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 10 PARCCHE TIPO PORTANOMBRE QUE DIGA PORTUGUE...",
+          "cantidad": 1,
+          "precio_unitario": 15,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787580115968_888",
+      "factura_numero": "NOT-P00042",
+      "cliente_id": "25547565",
+      "cliente_nombre": "AROLDO VASQUEZ",
+      "tasa": 784.6633,
+      "monto_exento": 2,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 2,
+      "total_bs": 1569.33,
+      "fecha": "2026-08-24T14:01:55.968Z",
+      "pagos": [
+        {
+          "metodo": "PAGO_MOVIL",
+          "monto_original": 1569.33,
+          "moneda": "BS",
+          "montoUSD": 2,
+          "montoBS": 1569.33,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 PORTANOMBRE OFICIAL FONDO AZUL , BORDE AZUL...",
+          "cantidad": 1,
+          "precio_unitario": 2,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    },
+    {
+      "id": "v_1787582164793_64",
+      "factura_numero": "NOT-P00043",
+      "cliente_id": "31752322",
+      "cliente_nombre": "NEYMAR MADRID",
+      "tasa": 784.6633,
+      "monto_exento": 12,
+      "base_imponible": 0,
+      "monto_iva": 0,
+      "monto_igtf": 0,
+      "total_usd": 12,
+      "total_bs": 9415.96,
+      "fecha": "2026-08-24T14:36:04.793Z",
+      "pagos": [
+        {
+          "metodo": "PUNTO",
+          "monto_original": 9415.96,
+          "moneda": "BS",
+          "montoUSD": 12,
+          "montoBS": 9415.96,
+          "igtfUSD": 0
+        }
+      ],
+      "items": [
+        {
+          "producto_id": "CUSTOM_WORK",
+          "nombre": "ANTICIPO TRABAJO: 1 BRAZALETE < P-126 N. MADRID M. 1RA CIA D-31...",
+          "cantidad": 1,
+          "precio_unitario": 12,
+          "categoria": "Otros"
+        }
+      ],
+      "es_cerrado_z": false,
+      "sin_factura": true,
+      "descuento_usd": 0
+    }
+  ],
+  "cierresZ": [],
+  "logs": [
+    {
+      "id": "log_1787621267431_a8eh0",
+      "fecha": "2026-08-25T01:27:47.431Z",
+      "usuario": "admin",
+      "accion": "RESTAURAR_SUPABASE",
+      "detalle": "Base de datos restaurada desde la nube: lacasadelsoldado/automatico/backup_db_lacasadelsoldado_2026-08-24T16-19-35-018Z.json"
+    },
+    {
+      "id": "log_1787588343482_ba162",
+      "fecha": "2026-08-24T16:19:03.482Z",
+      "usuario": "admin",
+      "accion": "USUARIO ACTUALIZADO",
+      "detalle": "Se actualizó el usuario: vinil con rol: trabajo (Depto: Otros)"
+    },
+    {
+      "id": "log_1787588295782_9yz4l",
+      "fecha": "2026-08-24T16:18:15.782Z",
+      "usuario": "admin",
+      "accion": "USUARIO ACTUALIZADO",
+      "detalle": "Se actualizó el usuario: vinil con rol: trabajo (Depto: Otros)"
+    },
+    {
+      "id": "log_1787588215265_raky1",
+      "fecha": "2026-08-24T16:16:55.265Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787588139665_wek35",
+      "fecha": "2026-08-24T16:15:39.665Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787586810363_rb7ea",
+      "fecha": "2026-08-24T15:53:30.363Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787586769457_yjrxs",
+      "fecha": "2026-08-24T15:52:49.457Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en la casa del soldado con el rol: administrador"
+    },
+    {
+      "id": "log_1787586723065_oey1y",
+      "fecha": "2026-08-24T15:52:03.065Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787586030204_xdyz4",
+      "fecha": "2026-08-24T15:40:30.204Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 784.6633"
+    },
+    {
+      "id": "log_1787585945659_mwnip",
+      "fecha": "2026-08-24T15:39:05.659Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en la casa del soldado con el rol: trabajo"
+    },
+    {
+      "id": "log_1787585906550_igojs",
+      "fecha": "2026-08-24T15:38:26.550Z",
+      "usuario": "admin",
+      "accion": "USUARIO ACTUALIZADO",
+      "detalle": "Se actualizó el usuario: vinil con rol: trabajo (Depto: General)"
+    },
+    {
+      "id": "log_1787585811226_mz72e",
+      "fecha": "2026-08-24T15:36:51.226Z",
+      "usuario": "admin",
+      "accion": "USUARIO ACTUALIZADO",
+      "detalle": "Se actualizó el usuario: diseño con rol: trabajo (Depto: Diseño Gráfico)"
+    },
+    {
+      "id": "log_1787585728171_4vibq",
+      "fecha": "2026-08-24T15:35:28.171Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787585668556_tyevc",
+      "fecha": "2026-08-24T15:34:28.556Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en la casa del soldado con el rol: trabajo"
+    },
+    {
+      "id": "log_1787585625961_3jm70",
+      "fecha": "2026-08-24T15:33:45.961Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en la casa del soldado con el rol: trabajo"
+    },
+    {
+      "id": "log_1787585465863_r52b9",
+      "fecha": "2026-08-24T15:31:05.863Z",
+      "usuario": "bordado",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en la casa del soldado con el rol: trabajo"
+    },
+    {
+      "id": "log_1787585447607_iild2",
+      "fecha": "2026-08-24T15:30:47.607Z",
+      "usuario": "admin",
+      "accion": "USUARIO ACTUALIZADO",
+      "detalle": "Se actualizó el usuario: bordado con rol: trabajo (Depto: Bordado)"
+    },
+    {
+      "id": "log_1787584735823_1aijt",
+      "fecha": "2026-08-24T15:18:55.823Z",
+      "usuario": "admin",
+      "accion": "RESTAURAR_SUBIDO",
+      "detalle": "Base de datos restaurada desde archivo externo subido: backup_db_default_2026-08-24T15-15-28-381Z.json"
+    },
+    {
+      "id": "log_1787583671217_92t5m",
+      "fecha": "2026-08-24T15:01:11.217Z",
+      "usuario": "Admin",
+      "accion": "RESPALDO_SUPABASE",
+      "detalle": "Respaldo subido a la nube en Supabase: default/manual/backup_db_default_2026-08-24T15-01-10-084Z.json"
+    },
+    {
+      "id": "log_1787582465826_5uy95",
+      "fecha": "2026-08-24T14:41:05.826Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787581625319_91uz3",
+      "fecha": "2026-08-24T14:27:05.319Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787581221922_ia9d2",
+      "fecha": "2026-08-24T14:20:21.922Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787579993724_n2nmk",
+      "fecha": "2026-08-24T13:59:53.724Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787579411599_5kahz",
+      "fecha": "2026-08-24T13:50:11.599Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787578321854_djprt",
+      "fecha": "2026-08-24T13:32:01.854Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787578249325_hd8yw",
+      "fecha": "2026-08-24T13:30:49.325Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787577433766_ehc8z",
+      "fecha": "2026-08-24T13:17:13.766Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787576816836_12q4n",
+      "fecha": "2026-08-24T13:06:56.836Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787576144181_u08hy",
+      "fecha": "2026-08-24T12:55:44.181Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787575612573_lkuca",
+      "fecha": "2026-08-24T12:46:52.573Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787575255194_iod19",
+      "fecha": "2026-08-24T12:40:55.194Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787574386756_u9p5y",
+      "fecha": "2026-08-24T12:26:26.756Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 784.6633"
+    },
+    {
+      "id": "log_1787574252606_yrsxm",
+      "fecha": "2026-08-24T12:24:12.606Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787432233822_nbjdx",
+      "fecha": "2026-08-22T20:57:13.823Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787431203099_rz84j",
+      "fecha": "2026-08-22T20:40:03.099Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 779.9522"
+    },
+    {
+      "id": "log_1787431060576_mjoq0",
+      "fecha": "2026-08-22T20:37:40.576Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787427926002_3ef8y",
+      "fecha": "2026-08-22T19:45:26.002Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787425302384_4v1nq",
+      "fecha": "2026-08-22T19:01:42.384Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787418595158_9n0ys",
+      "fecha": "2026-08-22T17:09:55.158Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787417629267_1lkov",
+      "fecha": "2026-08-22T16:53:49.267Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787415305088_xeg58",
+      "fecha": "2026-08-22T16:15:05.088Z",
+      "usuario": "admin",
+      "accion": "PEDIDO ELIMINADO",
+      "detalle": "Se eliminó el pedido de NILSON  MONTAÑA"
+    },
+    {
+      "id": "log_1787414888367_gbpoc",
+      "fecha": "2026-08-22T16:08:08.367Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787412938275_sp5io",
+      "fecha": "2026-08-22T15:35:38.275Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787412822962_yblc1",
+      "fecha": "2026-08-22T15:33:42.962Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787410282885_vj432",
+      "fecha": "2026-08-22T14:51:22.885Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787409907064_coipe",
+      "fecha": "2026-08-22T14:45:07.065Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787408883873_cpozq",
+      "fecha": "2026-08-22T14:28:03.873Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787407702608_c6bql",
+      "fecha": "2026-08-22T14:08:22.608Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787406722311_8h6pi",
+      "fecha": "2026-08-22T13:52:02.311Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787406693241_aqwgu",
+      "fecha": "2026-08-22T13:51:33.241Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787404564649_pjrh0",
+      "fecha": "2026-08-22T13:16:04.649Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787404443417_prd2h",
+      "fecha": "2026-08-22T13:14:03.417Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787401651916_9ndh9",
+      "fecha": "2026-08-22T12:27:31.916Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787401518292_6q0xk",
+      "fecha": "2026-08-22T12:25:18.292Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787400613605_x0h1i",
+      "fecha": "2026-08-22T12:10:13.605Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787347477294_aadw8",
+      "fecha": "2026-08-21T21:24:37.294Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787346821045_wvc39",
+      "fecha": "2026-08-21T21:13:41.045Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787344555821_9gl9b",
+      "fecha": "2026-08-21T20:35:55.821Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787343649034_tnp7p",
+      "fecha": "2026-08-21T20:20:49.034Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787342917268_3ismc",
+      "fecha": "2026-08-21T20:08:37.268Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787342631256_vkz8r",
+      "fecha": "2026-08-21T20:03:51.256Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787341594393_exonb",
+      "fecha": "2026-08-21T19:46:34.393Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787339535064_jxbts",
+      "fecha": "2026-08-21T19:12:15.065Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787339128822_ldl5j",
+      "fecha": "2026-08-21T19:05:28.822Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787337902888_qg7ih",
+      "fecha": "2026-08-21T18:45:02.888Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787337671532_rfrru",
+      "fecha": "2026-08-21T18:41:11.532Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787336822155_jgg7m",
+      "fecha": "2026-08-21T18:27:02.155Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787335443714_vh2f1",
+      "fecha": "2026-08-21T18:04:03.714Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787334786647_6rd18",
+      "fecha": "2026-08-21T17:53:06.647Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787333141438_zrk7q",
+      "fecha": "2026-08-21T17:25:41.438Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787333067835_l4qh5",
+      "fecha": "2026-08-21T17:24:27.835Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787332402122_he6w4",
+      "fecha": "2026-08-21T17:13:22.122Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787332144873_ff42b",
+      "fecha": "2026-08-21T17:09:04.873Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787328113195_x5ddu",
+      "fecha": "2026-08-21T16:01:53.195Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787327906791_9nvm5",
+      "fecha": "2026-08-21T15:58:26.791Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787326263944_yugup",
+      "fecha": "2026-08-21T15:31:03.944Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787324954001_lw27a",
+      "fecha": "2026-08-21T15:09:14.001Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787324874744_7lmbs",
+      "fecha": "2026-08-21T15:07:54.744Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787322777734_iw7n8",
+      "fecha": "2026-08-21T14:32:57.734Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787321256354_1v8es",
+      "fecha": "2026-08-21T14:07:36.354Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787320748550_xvh6p",
+      "fecha": "2026-08-21T13:59:08.550Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 779.9522"
+    },
+    {
+      "id": "log_1787320730202_gmo72",
+      "fecha": "2026-08-21T13:58:50.202Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787320471115_ct3hn",
+      "fecha": "2026-08-21T13:54:31.115Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787319683548_yo64y",
+      "fecha": "2026-08-21T13:41:23.548Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787319061459_wcm86",
+      "fecha": "2026-08-21T13:31:01.459Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787318141973_hhtik",
+      "fecha": "2026-08-21T13:15:41.973Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787314809289_5jnyy",
+      "fecha": "2026-08-21T12:20:09.289Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 779.9522"
+    },
+    {
+      "id": "log_1787314390192_r4tyh",
+      "fecha": "2026-08-21T12:13:10.192Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787251545972_uf576",
+      "fecha": "2026-08-20T18:45:45.972Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787251012396_autd8",
+      "fecha": "2026-08-20T18:36:52.396Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787250117628_7dpqu",
+      "fecha": "2026-08-20T18:21:57.629Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787248416653_o3rt7",
+      "fecha": "2026-08-20T17:53:36.653Z",
+      "usuario": "admin",
+      "accion": "PERFIL NEGOCIO ACTUALIZADO",
+      "detalle": "Se actualizaron parámetros de negocio para rubro: FARMACIA"
+    },
+    {
+      "id": "log_1787248359117_oo8m7",
+      "fecha": "2026-08-20T17:52:39.117Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787246958360_wnlgw",
+      "fecha": "2026-08-20T17:29:18.360Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787246910461_uff8z",
+      "fecha": "2026-08-20T17:28:30.461Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787246856176_q3n4u",
+      "fecha": "2026-08-20T17:27:36.176Z",
+      "usuario": "bordado",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787245695206_hdv5k",
+      "fecha": "2026-08-20T17:08:15.206Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787241158877_ef0qf",
+      "fecha": "2026-08-20T15:52:38.877Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787241007001_552y1",
+      "fecha": "2026-08-20T15:50:07.001Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787239731336_73162",
+      "fecha": "2026-08-20T15:28:51.336Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787238368206_o01f7",
+      "fecha": "2026-08-20T15:06:08.206Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 777.4161"
+    },
+    {
+      "id": "log_1787238318288_q7ehj",
+      "fecha": "2026-08-20T15:05:18.288Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787238303184_2uu08",
+      "fecha": "2026-08-20T15:05:03.184Z",
+      "usuario": "admin",
+      "accion": "PERFIL NEGOCIO ACTUALIZADO",
+      "detalle": "Se actualizaron parámetros de negocio para rubro: FARMACIA"
+    },
+    {
+      "id": "log_1787238266517_0skty",
+      "fecha": "2026-08-20T15:04:26.517Z",
+      "usuario": "admin",
+      "accion": "GIRO COMERCIAL CONFIGURADO",
+      "detalle": "Se estableció el rubro de negocio a: FARMACIA"
+    },
+    {
+      "id": "log_1787237526782_q08wi",
+      "fecha": "2026-08-20T14:52:06.782Z",
+      "usuario": "bordado",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario bordado desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787237410808_dnq2h",
+      "fecha": "2026-08-20T14:50:10.808Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787237078796_8kobj",
+      "fecha": "2026-08-20T14:44:38.796Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787236407068_fzxts",
+      "fecha": "2026-08-20T14:33:27.068Z",
+      "usuario": "vinil",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario vinil desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787235471958_ye2n0",
+      "fecha": "2026-08-20T14:17:51.958Z",
+      "usuario": "admin",
+      "accion": "PERFIL NEGOCIO ACTUALIZADO",
+      "detalle": "Se actualizaron parámetros de negocio para rubro: FARMACIA"
+    },
+    {
+      "id": "log_1787235421945_ruare",
+      "fecha": "2026-08-20T14:17:01.945Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: trabajo"
+    },
+    {
+      "id": "log_1787232252996_bkljw",
+      "fecha": "2026-08-20T13:24:12.996Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787232089595_rxdfm",
+      "fecha": "2026-08-20T13:21:29.595Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 777.4161"
+    },
+    {
+      "id": "log_1787232011787_5dcky",
+      "fecha": "2026-08-20T13:20:11.787Z",
+      "usuario": "vinil",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787231944952_tagt1",
+      "fecha": "2026-08-20T13:19:04.952Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: trabajo"
+    },
+    {
+      "id": "log_1787231800156_t2odg",
+      "fecha": "2026-08-20T13:16:40.156Z",
+      "usuario": "admin",
+      "accion": "PEDIDO ELIMINADO",
+      "detalle": "Se eliminó el pedido de polo polo"
+    },
+    {
+      "id": "log_1787231441144_g3rb1",
+      "fecha": "2026-08-20T13:10:41.144Z",
+      "usuario": "admin",
+      "accion": "NUEVO EMPLEADO REGISTRADO",
+      "detalle": "Se registró al empleado/operador: Moises Lucena"
+    },
+    {
+      "id": "log_1787231358112_a8kpi",
+      "fecha": "2026-08-20T13:09:18.112Z",
+      "usuario": "admin",
+      "accion": "NUEVO EMPLEADO REGISTRADO",
+      "detalle": "Se registró al empleado/operador: Kevin Uzcategui"
+    },
+    {
+      "id": "log_1787231306351_sw6nh",
+      "fecha": "2026-08-20T13:08:26.351Z",
+      "usuario": "admin",
+      "accion": "NUEVO EMPLEADO REGISTRADO",
+      "detalle": "Se registró al empleado/operador: Robert Rodriguez"
+    },
+    {
+      "id": "log_1787231305223_akyko",
+      "fecha": "2026-08-20T13:08:25.223Z",
+      "usuario": "admin",
+      "accion": "EMPLEADO ELIMINADO",
+      "detalle": "Se eliminó al empleado/operador: Carlos (Imprenta)"
+    },
+    {
+      "id": "log_1787231303388_k7gh7",
+      "fecha": "2026-08-20T13:08:23.388Z",
+      "usuario": "admin",
+      "accion": "EMPLEADO ELIMINADO",
+      "detalle": "Se eliminó al empleado/operador: María (Costura)"
+    },
+    {
+      "id": "log_1787231301567_sza2q",
+      "fecha": "2026-08-20T13:08:21.567Z",
+      "usuario": "admin",
+      "accion": "EMPLEADO ELIMINADO",
+      "detalle": "Se eliminó al empleado/operador: Pedro (Diseñador)"
+    },
+    {
+      "id": "log_1787231298768_1zmno",
+      "fecha": "2026-08-20T13:08:18.768Z",
+      "usuario": "admin",
+      "accion": "EMPLEADO ELIMINADO",
+      "detalle": "Se eliminó al empleado/operador: Juan (Bordador)"
+    },
+    {
+      "id": "log_1787231076485_bjnqg",
+      "fecha": "2026-08-20T13:04:36.485Z",
+      "usuario": "bordado",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787229883540_znd3f",
+      "fecha": "2026-08-20T12:44:43.540Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 777.4161"
+    },
+    {
+      "id": "log_1787229879353_g8ph9",
+      "fecha": "2026-08-20T12:44:39.353Z",
+      "usuario": "admin",
+      "accion": "TASA BCV ACTUALIZADA",
+      "detalle": "Tasa del dólar ajustada a Bs. 775.3356"
+    },
+    {
+      "id": "log_1787229850387_znmb9",
+      "fecha": "2026-08-20T12:44:10.388Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787178568896_fdew3",
+      "fecha": "2026-08-19T22:29:28.896Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Vitaminas C 1000mg Efervescente (7501234567895)"
+    },
+    {
+      "id": "log_1787178566192_a1qid",
+      "fecha": "2026-08-19T22:29:26.192Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Protector Solar F60 Emulsión (7501234567897)"
+    },
+    {
+      "id": "log_1787178563311_wn9j6",
+      "fecha": "2026-08-19T22:29:23.311Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Losartán Potásico 50mg (Cozaar) (7501234567898)"
+    },
+    {
+      "id": "log_1787178561418_qhe0w",
+      "fecha": "2026-08-19T22:29:21.418Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Loratadina 10mg (Alercet) (7501234567894)"
+    },
+    {
+      "id": "log_1787178559007_1u3kb",
+      "fecha": "2026-08-19T22:29:19.007Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Ibuprofeno 400mg (Alivax) (7501234567892)"
+    },
+    {
+      "id": "log_1787178556524_7i5zd",
+      "fecha": "2026-08-19T22:29:16.524Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Gel Antibacterial Manos 250ml (7501234567896)"
+    },
+    {
+      "id": "log_1787178554129_p73z8",
+      "fecha": "2026-08-19T22:29:14.129Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Amoxicilina 500mg Suspensión (7501234567893)"
+    },
+    {
+      "id": "log_1787178551071_u6zai",
+      "fecha": "2026-08-19T22:29:11.071Z",
+      "usuario": "admin",
+      "accion": "PRODUCTO ELIMINADO",
+      "detalle": "Eliminado del inventario: Acetaminofén 500mg (Atamel) (7501234567891)"
+    },
+    {
+      "id": "log_1787178497730_3mtly",
+      "fecha": "2026-08-19T22:28:17.730Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: trabajo"
+    },
+    {
+      "id": "log_1787178493681_jz176",
+      "fecha": "2026-08-19T22:28:13.681Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: trabajo"
+    },
+    {
+      "id": "log_1787178489773_8voxe",
+      "fecha": "2026-08-19T22:28:09.773Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: hola"
+    },
+    {
+      "id": "log_1787178487071_ggo9c",
+      "fecha": "2026-08-19T22:28:07.071Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: polo"
+    },
+    {
+      "id": "log_1787178485115_8ujzh",
+      "fecha": "2026-08-19T22:28:05.116Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: trabajo"
+    },
+    {
+      "id": "log_1787178482368_bjgst",
+      "fecha": "2026-08-19T22:28:02.368Z",
+      "usuario": "admin",
+      "accion": "USUARIO ELIMINADO",
+      "detalle": "Se eliminó el usuario: cajero"
+    },
+    {
+      "id": "log_1787178467497_5lp51",
+      "fecha": "2026-08-19T22:27:47.497Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787178315454_wwj57",
+      "fecha": "2026-08-19T22:25:15.454Z",
+      "usuario": "bordado",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787176896524_3ozu4",
+      "fecha": "2026-08-19T22:01:36.524Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787176848810_7zti7",
+      "fecha": "2026-08-19T22:00:48.811Z",
+      "usuario": "hola",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787176339673_sz79x",
+      "fecha": "2026-08-19T21:52:19.673Z",
+      "usuario": "admin",
+      "accion": "NUEVA CATEGORIA COMERCIAL",
+      "detalle": "Se agregó departamento/categoría comercial: civil"
+    },
+    {
+      "id": "log_1787176261303_slqem",
+      "fecha": "2026-08-19T21:51:01.303Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787175785978_8g7th",
+      "fecha": "2026-08-19T21:43:05.978Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787175596448_s0zh2",
+      "fecha": "2026-08-19T21:39:56.448Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787175538254_0fkvr",
+      "fecha": "2026-08-19T21:38:58.254Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787175258818_t8vhq",
+      "fecha": "2026-08-19T21:34:18.818Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787175133418_8ytnz",
+      "fecha": "2026-08-19T21:32:13.418Z",
+      "usuario": "polo",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787175040010_bfc0r",
+      "fecha": "2026-08-19T21:30:40.010Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787174667881_vjnxi",
+      "fecha": "2026-08-19T21:24:27.881Z",
+      "usuario": "polo",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: trabajo"
+    },
+    {
+      "id": "log_1787174387055_oyu8h",
+      "fecha": "2026-08-19T21:19:47.056Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787173871455_e83kr",
+      "fecha": "2026-08-19T21:11:11.455Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787173559323_wagtj",
+      "fecha": "2026-08-19T21:05:59.323Z",
+      "usuario": "admin",
+      "accion": "TASA BCV SINCRONIZADA",
+      "detalle": "Tasa cambiaria oficial del BCV sincronizada automáticamente desde DolarApi a Bs. 775.3356"
+    },
+    {
+      "id": "log_1787173554975_l3rit",
+      "fecha": "2026-08-19T21:05:54.977Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787173141235_lbt2t",
+      "fecha": "2026-08-19T20:59:01.235Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787172679172_9q161",
+      "fecha": "2026-08-19T20:51:19.172Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787171327241_4lnwz",
+      "fecha": "2026-08-19T20:28:47.241Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787171275769_uen86",
+      "fecha": "2026-08-19T20:27:55.769Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787170720317_4z3j0",
+      "fecha": "2026-08-19T20:18:40.317Z",
+      "usuario": "admin",
+      "accion": "PANTALLA DESBLOQUEADA",
+      "detalle": "El usuario admin desbloqueó su terminal de trabajo"
+    },
+    {
+      "id": "log_1787170716197_5mf1a",
+      "fecha": "2026-08-19T20:18:36.197Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1787169847783_ikofs",
+      "fecha": "2026-08-19T20:04:07.784Z",
+      "usuario": "admin",
+      "accion": "TASA BCV ACTUALIZADA",
+      "detalle": "Tasa del dólar ajustada a Bs. 800"
+    },
+    {
+      "id": "log_1787169754342_vcswy",
+      "fecha": "2026-08-19T20:02:34.342Z",
+      "usuario": "admin",
+      "accion": "SESION INICIADA",
+      "detalle": "Sesión iniciada exitosamente en Elena Farma C.A. con el rol: administrador"
+    },
+    {
+      "id": "log_1",
+      "fecha": "2026-08-19T20:02:05.608Z",
+      "usuario": "admin",
+      "accion": "INICIALIZACIÓN",
+      "detalle": "Sistema Elena AI inicializado con base de datos por defecto"
+    }
+  ],
+  "proximo_z": 1,
+  "tasa_bcv": 784.6633,
+  "usuarios": [
+    {
+      "username": "admin",
+      "nombre": "Johan Montilla",
+      "rol": "administrador",
+      "contrasena": "$2b$10$n9ssVkkiVof4/f1lj8jt0uqqRW9gaxD2zPcUhQRa9GTTt.zjeipti",
+      "modulosPermitidos": [
+        "pos",
+        "creditos",
+        "pedidos",
+        "inventario",
+        "almacen",
+        "sucursales",
+        "compras",
+        "proveedores",
+        "cierre",
+        "reportes",
+        "config_impresion",
+        "respaldos",
+        "elena",
+        "dashboard"
+      ]
+    },
+    {
+      "username": "bordado",
+      "nombre": "Robert Rodriguez",
+      "rol": "trabajo",
+      "contrasena": "$2b$10$nA5C6HXlzQ548Ax/ykXx6eDEWlaldsVPhJokLrdDEVjSpOK/ldr2q",
+      "modulosPermitidos": [
+        "pedidos"
+      ],
+      "departamento": "Bordado"
+    },
+    {
+      "username": "diseño",
+      "nombre": "Kevin Uzcategui",
+      "rol": "trabajo",
+      "contrasena": "$2b$10$X3DI5IcPSbjRg6l92dyDF.WEALXroo4od3RpGDo2TxWFagnB8yr6C",
+      "modulosPermitidos": [
+        "pedidos"
+      ],
+      "departamento": "Diseño Gráfico"
+    },
+    {
+      "username": "vinil",
+      "nombre": "Moises Lucena",
+      "rol": "trabajo",
+      "contrasena": "$2b$10$wBZb1ZM5vy24HL1z977PYuUEfMcAMsAEsEzScJagvV33r8uZbxRNO",
+      "modulosPermitidos": [
+        "pedidos"
+      ],
+      "departamento": "Otros"
+    },
+    {
+      "username": "trabajo",
+      "nombre": "Área de Trabajo",
+      "rol": "trabajo",
+      "contrasena": "$2b$10$gus5w96DGePm5r9PUm2ytuodjkYrTrR33Tjf3EMwV5W3CPa4ymjwC"
+    }
+  ],
+  "cierresCaja": [],
+  "pin_supervisor": "1234",
+  "categoriasComerciales": [
+    {
+      "id": "cat_1",
+      "nombre": "Medicamentos"
+    },
+    {
+      "id": "cat_2",
+      "nombre": "Uniformes"
+    },
+    {
+      "id": "cat_3",
+      "nombre": "Uniformes Deportivos"
+    },
+    {
+      "id": "cat_4",
+      "nombre": "Leyes"
+    },
+    {
+      "id": "cat_5",
+      "nombre": "Accesorios"
+    },
+    {
+      "id": "cat_6",
+      "nombre": "Charcutería"
+    },
+    {
+      "id": "cat_7",
+      "nombre": "Verduras"
+    },
+    {
+      "id": "cat_8",
+      "nombre": "Víveres"
+    },
+    {
+      "id": "cat_9",
+      "nombre": "Otros"
+    },
+    {
+      "id": "cat_1787176339672",
+      "nombre": "civil"
+    }
+  ],
+  "pedidos": [
+    {
+      "id": "ped_1787231034054",
+      "nombres": "Varela",
+      "apellidos": "",
+      "cedula": "123456",
+      "telefono": "04121984748",
+      "direccion": "No Sabemos",
+      "descripcion": "2 renace Tiuna",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "monto_total": 4,
+      "anticipo": 4,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0001"
+    },
+    {
+      "id": "ped_1787231762803",
+      "nombres": "Otoniel",
+      "apellidos": "Romero",
+      "cedula": "123456789",
+      "telefono": "04245917241",
+      "direccion": "",
+      "descripcion": "1 VENEZUELA RENACE DE CHALECO NEGRO\n2 PORTANOMBRES CHALECO NEGRO\n         P-132        \nY. MARTINEZ G.\n       \n        P-132\nS. MENDEZ M.",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-19",
+      "monto_total": 6978.02,
+      "anticipo": 6978.02,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0002"
+    },
+    {
+      "id": "ped_1787233280405",
+      "nombres": "Varela",
+      "apellidos": "",
+      "cedula": "12345678",
+      "telefono": "04121984748",
+      "direccion": "",
+      "descripcion": "2 RENACE CHALECO NEGRO",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-19",
+      "fecha_entrega_estimada": "2026-08-20",
+      "monto_total": 6,
+      "anticipo": 6,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0003"
+    },
+    {
+      "id": "ped_1787234346895",
+      "nombres": "YUBELSI",
+      "apellidos": "PACHECO",
+      "cedula": "26453932",
+      "telefono": "04126722485",
+      "direccion": "",
+      "descripcion": "3 REDI OCCIDENTAL CON CIERRE MÁGICO",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-20",
+      "monto_total": 6,
+      "anticipo": 6,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0004"
+    },
+    {
+      "id": "ped_1787236096128",
+      "nombres": "OTONIEL",
+      "apellidos": "ROMERO",
+      "cedula": "16415492",
+      "telefono": "04245917241",
+      "direccion": "",
+      "descripcion": "3 RENACE DE CHALECO NEGRO",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 7.5,
+      "anticipo": 7.5,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0005"
+    },
+    {
+      "id": "ped_1787236388814",
+      "nombres": "YOHENNI",
+      "apellidos": "MEJIAS",
+      "cedula": "32328181",
+      "telefono": "04267502202",
+      "direccion": "",
+      "descripcion": "TIUNA: Y. MEJIAS A. S/2 REDI LOS LLANOS GN CON RENACE S/C",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 9,
+      "anticipo": 9,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0006"
+    },
+    {
+      "id": "ped_1787240366599",
+      "nombres": "FRANCELYS",
+      "apellidos": "RIVERO",
+      "cedula": "18296805",
+      "telefono": "04124193057",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE  GRANDE DESUR  C. NUÑEZ R. CZGNB - 33 BARINAS\n",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "fecha_entregado": "2026-08-22",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0007"
+    },
+    {
+      "id": "ped_1787240769320",
+      "nombres": "RUVEN",
+      "apellidos": "PINTO",
+      "cedula": "12648743",
+      "telefono": "04129026884",
+      "direccion": "",
+      "descripcion": "1 LOGO DE LA POLICIA ESTADAL FONDO AZUL BORDE AZUL",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "fecha_entregado": "2026-08-24",
+      "monto_total": 2,
+      "anticipo": 2,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0008"
+    },
+    {
+      "id": "ped_1787241253936",
+      "nombres": "LUIS ",
+      "apellidos": "MENDOZA",
+      "cedula": "22099615",
+      "telefono": "04261500208",
+      "direccion": "",
+      "descripcion": "MENDOZA L.  \nPOLICIA NACIONAL BOLIVARIANA  GRIS REFLECTIVO C/C",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 14,
+      "anticipo": 14,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0009"
+    },
+    {
+      "id": "ped_1787245904726",
+      "nombres": "JULIO",
+      "apellidos": "MORILLO",
+      "cedula": "27939165",
+      "telefono": "04245458504",
+      "direccion": "",
+      "descripcion": "TIUNA: J. MORILLO C. S/1 LLANOS GN S/C",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "fecha_entregado": "2026-08-21",
+      "monto_total": 7,
+      "anticipo": 7,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0010"
+    },
+    {
+      "id": "ped_1787246187500",
+      "nombres": "CARLOS",
+      "apellidos": "SALAS",
+      "cedula": "29995664",
+      "telefono": "04129659495",
+      "direccion": "",
+      "descripcion": "ESCUDO DE LA GN, PORTANOMBRE C. SALAS C. << CON LAS OBLICUAS AL REVES, CONAS, ESCUDO CONAS, BORDE NEGRO",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "fecha_entregado": "2026-08-21",
+      "monto_total": 8,
+      "anticipo": 8,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0011"
+    },
+    {
+      "id": "ped_1787246469008",
+      "nombres": "JULIO",
+      "apellidos": "MORILLO",
+      "cedula": "27939165",
+      "telefono": "04245458504",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE CHALECO NEGRO S/1 P-114 J. MORILLO C. // LAS OBLICUAS AMARILLAS",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "fecha_entregado": "2026-08-21",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0012"
+    },
+    {
+      "id": "ped_1787247388346",
+      "nombres": "OTONIEL",
+      "apellidos": "ROMERO",
+      "cedula": "16415492",
+      "telefono": "04245917241",
+      "direccion": "",
+      "descripcion": "1 PORTANOMBRE CHALECO NEGRO  P-132  J. REAÑEZ R.",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0013"
+    },
+    {
+      "id": "ped_1787314544615",
+      "nombres": "L",
+      "apellidos": "LOPEZ",
+      "cedula": "123456",
+      "telefono": "123456",
+      "direccion": "",
+      "descripcion": "LOPEZ L., POLICIA NACIONAL BOLIVARIANA, OFICIAL (REFLECTIVO) CPNB, BANDERA DE VZLA, LIBERTADOR Y LOGO DE RENACE C/C",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 15,
+      "anticipo": 15,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0014"
+    },
+    {
+      "id": "ped_1787314627651",
+      "nombres": "ANGEL",
+      "apellidos": "SOTO",
+      "cedula": "21492984",
+      "telefono": "04145225910",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE CHALECO NEGRO // SM/2 P-95 A. SOTO V.",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0015"
+    },
+    {
+      "id": "ped_1787314772366",
+      "nombres": "KEIVER",
+      "apellidos": "UZCATEGUI",
+      "cedula": "31145834",
+      "telefono": "04245315319",
+      "direccion": "",
+      "descripcion": "2 BRAZALETES PEQUEÑOS// <<< P-107 E. BLANCO H. D-311 CZGNB-31 P// < P-122 A. ROMERO H. 3RACIA D-312 CZGNB-31 P",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-20",
+      "fecha_entrega_estimada": "2026-08-21",
+      "monto_total": 24,
+      "anticipo": 24,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0016"
+    },
+    {
+      "id": "ped_1787316014282",
+      "nombres": "CARLOS",
+      "apellidos": "CARDOZO",
+      "cedula": "21526324",
+      "telefono": "04145069489",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE CHALECO VERDE NEON TIPO GLADEADOR // SM/3 C. CARDOZO P.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-22",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0017"
+    },
+    {
+      "id": "ped_1787323839318",
+      "nombres": "FRANCELIS",
+      "apellidos": "RIVERO",
+      "cedula": "18296805",
+      "telefono": "04124193057",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE GRANDE DESUR D. PIÑERO A.  CZGNAB -33 BARINAS",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-22",
+      "fecha_entregado": "2026-08-22",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "EFECTIVO_USD",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0018"
+    },
+    {
+      "id": "ped_1787325273717",
+      "nombres": "DAIFREN ",
+      "apellidos": "PERDOMO",
+      "cedula": "32129251",
+      "telefono": "04120944499",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE  S/2 P-129 D. PERDOMO P. CZGNB -52 ANZOATEGUI",
+      "imagenes": [],
+      "estado": "En Proceso",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-22",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0019"
+    },
+    {
+      "id": "ped_1787326469513",
+      "nombres": "WUILDER",
+      "apellidos": "GONZALEZ",
+      "cedula": "25895737",
+      "telefono": "04124718960",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE  <<<IIII  P- 74  W. LOPEZ R. D-311 CZGNB -31 PORTUGUEZA",
+      "imagenes": [],
+      "estado": "En Proceso",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0020"
+    },
+    {
+      "id": "ped_1787335567758",
+      "nombres": "ROSA ",
+      "apellidos": "LINARES",
+      "cedula": "32655020",
+      "telefono": "04245332422",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE GRANDE < P-130 R. LINARES P. DESUR CZGNB 31-PORTUGUESA",
+      "imagenes": [],
+      "estado": "En Proceso",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 10,
+      "anticipo": 10,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "EFECTIVO_USD",
+      "metodo_pago_saldo": "EFECTIVO_USD",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0021"
+    },
+    {
+      "id": "ped_1787336175575",
+      "nombres": "FUENTE",
+      "apellidos": "J.",
+      "cedula": "16073105",
+      "telefono": "0412548990",
+      "direccion": "",
+      "descripcion": "FUENTES J. POLICIA ESTADAL PRIMER INSP (GRIS REFLECTIVO) \nBANDERA VZLA\nBANDERA PORTUGUESA\nCPBEP\nLOGO POLICIA",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 15,
+      "anticipo": 15,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0022"
+    },
+    {
+      "id": "ped_1787339776339",
+      "nombres": "FELIX",
+      "apellidos": "MENDOZA",
+      "cedula": "25000638",
+      "telefono": "0416412406",
+      "direccion": "",
+      "descripcion": "12 LOGOS DE DGCIM PARA DISEÑAR ( KARINA TIENE LA FOTO)",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-28",
+      "monto_total": 24,
+      "anticipo": 24,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0023"
+    },
+    {
+      "id": "ped_1787340386080",
+      "nombres": "FELIX ",
+      "apellidos": "MENDOZA",
+      "cedula": "25000638",
+      "telefono": "04164123406",
+      "direccion": "",
+      "descripcion": "1 BANDERA VZLA\n LOGO DGCIM\nDIGCIM",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 6,
+      "anticipo": 6,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "EFECTIVO_USD",
+      "metodo_pago_saldo": "EFECTIVO_USD",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0024"
+    },
+    {
+      "id": "ped_1787340516936",
+      "nombres": "JOSE ",
+      "apellidos": "QUINTERO",
+      "cedula": "14570297",
+      "telefono": "04127618654",
+      "direccion": "",
+      "descripcion": "1 PAR DE JERARQUIA S/1 REFLECTIVO PARA CASCO",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-21",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0025"
+    },
+    {
+      "id": "ped_1787341350918",
+      "nombres": "CARLOS",
+      "apellidos": "ALVAREZ",
+      "cedula": "25938792",
+      "telefono": "04125183107",
+      "direccion": "",
+      "descripcion": "1 PORTANOMBRE DE CHALECO PRIMER TENIENTTE J. MADERO S.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-22",
+      "monto_total": 32,
+      "anticipo": 32,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "departamento_servicio": "General",
+      "codigo_pedido": "PED-0026"
+    },
+    {
+      "id": "ped_1787341804137",
+      "nombres": "CARLOS",
+      "apellidos": "ALVAREZ",
+      "cedula": "25938792",
+      "telefono": "04125183107",
+      "direccion": "",
+      "descripcion": "1 PORTANOMBRE DE CHALECO NEGRO PTRIMER TENIENTE J. MADERO S.",
+      "imagenes": [],
+      "estado": "Entregado",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-22",
+      "fecha_entregado": "2026-08-22",
+      "monto_total": 32,
+      "anticipo": 32,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0027"
+    },
+    {
+      "id": "ped_1787344830506",
+      "nombres": "CONTRERAS ",
+      "apellidos": "PACHECO",
+      "cedula": "32277535",
+      "telefono": "04122872554",
+      "direccion": "",
+      "descripcion": "JUEGO DE PARCHO PATRIOTA E. CONTRERAS P. ALUMNO FASE II GNB ",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 7,
+      "anticipo": 7,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "EFECTIVO_USD",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0028"
+    },
+    {
+      "id": "ped_1787345917118",
+      "nombres": "NOURYEL",
+      "apellidos": "ANDUEZA",
+      "cedula": "30637624",
+      "telefono": "04123086881",
+      "direccion": "",
+      "descripcion": "1 POTANOMBRE DE CHALECO NEGRO << P-120 N. ANDUEZA L.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 6,
+      "anticipo": 6,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0029"
+    },
+    {
+      "id": "ped_1787346599654",
+      "nombres": "ARELIS ",
+      "apellidos": "CASTILLO",
+      "cedula": "21623312",
+      "telefono": "04123522871",
+      "direccion": "",
+      "descripcion": "6 BRAZALETE GRANDE DESUR  CZGNB- 33BARINAS \nA. MONTAÑA C.\nI. RIVAS B.\nA. MARTINEZ B.\nD. VARGAS C.\nE. MARTINEZ T.\nA. RAMIREZ A.\nJ. YEPEZ P.",
+      "imagenes": [],
+      "estado": "En Proceso",
+      "fecha_pedido": "2026-08-21",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 72,
+      "anticipo": 72,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0030"
+    },
+    {
+      "id": "ped_1787409022218",
+      "nombres": "ESKARLE",
+      "apellidos": "VAZQUEZ",
+      "cedula": "123456",
+      "telefono": "04125584521",
+      "direccion": "",
+      "descripcion": "BRAZALETE PEQUEÑO // < E. VASQUEZ V. D-311 CZGNB-31 PORTUFUESA",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-22",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0031"
+    },
+    {
+      "id": "ped_1787410246144",
+      "nombres": "miguel ",
+      "apellidos": "maseo",
+      "cedula": "26572567",
+      "telefono": "04129630606",
+      "direccion": "barrio nuestra fe2",
+      "descripcion": "brazalete   <\n       M. MASEO V.  \n        DCR 21 -2\nCZ GNB 21- TACHIRA ",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-22",
+      "fecha_entrega_estimada": "0026-08-24",
+      "monto_total": 12,
+      "anticipo": 9359.4,
+      "saldo_pendiente": -9347.4,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0032"
+    },
+    {
+      "id": "ped_1787426939831",
+      "nombres": "OTONIEL",
+      "apellidos": "ROMERO",
+      "cedula": "16415492",
+      "telefono": "04245917241",
+      "direccion": "COMANDO DE LA GUARDIA NACIONAL",
+      "descripcion": "3 PORTA NOMBRE DE CHALECO NEGRO P-132 Y 1 VZLA RENACE\n                                                            M. GONZALEZ P.\n                                                            Y. GONZALEZ L\n                                                           D. FERNANDEZ M.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-22",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 7.5,
+      "anticipo": 7.5,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "EFECTIVO_USD",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0033"
+    },
+    {
+      "id": "ped_1787428680097",
+      "nombres": "OTONIEL ",
+      "apellidos": "ROMERO",
+      "cedula": "16415492",
+      "telefono": "04245917241",
+      "direccion": "COMANDO DE LA GUARDIA NACIONAL ",
+      "descripcion": "2 PORTA NOMBRE DE CHALECO NEGRO P - 132 J. RIVERO C. / P-132 I. LOPEZ P.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-22",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 5,
+      "anticipo": 5,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PAGO_MOVIL",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0034"
+    },
+    {
+      "id": "ped_1787432415783",
+      "nombres": "LOPEZ",
+      "apellidos": "YOAN",
+      "cedula": "32427781",
+      "telefono": "04129974720",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE DE CHALECO NEGRO // S/2 P-124 Y. LOPEZ A.",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-22",
+      "fecha_entrega_estimada": "2026-08-24",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "departamento_servicio": "General",
+      "codigo_pedido": "PED-0035"
+    },
+    {
+      "id": "ped_1787574442851",
+      "nombres": "YOHEL",
+      "apellidos": "MEJIA",
+      "cedula": "25424722",
+      "telefono": "04145044744",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE DE CHALECO NEGRO PNB // OFICIAL JEFE MEJIA Y. // LETRAS AMARILLAS",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-24",
+      "fecha_entrega_estimada": "2026-08-25",
+      "monto_total": 3,
+      "anticipo": 3,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0036"
+    },
+    {
+      "id": "ped_1787574548719",
+      "nombres": "YOHEL",
+      "apellidos": "MEJIA",
+      "cedula": "25424722",
+      "telefono": "04145044744",
+      "direccion": "",
+      "descripcion": "PORTANOMBRE BORDADO BUSO // OF/JEFE MEJIA Y. ",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-24",
+      "fecha_entrega_estimada": "2026-08-25",
+      "monto_total": 2,
+      "anticipo": 2,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0037"
+    },
+    {
+      "id": "ped_1787576525248",
+      "nombres": "LUIS",
+      "apellidos": "PACHECO",
+      "cedula": "10724881",
+      "telefono": "04261070733",
+      "direccion": "",
+      "descripcion": "10 PARCCHE TIPO PORTANOMBRE QUE DIGA PORTUGUESA FONDO NEGRO BORDE BLANCO DA ANCHO 11.5CM DE ALTO 2.3CM",
+      "imagenes": [],
+      "estado": "Terminado",
+      "fecha_pedido": "2026-08-24",
+      "fecha_entrega_estimada": "2026-08-25",
+      "monto_total": 15,
+      "anticipo": 15,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Robert Rodriguez",
+      "departamento_servicio": "Bordado",
+      "codigo_pedido": "PED-0038"
+    },
+    {
+      "id": "ped_1787580115968",
+      "nombres": "AROLDO",
+      "apellidos": "VASQUEZ",
+      "cedula": "25547565",
+      "telefono": "04126769853",
+      "direccion": "",
+      "descripcion": "1 PORTANOMBRE OFICIAL FONDO AZUL , BORDE AZUL , LETRAS BLANCA C/C",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-24",
+      "fecha_entrega_estimada": "2026-08-25",
+      "monto_total": 2,
+      "anticipo": 2,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PAGO_MOVIL",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "departamento_servicio": "General",
+      "codigo_pedido": "PED-0039"
+    },
+    {
+      "id": "ped_1787582164793",
+      "nombres": "NEYMAR",
+      "apellidos": "MADRID",
+      "cedula": "31752322",
+      "telefono": "04260559086",
+      "direccion": "",
+      "descripcion": "1 BRAZALETE < P-126 N. MADRID M. 1RA CIA D-312 CZGNB -31 PORTUGUESA",
+      "imagenes": [],
+      "estado": "Pendiente",
+      "fecha_pedido": "2026-08-24",
+      "fecha_entrega_estimada": "2026-08-25",
+      "monto_total": 12,
+      "anticipo": 12,
+      "saldo_pendiente": 0,
+      "metodo_pago_anticipo": "PUNTO",
+      "metodo_pago_saldo": "PUNTO",
+      "anticipo_registrado": true,
+      "saldo_registrado": false,
+      "asignado_a": "Moises Lucena",
+      "departamento_servicio": "Otros",
+      "codigo_pedido": "PED-0040"
+    }
+  ],
+  "sucursales": [
+    {
+      "id": "suc_1",
+      "codigo": "SUC-01",
+      "nombre": "Sede Principal (Centro)",
+      "direccion": "Av. Principal S. Grande, Edf. Farmacia, Caracas",
+      "telefono": "+58 (212) 993-8412",
+      "ciudad": "Caracas",
+      "esPrincipal": true,
+      "activa": true,
+      "fechaRegistro": "2026-01-10T08:00:00.000Z",
+      "cajas": [
+        "CAJA-01",
+        "CAJA-02",
+        "CAJA-03"
+      ]
+    },
+    {
+      "id": "suc_2",
+      "codigo": "SUC-02",
+      "nombre": "Sede Norte (Av. Bolívar)",
+      "direccion": "Av. Bolívar Norte, C.C. Granja Local 14, Valencia",
+      "telefono": "+58 (241) 824-9911",
+      "ciudad": "Valencia",
+      "esPrincipal": false,
+      "activa": true,
+      "fechaRegistro": "2026-02-15T09:30:00.000Z",
+      "cajas": [
+        "CAJA-01",
+        "CAJA-02"
+      ]
+    },
+    {
+      "id": "suc_3",
+      "codigo": "SUC-03",
+      "nombre": "Sede Este (Los Samanes)",
+      "direccion": "Av. Universidad, C.C. Los Samanes Nivel 1, Maracay",
+      "telefono": "+58 (243) 232-1144",
+      "ciudad": "Maracay",
+      "esPrincipal": false,
+      "activa": true,
+      "fechaRegistro": "2026-03-01T10:00:00.000Z",
+      "cajas": [
+        "CAJA-01"
+      ]
+    }
+  ],
+  "traslados": [
+    {
+      "id": "trf_1",
+      "numero_guia": "TRF-2026-0001",
+      "sucursal_origen_id": "suc_1",
+      "sucursal_origen_nombre": "Sede Principal (Centro)",
+      "sucursal_destino_id": "suc_2",
+      "sucursal_destino_nombre": "Sede Norte (Av. Bolívar)",
+      "fecha_despacho": "2026-08-19T17:02:05.608Z",
+      "estado": "EN_TRANSITO",
+      "conductor_nombre": "Carlos Mendoza (Despachos Exprés)",
+      "vehiculo_placa": "AB45CD",
+      "items": [
+        {
+          "producto_id": "1",
+          "codigo": "7501234567891",
+          "nombre": "Acetaminofén 500mg (Atamel)",
+          "cantidad": 15,
+          "precio_costo": 0.8,
+          "precio_venta": 1.5,
+          "lote": "LOT-2026-A1",
+          "fecha_vencimiento": "2028-12-31"
+        },
+        {
+          "producto_id": "2",
+          "codigo": "7501234567892",
+          "nombre": "Ibuprofeno 400mg (Alivax)",
+          "cantidad": 10,
+          "precio_costo": 1.2,
+          "precio_venta": 2.2,
+          "lote": "LOT-2026-B4",
+          "fecha_vencimiento": "2028-06-30"
+        }
+      ],
+      "total_items": 2,
+      "total_unidades": 25,
+      "observaciones": "Reabastecimiento urgente por alta demanda en mostrador",
+      "usuario_despacho": "admin",
+      "motivo": "Reabastecimiento de mostrador"
+    },
+    {
+      "id": "trf_2",
+      "numero_guia": "TRF-2026-0002",
+      "sucursal_origen_id": "suc_3",
+      "sucursal_origen_nombre": "Sede Este (Los Samanes)",
+      "sucursal_destino_id": "suc_1",
+      "sucursal_destino_nombre": "Sede Principal (Centro)",
+      "fecha_despacho": "2026-08-17T20:02:05.608Z",
+      "fecha_recepcion": "2026-08-18T00:02:05.608Z",
+      "estado": "RECIBIDO",
+      "conductor_nombre": "José Gregorio Castillo",
+      "vehiculo_placa": "TX9901",
+      "items": [
+        {
+          "producto_id": "4",
+          "codigo": "7501234567894",
+          "nombre": "Loratadina 10mg (Alercet)",
+          "cantidad": 20,
+          "precio_costo": 0.5,
+          "precio_venta": 1.2,
+          "lote": "LOT-2025-X9",
+          "fecha_vencimiento": "2027-10-15"
+        }
+      ],
+      "total_items": 1,
+      "total_unidades": 20,
+      "observaciones": "Excedente de inventario transferido a central",
+      "usuario_despacho": "cajero",
+      "usuario_recepcion": "admin",
+      "motivo": "Balance de sobrestock"
+    }
+  ],
+  "trasladosInternos": [
+    {
+      "id": "tr_int_1",
+      "numero_guia": "TR-ALM-000001",
+      "tipo": "ALMACEN_A_TIENDA",
+      "origen": "ALMACEN",
+      "destino": "TIENDA",
+      "fecha": "2026-08-19T14:02:05.608Z",
+      "usuario": "admin",
+      "motivo": "Reabastecimiento de mostrador matutino",
+      "items": [
+        {
+          "producto_id": "1",
+          "codigo": "7501234567891",
+          "nombre": "Acetaminofén 500mg (Atamel)",
+          "cantidad": 10,
+          "unidad_medida": "UND",
+          "precio_costo": 0.8,
+          "precio_venta": 1.5,
+          "stock_almacen_anterior": 40,
+          "stock_tienda_anterior": 5
+        },
+        {
+          "producto_id": "2",
+          "codigo": "7501234567892",
+          "nombre": "Ibuprofeno 400mg (Alivax)",
+          "cantidad": 5,
+          "unidad_medida": "UND",
+          "precio_costo": 1.2,
+          "precio_venta": 2.2,
+          "stock_almacen_anterior": 25,
+          "stock_tienda_anterior": 5
+        }
+      ],
+      "total_items": 2,
+      "total_unidades": 15,
+      "observaciones": "Mercancía recibida en exhibición y verificada"
+    }
+  ],
+  "configSucursal": {
+    "sucursalActualId": "suc_1",
+    "cajaActual": "CAJA-01"
+  },
+  "empleados": [
+    {
+      "id": "emp_1787231306350",
+      "nombre": "Robert Rodriguez",
+      "cargo": "Bordador",
+      "departamento": "Bordado"
+    },
+    {
+      "id": "emp_1787231358110",
+      "nombre": "Kevin Uzcategui",
+      "cargo": "Diseñador",
+      "departamento": "Diseño Gráfico"
+    },
+    {
+      "id": "emp_1787231441142",
+      "nombre": "Moises Lucena",
+      "cargo": "Diseñedor",
+      "departamento": "Otros"
+    }
+  ],
+  "gastosCajaChica": [],
+  "devoluciones": [],
+  "cotizaciones": [],
+  "kardex": []
+}

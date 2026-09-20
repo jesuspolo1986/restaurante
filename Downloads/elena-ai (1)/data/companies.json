@@ -1,0 +1,50 @@
+[
+  {
+    "id": "default",
+    "rif": "J-50148729-3",
+    "nombre": "Elena Farma C.A.",
+    "contacto": "Ing. Jesús Polo",
+    "telefono": "+58 (212) 993-8412",
+    "email": "contacto@elenafarma.com",
+    "direccion": "Av. Principal S. Grande, Edf. Farmacia, Caracas",
+    "ciudad": "Caracas",
+    "creadaEn": "2026-08-25T01:05:57.740Z",
+    "estado": "activa",
+    "rubro": "FARMACIA",
+    "licencia": {
+      "plan": "VITALICIA",
+      "estado": "ACTIVA",
+      "fechaInicio": "2026-01-01T00:00:00.000Z",
+      "fechaVencimiento": "2036-12-31T23:59:59.000Z",
+      "precioMensualUSD": 0,
+      "diasGracia": 5,
+      "bloqueoAutomatico": false,
+      "claveActivacion": "ELENA-PRO-VITALICIA-MASTER-0001",
+      "historialPagos": []
+    }
+  },
+  {
+    "id": "lacasadelsoldado",
+    "rif": "J-50148729-3",
+    "nombre": "La Casa del Soldado",
+    "contacto": "Johan Montilla",
+    "telefono": "+58 412-0000000",
+    "email": "contacto@lacasadelsoldado.com",
+    "direccion": "Av. Principal",
+    "ciudad": "Venezuela",
+    "creadaEn": "2026-08-24T00:54:55.747Z",
+    "estado": "activa",
+    "rubro": "FARMACIA",
+    "licencia": {
+      "plan": "VITALICIA",
+      "estado": "ACTIVA",
+      "fechaInicio": "2026-01-01T00:00:00.000Z",
+      "fechaVencimiento": "2036-12-31T23:59:59.000Z",
+      "precioMensualUSD": 0,
+      "diasGracia": 5,
+      "bloqueoAutomatico": false,
+      "claveActivacion": "ELENA-PRO-VITALICIA-LACASADELSOLDADO",
+      "historialPagos": []
+    }
+  }
+]

@@ -1,0 +1,7 @@
+{
+  "url": "https://nhbdegzkbjvesccthlxg.supabase.co",
+  "key": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5oYmRlZ3prYmp2ZXNjY3RobHhnIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4Njk2Mjc2NiwiZXhwIjoyMTAyNTM4NzY2fQ.NV5SHA4ebKH-GHDDQC1VxxLWHeintVUQWSML0DYyBOs",
+  "bucket": "backups-elena",
+  "autoUploadOnBackup": true,
+  "retentionDays": 30
+}

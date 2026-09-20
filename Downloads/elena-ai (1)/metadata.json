@@ -1,0 +1,6 @@
+{
+  "name": "Elena Pro",
+  "description": "Sistema ERP y Punto de Venta (POS) multi-rubro para Farmacias, Ferreterías, Supermercados, Boutiques de Ropa/Calzado y Comercio General.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
