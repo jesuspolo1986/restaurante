@@ -2,7 +2,6 @@ package com.example.data
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
-import androidx.room.withTransaction
 
 class RestaurantRepository(private val database: RestaurantDatabase) {
     private val categoryDao = database.categoryDao()
@@ -47,12 +46,12 @@ class RestaurantRepository(private val database: RestaurantDatabase) {
         orderDao.updateOrder(order)
     }
 
-    suspend fun deleteOrder(orderId: Int) = database.withTransaction {
-        orderItemDao.deleteItemsForOrder(orderId)
+    suspend fun deleteOrder(orderId: Int) {
         orderDao.deleteOrderById(orderId)
+        orderItemDao.deleteItemsForOrder(orderId)
     }
 
-    // Places a new order and decrements stocks atomically within a transaction
+    // Places a new order and decrements stocks
     suspend fun placeOrder(
         tableNumber: String,
         orderType: String,
@@ -60,7 +59,7 @@ class RestaurantRepository(private val database: RestaurantDatabase) {
         paymentStatus: String,
         notes: String,
         items: List<Pair<Product, Int>>
-    ): Long = database.withTransaction {
+    ): Long {
         var totalUsd = 0.0
         for (item in items) {
             totalUsd += item.first.priceUsd * item.second
@@ -96,7 +95,7 @@ class RestaurantRepository(private val database: RestaurantDatabase) {
             productDao.updateStock(product.id, newStock)
         }
 
-        orderId.toLong()
+        return orderId.toLong()
     }
 
     // Seed initial data if database is empty

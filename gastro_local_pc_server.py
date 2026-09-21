@@ -360,22 +360,7 @@ def load_db():
                         prod["modifiers"] = []
                 return data
         except Exception as e:
-            sys.stderr.write(f"Aviso al leer DB_FILE: {e}\nIntentando autorrecuperación desde el respaldo más reciente...\n")
-            # Buscar respaldos locales en respaldos_locales/
-            backup_dir = os.path.join(DATA_DIR, "respaldos_locales")
-            if os.path.exists(backup_dir):
-                backups = [os.path.join(backup_dir, f) for f in os.listdir(backup_dir) if f.endswith(".json")]
-                backups.sort(key=lambda x: os.path.getmtime(x), reverse=True)
-                for b_file in backups:
-                    try:
-                        with open(b_file, "r", encoding="utf-8") as bf:
-                            recovered_data = json.load(bf)
-                            sys.stderr.write(f"RESTAURADO CON ÉXITO desde respaldo: {b_file}\n")
-                            # Guardar inmediatamente para recuperar DB_FILE
-                            save_db(recovered_data)
-                            return recovered_data
-                    except Exception:
-                        continue
+            sys.stderr.write(f"Aviso al leer DB_FILE: {e}\n")
             return DEFAULT_DATA
 
 def save_db(data):
@@ -646,12 +631,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             self.send_header("Content-Type", "application/json; charset=utf-8")
             self.send_cors_headers()
             self.end_headers()
-            safe_cfg = dict(db.get("config", {}))
-            safe_cfg.pop("adminPin", None)
-            safe_cfg.pop("installationId", None)
-            safe_cfg.pop("activeLicenseUntil", None)
-            safe_cfg.pop("lastSeenDate", None)
-            self.wfile.write(json.dumps(safe_cfg, ensure_ascii=False).encode("utf-8"))
+            self.wfile.write(json.dumps(db.get("config", {}), ensure_ascii=False).encode("utf-8"))
 
         # 3. API - OBTENER PRODUCTOS
         elif path == "/api/products":
@@ -684,83 +664,6 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             self.send_cors_headers()
             self.end_headers()
             self.wfile.write(json.dumps(db.get("tableStates", {}), ensure_ascii=False).encode("utf-8"))
-
-        # API - CONSULTAR ESTADO DE UN PEDIDO EN TIEMPO REAL (CLIENTE)
-        elif path == "/api/order/status":
-            query_params = urllib.parse.parse_qs(parsed_path.query)
-            order_id_str = query_params.get("id", [""])[0]
-            try:
-                order_id = int(order_id_str)
-                order = next((o for o in db.get("orders", []) if o["id"] == order_id), None)
-                if order:
-                    self.send_response(200)
-                    self.send_header("Content-Type", "application/json; charset=utf-8")
-                    self.send_cors_headers()
-                    self.end_headers()
-                    resp_data = {
-                        "status": "success",
-                        "orderId": order["id"],
-                        "orderStatus": order.get("status", "PENDING"),
-                        "paymentStatus": order.get("paymentStatus", "PENDING_CONFIRMATION"),
-                        "paymentVerificationStatus": order.get("paymentVerificationStatus", "NONE"),
-                        "paymentMethod": order.get("paymentMethod", ""),
-                        "paymentReference": order.get("paymentReference", ""),
-                        "totalUsd": order.get("totalUsd", 0.0)
-                    }
-                    self.wfile.write(json.dumps(resp_data, ensure_ascii=False).encode("utf-8"))
-                else:
-                    self.send_response(404)
-                    self.send_header("Content-Type", "application/json; charset=utf-8")
-                    self.send_cors_headers()
-                    self.end_headers()
-                    self.wfile.write(json.dumps({"status": "error", "message": "Pedido no encontrado"}).encode("utf-8"))
-            except Exception as e:
-                self.send_response(400)
-                self.send_header("Content-Type", "application/json; charset=utf-8")
-                self.send_cors_headers()
-                self.end_headers()
-                self.wfile.write(json.dumps({"status": "error", "message": str(e)}).encode("utf-8"))
-
-        # API - SERVIR IMÁGENES DE PRODUCTOS (product_images)
-        elif path == "/api/images":
-            query_params = urllib.parse.parse_qs(parsed_path.query)
-            file_name = query_params.get("file", [""])[0]
-            clean_name = os.path.basename(file_name)
-            if not clean_name:
-                self.send_response(400)
-                self.send_cors_headers()
-                self.end_headers()
-                return
-
-            candidates = [
-                os.path.join(os.getcwd(), "product_images", clean_name),
-                os.path.join(os.path.dirname(os.path.abspath(__file__)), "product_images", clean_name),
-                os.path.join(os.getcwd(), clean_name),
-                os.path.join(os.path.dirname(os.path.abspath(__file__)), clean_name)
-            ]
-            found_path = next((p for p in candidates if os.path.isfile(p)), None)
-            if found_path:
-                ext = os.path.splitext(clean_name)[1].lower()
-                mime_types = {
-                    ".jpg": "image/jpeg",
-                    ".jpeg": "image/jpeg",
-                    ".png": "image/png",
-                    ".webp": "image/webp",
-                    ".svg": "image/svg+xml",
-                    ".gif": "image/gif"
-                }
-                content_type = mime_types.get(ext, "application/octet-stream")
-                self.send_response(200)
-                self.send_header("Content-Type", content_type)
-                self.send_header("Cache-Control", "public, max-age=86400")
-                self.send_cors_headers()
-                self.end_headers()
-                with open(found_path, "rb") as img_file:
-                    self.wfile.write(img_file.read())
-            else:
-                self.send_response(404)
-                self.send_cors_headers()
-                self.end_headers()
 
         # 5. VISTA SIMPLIFICADA PARA COCINA (KDS)
         elif path == "/kitchen":
@@ -823,21 +726,14 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(b"No encontrado / Not Found")
 
     def do_POST(self):
-        try:
-            content_length = int(self.headers.get('Content-Length', 0))
-            if content_length > 0:
-                raw_bytes = self.rfile.read(content_length)
-                post_data = raw_bytes.decode('utf-8', errors='replace')
-            else:
-                post_data = ""
-        except Exception:
-            post_data = ""
-
         with DB_LOCK:
             db = load_db()
             lic_state = verify_license_state(db)
             parsed_path = urllib.parse.urlparse(self.path)
             path = parsed_path.path
+
+            content_length = int(self.headers.get('Content-Length', 0))
+            post_data = self.rfile.read(content_length).decode('utf-8') if content_length > 0 else ""
 
             # Si el sistema no está activo y NO es la ruta de activación, rechazar la petición
             if lic_state["status"] != "active" and path != "/api/license/activate":
@@ -917,7 +813,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                 # Excepción: La pantalla de cocina (/kitchen) actualizando comanda a PREPARING o READY
                 is_kitchen_action = (path == "/api/admin/update-order-status" and 
                                      isinstance(post_data_dict, dict) and 
-                                     post_data_dict.get("status") in ["PREPARING", "READY", "DELIVERED"])
+                                     post_data_dict.get("status") in ["PREPARING", "READY"])
             
                 if not is_kitchen_action and not self.is_authorized_admin(post_data_dict):
                     self.send_response(401)
@@ -947,8 +843,6 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                     for it in items_req:
                         prod_id = int(it["productId"])
                         qty = int(it["quantity"])
-                        if qty <= 0:
-                            continue
                         product = next((p for p in db["products"] if p["id"] == prod_id), None)
                     
                         if product and product.get("stock", 0) >= qty:
@@ -984,8 +878,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                         payment_ref = str(order_payload.get("paymentReference", "")).strip()
                         payment_origin_bank = str(order_payload.get("paymentOriginBank", "")).strip()
                         payment_phone = str(order_payload.get("paymentPhone", "")).strip()
-                        is_pm = ("pago" in payment_method.lower() or payment_ref != "")
-                        payment_v_status = "PENDING" if is_pm else "NONE"
+                        payment_v_status = "PENDING_VERIFICATION" if (payment_method == "Pago Movil" or payment_ref) else "NONE"
 
                         new_order = {
                             "id": new_order_id,
@@ -1035,12 +928,11 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
 
                     order = next((o for o in db["orders"] if o["id"] == order_id), None)
                     if order:
-                        old_status = order.get("status")
                         order["status"] = new_status
                         if new_status == "DELIVERED":
                             # We keep the current payment status (e.g. PENDING_CONFIRMATION) so the admin can collect it.
                             pass
-                        elif new_status == "CANCELLED" and old_status != "CANCELLED":
+                        elif new_status == "CANCELLED":
                             order["paymentStatus"] = "REFUNDED_OR_CANCELLED"
                             # Regresar el stock de los productos
                             for item in order["items"]:
@@ -1767,8 +1659,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                 try:
                     params = json.loads(post_data)
                     order_id = int(params["orderId"])
-                    raw_act = str(params.get("action") or params.get("status") or "APPROVE").upper()
-                    action = "APPROVE" if raw_act in ["APPROVE", "VERIFIED", "APPROVED"] else "REJECT"
+                    action = str(params.get("action", "APPROVE")).upper() # APPROVE or REJECT
                 
                     order = next((o for o in db.get("orders", []) if o["id"] == order_id), None)
                     if order:
@@ -1872,1186 +1763,862 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                 self.send_response(404)
                 self.end_headers()
 
-# RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Diseño con Lightbox, Confirmación y Validación de Pago Móvil)
+    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
+    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
+    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
+    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
+    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
     def get_client_menu_html(self, db, categories_json, products_json, exchange_rate):
-        cfg = db.get("config", {})
-        restaurant_name = cfg.get("restaurantName", "Restaurante Local")
-        pago_movil = cfg.get("pagoMovil", {
-            "bank": "Banesco",
-            "phone": "0414-1234567",
-            "idNumber": "V-12345678",
-            "accountName": "Restaurante Local C.A."
+        restaurant_name = db["config"].get("restaurantName", "GastroLocal")
+        restaurant_slogan = db["config"].get("restaurantSlogan", "Menú Digital & Autoservicio")
+        restaurant_logo = db["config"].get("restaurantLogo", "")
+        restaurant_rif = db["config"].get("restaurantRif", "J-00000000-0")
+        restaurant_address = db["config"].get("restaurantAddress", "")
+        restaurant_phone = db["config"].get("restaurantPhone", "")
+        pago_movil = db["config"].get("pagoMovil", {
+            "bank": "",
+            "phone": "",
+            "idNumber": "",
+            "accountName": ""
         })
-        pago_movil_json = json.dumps(pago_movil, ensure_ascii=False)
+        pm_json = json.dumps(pago_movil, ensure_ascii=False)
+
+        logo_header_html = f'<img src="{restaurant_logo}" class="w-full h-full object-contain" alt="Logo">' if restaurant_logo else '<span class="material-icons text-xl">restaurant</span>'
+
         return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Digital - {restaurant_name}</title>
+    <title>{restaurant_name} - Menú Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
         body {{ font-family: 'Inter', sans-serif; }}
         .scrollbar-none::-webkit-scrollbar {{ display: none; }}
         .scrollbar-none {{ -ms-overflow-style: none; scrollbar-width: none; }}
-        @keyframes pulse-subtle {{
-            0%, 100% {{ opacity: 1; }}
-            50% {{ opacity: 0.6; }}
-        }}
-        .animate-pulse-subtle {{ animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }}
-        /* Control robusto de modales garantizado sin conflictos de CSS */
-        .gastro-modal {{
-            display: none !important;
-        }}
-        .gastro-modal.modal-visible {{
-            display: flex !important;
-        }}
     </style>
 </head>
 <body class="bg-[#fef7ff] text-[#1d1b20] pb-28 font-sans antialiased">
+    <!-- Header Principal -->
     <header class="bg-[#6750a4] text-white shadow-md sticky top-0 z-40">
         <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
-            <div class="flex flex-col">
-                <span class="text-[10px] font-bold tracking-wider text-[#eaddff] uppercase">Autoservicio Digital</span>
-                <h1 class="text-xl font-extrabold tracking-tight truncate max-w-[240px] sm:max-w-md">{restaurant_name}</h1>
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-white overflow-hidden shrink-0 border border-white/20 shadow-inner">
+                    {logo_header_html}
+                </div>
+                <div class="flex flex-col">
+                    <h1 class="text-base sm:text-lg font-black tracking-tight leading-tight">{restaurant_name}</h1>
+                    <span class="text-[10px] sm:text-[11px] font-medium text-[#eaddff] leading-none mt-0.5">{restaurant_slogan}</span>
+                </div>
             </div>
-            <div class="flex items-center gap-2 sm:gap-3">
-                <button id="btn-my-ticket" onclick="openLastTicketPdf()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-900 px-3 py-1.5 rounded-full text-xs font-black flex items-center gap-1.5 transition active:scale-95 shadow-md border border-amber-300">
-                    <span class="material-icons text-sm">picture_as_pdf</span> Mi Ticket PDF
+            
+            <div class="flex items-center gap-2">
+                <!-- Botón Llamar al Mozo / Cuenta -->
+                <button onclick="openTableCallModal()" class="bg-white/10 hover:bg-white/20 text-[#eaddff] hover:text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 border border-white/10 active:scale-95">
+                    <span class="material-icons text-sm text-amber-300">notifications</span>
+                    <span class="hidden sm:inline">Mozo</span>
                 </button>
-                <div class="text-right hidden sm:block">
-                    <span class="text-xs bg-white/20 px-2.5 py-1 rounded-full font-bold">Tasa: $1 = {exchange_rate:.2f} Bs</span>
+                
+                <!-- Identificador de Mesa -->
+                <div class="bg-[#21005d] text-[#eaddff] px-3 py-1.5 rounded-xl text-xs font-black tracking-wide flex items-center gap-1.5 border border-white/10 shadow-sm">
+                    <span class="material-icons text-xs text-[#d0bcff]">table_restaurant</span>
+                    <span id="display-table-number" class="uppercase">Mesa ?</span>
                 </div>
-                <div class="w-10 h-10 rounded-full bg-[#eaddff] flex items-center justify-center text-[#21005d] shadow-sm">
-                    <span class="material-icons text-xl">restaurant</span>
+            </div>
+        </div>
+
+        <!-- Barra de Tasa y Búsqueda Rápida -->
+        <div class="bg-[#4f378b] px-4 py-2 text-white">
+            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+                <div class="flex items-center gap-2 text-xs text-[#eaddff]">
+                    <span class="material-icons text-sm text-emerald-400">payments</span>
+                    <span>Tasa oficial: <strong class="text-white font-mono">{exchange_rate:.2f} Bs/$</strong></span>
                 </div>
+                
+                <!-- Buscador de Platos -->
+                <div class="relative w-full sm:w-64">
+                    <span class="material-icons absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-300 text-sm">search</span>
+                    <input type="text" id="menu-search-input" placeholder="Buscar plato o bebida..." 
+                           oninput="handleSearchInput(this.value)"
+                           class="w-full bg-white/10 text-white placeholder:text-purple-200 text-xs rounded-xl pl-8 pr-7 py-1.5 border border-white/20 focus:outline-none focus:bg-white/20">
+                    <button id="menu-search-clear" onclick="clearSearch()" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-purple-200 hover:text-white">
+                        <span class="material-icons text-xs">close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorías (Chips con Scroll Horizontal) -->
+        <div class="bg-[#f3edf7] border-b border-[#e7e0ec] py-2.5 px-4 overflow-x-auto scrollbar-none">
+            <div class="max-w-4xl mx-auto flex items-center gap-2" id="categories-bar">
+                <button onclick="filterCategory('ALL')" class="category-chip active shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm bg-[#6750a4] text-white">
+                    Todos
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Píldora Flotante de Estado de Pedido Activo (si vuelve al menú a seguir pidiendo) -->
-    <div id="order-floating-status" class="fixed top-16 right-4 bg-white/95 backdrop-blur-md border-2 border-amber-300 shadow-2xl rounded-2xl px-4 py-2.5 flex items-center gap-2.5 text-xs font-bold z-40 hidden cursor-pointer transition active:scale-95" onclick="reopenOrderStatusModal()">
-        <span id="floating-status-icon" class="material-icons text-amber-600 text-base animate-spin">hourglass_top</span>
-        <div class="flex flex-col">
-            <span class="text-[9px] uppercase tracking-wider text-slate-400 font-bold" id="floating-status-label">Estado de tu Orden</span>
-            <span id="floating-status-text" class="text-slate-800 font-bold">En espera por confirmar Pago Móvil</span>
-        </div>
-        <span class="material-icons text-slate-400 text-sm ml-1">chevron_right</span>
-    </div>
-
-    <main class="max-w-4xl mx-auto px-4 py-5 space-y-6">
-        <!-- Banner de Información -->
-        <div class="p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl flex gap-3 items-center border border-purple-100 shadow-sm">
-            <div class="w-9 h-9 rounded-full bg-purple-100 text-[#6750a4] flex items-center justify-center shrink-0">
-                <span class="material-icons text-lg">touch_app</span>
-            </div>
-            <div class="text-xs leading-relaxed text-slate-700">
-                <strong>Consejo:</strong> Toca cualquier imagen para <strong>ampliarla en pantalla completa</strong> y ver detalles e ingredientes.
-            </div>
-        </div>
-
-        <!-- Categorías -->
-        <div>
-            <div class="flex items-center justify-between mb-2.5">
-                <h2 class="text-xs font-bold text-[#49454f] uppercase tracking-wider">Categorías del Menú</h2>
-            </div>
-            <div class="overflow-x-auto flex space-x-2 pb-2 scrollbar-none" id="categories-container">
-                <button onclick="filterCategory(0)" id="cat-btn-0" class="px-4 py-2 bg-[#6750a4] text-white rounded-full text-xs font-bold shadow-sm shrink-0 whitespace-nowrap transition-all">Todos</button>
-            </div>
-        </div>
-
-        <!-- Platos -->
-        <div>
-            <div class="flex items-center justify-between mb-3.5">
-                <h2 class="text-lg font-extrabold flex items-center gap-2 text-[#1d1b20]">
-                    <span class="material-icons text-[#6750a4]">restaurant_menu</span> Platos Disponibles
-                </h2>
-                <span class="text-xs text-slate-400 font-medium" id="products-count-label"></span>
-            </div>
-            <div id="products-container" class="grid gap-3.5 sm:grid-cols-2"></div>
+    <!-- Contenido Principal (Catálogo de Platos) -->
+    <main class="max-w-4xl mx-auto px-4 py-6">
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Rellenado dinámicamente por JavaScript -->
         </div>
     </main>
 
-    <!-- Carrito Flotante Inferior -->
-    <div id="cart-footer" class="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-[#e7e0ec] shadow-2xl px-4 py-3 hidden z-30">
-        <div class="max-w-4xl mx-auto flex items-center justify-between gap-3">
-            <div>
-                <span class="text-xs text-slate-500 font-semibold block" id="cart-count">0 artículos</span>
-                <div class="text-base sm:text-lg font-black text-[#6750a4]" id="cart-total">$0.00 / 0.00 Bs</div>
+    <!-- Barra Flotante de Carrito / Footer -->
+    <div id="cart-footer" class="hidden fixed bottom-0 left-0 right-0 bg-[#f3edf7] border-t border-[#e7e0ec] shadow-2xl p-4 z-40 backdrop-blur-lg bg-opacity-95">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex flex-col cursor-pointer" onclick="openOrderModal()">
+                <span class="text-xs text-[#49454f] font-medium" id="cart-count">0 artículos</span>
+                <div class="text-lg font-black text-[#6750a4]" id="cart-total">$0.00 / 0.00 Bs</div>
             </div>
-            <button onclick="openOrderModal()" class="bg-[#6750a4] hover:bg-[#4f378b] text-white px-5 py-2.5 rounded-full font-extrabold text-xs sm:text-sm transition shadow-lg flex items-center gap-1.5 active:scale-95">
-                <span class="material-icons text-sm">shopping_cart_checkout</span>
-                <span>Confirmar Pedido</span>
+            <button onclick="openOrderModal()" class="bg-[#6750a4] hover:bg-[#523e85] text-white font-bold px-6 py-3 rounded-2xl text-sm shadow-lg shadow-purple-900/20 flex items-center gap-2 transition active:scale-95">
+                <span class="material-icons text-base">shopping_cart_checkout</span>
+                <span>Ver Carrito / Pedir</span>
             </button>
         </div>
     </div>
 
-    <!-- LIGHTBOX & PERSONALIZADOR DE MODIFICADORES -->
-    <div id="image-modal" class="gastro-modal fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 overflow-y-auto flex items-center justify-center p-3 sm:p-4" onclick="handleImageModalBackdrop(event)">
-        <div class="bg-white rounded-3xl w-full max-w-md overflow-hidden shadow-2xl border border-slate-200 animate-in fade-in zoom-in-95 duration-200 relative my-auto" onclick="event.stopPropagation()">
-            <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-slate-900/70 hover:bg-slate-900 text-white rounded-full p-2 z-20 transition shadow-md flex items-center justify-center">
-                <span class="material-icons text-sm">close</span>
-            </button>
-            <div id="image-modal-visual" class="w-full bg-slate-100 flex items-center justify-center min-h-[220px] max-h-[300px] p-2 overflow-hidden relative">
-                <!-- Imagen grande dinámica o vector -->
-            </div>
-            <div class="p-5 space-y-3.5 max-h-[75vh] overflow-y-auto">
-                <div class="flex items-start justify-between gap-2">
-                    <div>
-                        <h3 id="image-modal-title" class="text-lg font-black text-[#1d1b20] leading-snug"></h3>
-                        <span id="image-modal-category" class="text-[10px] font-bold text-[#6750a4] bg-[#eaddff] px-2.5 py-0.5 rounded-full inline-block mt-1"></span>
-                    </div>
-                    <div class="text-right shrink-0">
-                        <div id="image-modal-price-usd" class="text-xl font-black text-slate-900 font-mono"></div>
-                        <div id="image-modal-price-bs" class="text-xs font-bold text-[#6750a4] font-mono"></div>
-                    </div>
-                </div>
-                <p id="image-modal-desc" class="text-xs text-slate-600 leading-relaxed"></p>
-                <div class="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
-                    <span>Disponibilidad en cocina:</span>
-                    <strong id="image-modal-stock" class="text-slate-800 font-bold"></strong>
-                </div>
-
-                <!-- SECCIÓN INTERACTIVA DE MODIFICADORES Y EXTRAS -->
-                <div id="image-modal-modifiers-container" class="pt-3 border-t border-slate-100 space-y-2 hidden">
-                    <div class="flex items-center justify-between">
-                        <span class="text-xs font-black text-slate-800 uppercase tracking-wide flex items-center gap-1">
-                            <span class="material-icons text-amber-500 text-sm">tune</span> 🧀 Opciones y Modificadores (Extras)
-                        </span>
-                        <span class="text-[10px] font-bold text-purple-700 bg-purple-50 px-2 py-0.5 rounded-md">Opcional</span>
-                    </div>
-                    <div id="image-modal-modifiers-list" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
-                        <!-- Generado dinámicamente -->
-                    </div>
-                </div>
-
-                <div class="pt-2 flex gap-2">
-                    <button type="button" onclick="closeImageModal()" class="w-1/3 border-2 border-slate-300 hover:bg-slate-50 text-slate-700 py-3 rounded-2xl font-bold text-xs transition flex items-center justify-center gap-1 active:scale-95">
-                        <span class="material-icons text-sm">close</span> Cancelar
-                    </button>
-                    <button type="button" id="image-modal-add-btn" class="w-2/3 bg-[#6750a4] hover:bg-[#4f378b] text-white py-3 rounded-2xl font-bold text-xs transition shadow-lg flex items-center justify-center gap-1.5 active:scale-95">
-                        <span class="material-icons text-sm">add_shopping_cart</span> Agregar al Pedido
-                    </button>
+    <!-- Modal de Detalle y Modificadores de Producto (Zoom / Extras) -->
+    <div id="image-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="relative bg-slate-900 aspect-video flex items-center justify-center overflow-hidden shrink-0">
+                <img id="image-modal-img" src="" alt="" class="w-full h-full object-cover">
+                <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-black/50 hover:bg-black/80 text-white rounded-full p-2 transition">
+                    <span class="material-icons text-base">close</span>
+                </button>
+                <div id="image-modal-stock" class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 px-3 py-1 rounded-full text-xs font-bold border border-emerald-500/30">
+                    Disponible
                 </div>
             </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE CONFIRMACIÓN DE PEDIDO vs CONTINUAR PIDIENDO -->
-    <div id="order-modal" class="gastro-modal fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 items-center justify-center p-3 sm:p-4">
-        <div class="bg-white rounded-3xl w-full max-w-lg p-5 sm:p-6 max-h-[92vh] overflow-y-auto shadow-2xl border border-[#cac4d0] space-y-4">
-            <div class="flex items-center justify-between border-b border-[#e7e0ec] pb-3">
+            
+            <div class="p-6 overflow-y-auto space-y-4">
                 <div>
-                    <h3 class="text-lg font-black text-[#1d1b20]">Confirmar tu Pedido</h3>
-                    <p class="text-xs text-slate-500">Revisa tus platos o continúa agregando más</p>
+                    <h3 id="image-modal-title" class="text-xl font-black text-slate-900">Nombre del Plato</h3>
+                    <p id="image-modal-desc" class="text-xs text-slate-500 mt-1">Descripción detallada</p>
+                    <div id="image-modal-price" class="text-lg font-black text-purple-700 mt-2">$0.00 / 0.00 Bs</div>
                 </div>
-                <button type="button" onclick="closeOrderModal()" class="text-slate-400 hover:text-slate-800 p-1 rounded-full transition">
+
+                <!-- Sección de Modificadores / Extras -->
+                <div id="image-modal-modifiers-section" class="hidden border-t border-slate-100 pt-3">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Personaliza tu plato (Extras)</label>
+                    <div id="image-modal-modifiers-list" class="space-y-2">
+                        <!-- Rellenado dinámico con checkboxes -->
+                    </div>
+                </div>
+
+                <!-- Selector de Cantidad en Modal -->
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-600">Cantidad:</span>
+                    <div class="flex items-center gap-3 bg-slate-100 p-1.5 rounded-2xl">
+                        <button onclick="modalChangeQty(-1)" class="w-8 h-8 rounded-xl bg-white text-slate-700 font-black flex items-center justify-center shadow-sm active:scale-95">-</button>
+                        <span id="image-modal-qty" class="text-sm font-black text-slate-900 px-2">1</span>
+                        <button onclick="modalChangeQty(1)" class="w-8 h-8 rounded-xl bg-purple-600 text-white font-black flex items-center justify-center shadow-sm active:scale-95">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-slate-400 uppercase font-bold">Total con extras</span>
+                    <span id="image-modal-total-calc" class="text-base font-black text-purple-700">$0.00</span>
+                </div>
+                <button onclick="confirmAddClientModalProduct()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-2xl text-sm shadow-md transition flex items-center gap-2 active:scale-95">
+                    <span class="material-icons text-base">add_shopping_cart</span>
+                    <span>Agregar al Pedido</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Confirmación y Envío de Pedido -->
+    <div id="order-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl flex flex-col max-h-[92vh]">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-purple-600">shopping_bag</span>
+                    <h3 class="text-lg font-black text-slate-900">Tu Pedido</h3>
+                </div>
+                <button onclick="closeOrderModal()" class="text-slate-400 hover:text-slate-600 p-1">
                     <span class="material-icons">close</span>
                 </button>
             </div>
-            
-            <div class="space-y-4">
-                <!-- Lista de platos en el pedido -->
+
+            <div class="overflow-y-auto space-y-4 flex-1 pr-1">
+                <!-- Lista de Productos en el Carrito (ESTO ERA LO QUE NO APARECÍA) -->
                 <div>
-                    <div class="flex items-center justify-between mb-1.5">
-                        <label class="text-xs font-bold text-[#49454f] uppercase tracking-wider">Platos en tu Orden</label>
-                        <span id="order-modal-item-count" class="text-xs text-slate-400 font-medium">0 items</span>
-                    </div>
-                    <div id="order-modal-items-list" class="bg-slate-50 border border-[#e7e0ec] rounded-2xl p-3 max-h-40 overflow-y-auto space-y-2">
-                        <!-- Items list -->
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Platos y Bebidas seleccionados</label>
+                    <div id="modal-order-items-summary" class="space-y-2.5 max-h-48 overflow-y-auto pr-1">
+                        <!-- Rellenado dinámicamente con los items del pedido -->
                     </div>
                 </div>
 
-                <!-- Ubicación -->
-                <div>
-                    <label class="block text-xs font-bold text-[#49454f] uppercase tracking-wider mb-1.5">¿Dónde comerás?</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button id="type-dinein" type="button" onclick="setOrderType('DINE_IN')" class="border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition">
-                            <span class="material-icons text-lg">restaurant</span>
-                            <span class="text-xs font-bold mt-1">En la Mesa</span>
-                        </button>
-                        <button id="type-takeaway" type="button" onclick="setOrderType('TAKEAWAY')" class="border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]">
-                            <span class="material-icons text-lg">takeout_dining</span>
-                            <span class="text-xs font-bold mt-1">Para Llevar</span>
-                        </button>
-                    </div>
+                <!-- Selección / Confirmación de Mesa -->
+                <div class="bg-purple-50 p-3.5 rounded-2xl border border-purple-100">
+                    <label class="block text-xs font-bold text-purple-900 mb-1">Mesa o Ubicación:</label>
+                    <input type="text" id="order-table-input" placeholder="Ej: Mesa 1, Barra, Terraza" 
+                           class="w-full bg-white border border-purple-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-purple-600">
                 </div>
 
-                <!-- Mesa -->
-                <div id="table-number-group">
-                    <label class="block text-xs font-bold text-[#49454f] uppercase tracking-wider mb-1">Número de Mesa <span class="text-rose-500">*</span></label>
-                    <input type="text" id="input-table" placeholder="Ej. Mesa 3" class="w-full border border-[#cac4d0] rounded-2xl px-3.5 py-2.5 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-[#6750a4]">
+                <!-- Notas para Cocina -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Instrucciones especiales para cocina:</label>
+                    <textarea id="order-notes" rows="2" placeholder="Ej: Sin cebolla, salsa aparte, bien cocido..."
+                              class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:border-purple-600 resize-none"></textarea>
                 </div>
 
-                <!-- Método de pago -->
+                <!-- Método de Pago -->
                 <div>
-                    <label class="block text-xs font-bold text-[#49454f] uppercase tracking-wider mb-1">Método de Pago</label>
-                    <select id="select-payment" onchange="handlePaymentMethodChange()" class="w-full border border-[#cac4d0] rounded-2xl px-3.5 py-2.5 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-[#6750a4] bg-white">
-                        <option value="Pago Movil">Pago Móvil</option>
-                        <option value="Efectivo Bs">Efectivo Bs</option>
-                        <option value="Punto de Venta">Punto de Venta</option>
-                        <option value="Efectivo $">Efectivo $</option>
-                        <option value="Zelle">Zelle</option>
-                        <option value="Credito">Crédito</option>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">¿Cómo deseas pagar?</label>
+                    <select id="order-payment-method" onchange="togglePagoMovilRefBox()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-purple-600">
+                        <option value="CASH_USD">💵 Efectivo USD ($)</option>
+                        <option value="CASH_BS">💵 Efectivo Bolívares (Bs)</option>
+                        <option value="PAGO_MOVIL">📱 Pago Móvil (Venezuela)</option>
+                        <option value="PUNTO">💳 Punto de Venta / Tarjeta</option>
+                        <option value="ZELLE">⚡ Zelle</option>
+                        <option value="OTROS">🔄 Otro método / Por definir</option>
                     </select>
                 </div>
 
-                <!-- BLOQUE INTERACTIVO DE PAGO MÓVIL (DATOS Y REFERENCIA) -->
-                <div id="pago-movil-box" class="bg-gradient-to-br from-indigo-50 to-purple-50 border-2 border-indigo-200 rounded-2xl p-4 space-y-3 shadow-inner">
-                    <div class="flex items-center justify-between border-b border-indigo-100 pb-2">
-                        <div class="flex items-center gap-1.5">
-                            <span class="material-icons text-indigo-600 text-base">account_balance</span>
-                            <span class="text-xs font-black text-indigo-950 uppercase tracking-wide">Datos para tu Pago Móvil</span>
-                        </div>
-                        <div class="flex items-center gap-1.5">
-                            <button type="button" onclick="copyPagoMovilData()" id="btn-copy-pm" class="bg-indigo-600 hover:bg-indigo-700 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow-sm active:scale-95">
-                                <span class="material-icons text-xs">content_copy</span> Copiar
-                            </button>
-                            <button type="button" onclick="openPagoMovilQrModal()" id="btn-qr-pm" class="bg-purple-700 hover:bg-purple-800 text-white text-[10px] font-bold px-2.5 py-1 rounded-lg flex items-center gap-1 transition shadow-sm active:scale-95">
-                                <span class="material-icons text-xs">qr_code_2</span> Ver QR
-                            </button>
-                        </div>
+                <!-- Recuadro informativo de Pago Móvil -->
+                <div id="client-pm-info-box" class="hidden bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 space-y-2">
+                    <div class="text-xs font-bold text-emerald-900 flex items-center justify-between">
+                        <span>Datos de Pago Móvil:</span>
+                        <button type="button" onclick="copyPagoMovilDetails()" class="text-[10px] text-emerald-700 bg-emerald-100 hover:bg-emerald-200 px-2 py-0.5 rounded-lg font-bold">Copiar</button>
                     </div>
-
-                    <div class="grid grid-cols-2 gap-2 text-xs">
-                        <div class="bg-white/90 p-2 rounded-xl border border-indigo-100">
-                            <span class="text-[9px] text-slate-400 font-bold block uppercase">Banco:</span>
-                            <strong id="pm-bank-display" class="font-bold text-indigo-950 block"></strong>
-                        </div>
-                        <div class="bg-white/90 p-2 rounded-xl border border-indigo-100">
-                            <span class="text-[9px] text-slate-400 font-bold block uppercase">Teléfono:</span>
-                            <strong id="pm-phone-display" class="font-bold text-indigo-950 block font-mono"></strong>
-                        </div>
-                        <div class="bg-white/90 p-2 rounded-xl border border-indigo-100">
-                            <span class="text-[9px] text-slate-400 font-bold block uppercase">Cédula / RIF:</span>
-                            <strong id="pm-id-display" class="font-bold text-indigo-950 block font-mono"></strong>
-                        </div>
-                        <div class="bg-white/90 p-2 rounded-xl border border-indigo-100">
-                            <span class="text-[9px] text-slate-400 font-bold block uppercase">Titular:</span>
-                            <strong id="pm-name-display" class="font-bold text-indigo-950 block truncate"></strong>
-                        </div>
+                    <div class="text-[11px] text-emerald-800 font-mono space-y-0.5" id="client-pm-details-text">
+                        <div><strong>Banco:</strong> {pago_movil.get('bank', 'N/A')}</div>
+                        <div><strong>Teléfono:</strong> {pago_movil.get('phone', 'N/A')}</div>
+                        <div><strong>C.I / RIF:</strong> {pago_movil.get('idNumber', 'N/A')}</div>
                     </div>
+                    <input type="text" id="order-pm-ref" placeholder="Nº de Referencia (últimos 4 u 8 dígitos)"
+                           class="w-full bg-white border border-emerald-300 rounded-xl px-3 py-1.5 text-xs font-mono font-bold focus:outline-none focus:border-emerald-600">
+                </div>
 
-                    <div class="bg-white p-2.5 rounded-xl border border-indigo-200 flex items-center justify-between">
-                        <span class="text-xs font-bold text-slate-600">Monto exacto a transferir:</span>
-                        <span id="pm-total-bs-display" class="text-sm font-black text-indigo-700 font-mono">0.00 Bs</span>
-                    </div>
-
+                <!-- Total a Pagar -->
+                <div class="bg-slate-900 text-white p-4 rounded-2xl flex items-center justify-between">
                     <div>
-                        <label class="block text-[11px] font-bold text-indigo-950 uppercase tracking-wider mb-1">
-                            Número de Referencia de Pago Móvil <span class="text-rose-600">*</span>
-                        </label>
-                        <input type="text" id="input-payment-ref" placeholder="Ej: 123456 (últimos dígitos del comprobante)" class="w-full border-2 border-indigo-200 focus:border-indigo-600 rounded-xl px-3 py-2 text-xs font-mono font-bold bg-white focus:outline-none transition">
-                        <span class="text-[10px] text-slate-500 mt-1 block">Envía la referencia para que el administrador valide tu pago en cocina.</span>
+                        <span class="text-[10px] text-slate-400 block font-bold">TOTAL A PAGAR</span>
+                        <span id="order-modal-total-usd" class="text-lg font-black text-amber-400">$0.00</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-slate-400 block font-bold">EN BOLÍVARES</span>
+                        <span id="order-modal-total-bs" class="text-sm font-bold text-slate-200">0.00 Bs</span>
                     </div>
                 </div>
-
-                <!-- Notas -->
-                <div>
-                    <label class="block text-xs font-bold text-[#49454f] uppercase tracking-wider mb-1">Notas especiales para cocina</label>
-                    <textarea id="input-notes" rows="2" placeholder="Sin cebolla, salsa aparte, etc." class="w-full border border-[#cac4d0] rounded-2xl px-3 py-2 text-xs focus:outline-none focus:ring-2 focus:ring-[#6750a4]"></textarea>
-                </div>
-
-                <!-- Resumen del Pago -->
-                <div class="bg-[#f7f2fa] rounded-2xl p-3 border border-dashed border-[#cac4d0]">
-                    <div class="flex justify-between text-xs text-[#49454f]">
-                        <span>Total USD:</span>
-                        <span class="font-bold text-[#1d1b20]" id="modal-total-usd">$0.00</span>
-                    </div>
-                    <div class="flex justify-between text-sm mt-1">
-                        <span class="font-medium text-[#1d1b20]">Total en Bs:</span>
-                        <span class="font-bold text-[#6750a4]" id="modal-total-bs">0.00 Bs</span>
-                    </div>
-                </div>
-
-                <!-- BOTONES EXPLÍCITOS: CONTINUAR PIDIENDO vs CONFIRMAR Y ENVIAR -->
-                <div class="pt-2 flex flex-col sm:flex-row gap-2">
-                    <button type="button" onclick="closeOrderModal()" class="w-full sm:w-1/2 border-2 border-slate-300 hover:bg-slate-100 text-slate-700 py-3 rounded-full font-bold text-xs transition flex items-center justify-center gap-1.5 shadow-sm active:scale-95">
-                        <span class="material-icons text-sm">arrow_back</span> Continuar Pidiendo
-                    </button>
-                    <button type="button" onclick="submitOrder()" class="w-full sm:w-1/2 bg-[#6750a4] hover:bg-[#4f378b] text-white py-3 rounded-full font-bold text-xs transition shadow-lg flex items-center justify-center gap-1.5 active:scale-95">
-                        <span class="material-icons text-sm">send</span> Confirmar y Enviar
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE ESTADO EN TIEMPO REAL: ESPERA POR CONFIRMAR / PAGO MÓVIL VALIDADO -->
-    <div id="order-status-modal" class="gastro-modal fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 items-center justify-center p-3 sm:p-4">
-        <div class="bg-white rounded-3xl w-full max-w-md p-6 shadow-2xl border border-[#cac4d0] space-y-4 animate-in fade-in zoom-in-95 duration-200">
-            <!-- Vista 1: En espera por confirmar Pago Móvil -->
-            <div id="status-waiting-view" class="text-center space-y-3.5">
-                <div class="w-16 h-16 mx-auto bg-amber-100 text-amber-600 rounded-full flex items-center justify-center border-4 border-amber-200 animate-pulse">
-                    <span class="material-icons text-3xl">hourglass_top</span>
-                </div>
-                <div>
-                    <span class="text-[10px] font-black text-amber-800 bg-amber-100 px-3 py-1 rounded-full uppercase tracking-wider">Verificación en Curso</span>
-                    <h3 class="text-lg font-black text-slate-900 mt-2">En espera por confirmar Pago Móvil</h3>
-                    <p class="text-xs text-slate-500 mt-1 max-w-xs mx-auto leading-relaxed">
-                        Hemos recibido tu pedido y tu referencia bancaria. El administrador está validando la transferencia en este momento.
-                    </p>
-                </div>
-                <div class="bg-amber-50/80 border border-amber-200 rounded-2xl p-3 text-xs space-y-1.5 text-left">
-                    <div class="flex justify-between"><span class="text-slate-500">Número de Pedido:</span><strong id="waiting-order-id" class="font-mono text-slate-900 font-bold">#0</strong></div>
-                    <div class="flex justify-between"><span class="text-slate-500">Referencia enviada:</span><strong id="waiting-order-ref" class="font-mono text-slate-900 font-bold">-</strong></div>
-                    <div class="flex justify-between"><span class="text-slate-500">Monto:</span><strong id="waiting-order-total" class="text-amber-800 font-bold">0.00 Bs</strong></div>
-                </div>
-                <div class="flex items-center justify-center gap-1.5 text-[11px] text-slate-400 animate-pulse-subtle">
-                    <span class="w-2 h-2 rounded-full bg-amber-500"></span>
-                    <span>Actualizando automáticamente al ser verificado...</span>
-                </div>
-                <div class="pt-2 flex flex-col gap-2">
-                    <button type="button" onclick="openTicketPdfFromClient()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-full font-bold text-xs transition shadow-md flex items-center justify-center gap-2 active:scale-95">
-                        <span class="material-icons text-sm text-amber-400">picture_as_pdf</span> Ver / Descargar Ticket PDF
-                    </button>
-                    <button type="button" onclick="closeOrderStatusModal()" class="w-full border-2 border-slate-300 hover:bg-slate-100 text-slate-700 py-3 rounded-full font-bold text-xs transition flex items-center justify-center gap-1.5 active:scale-95">
-                        <span class="material-icons text-sm">restaurant_menu</span> Continuar Pidiendo en el Menú
-                    </button>
-                </div>
             </div>
 
-            <!-- Vista 2: Pago Móvil Validado -->
-            <div id="status-validated-view" class="text-center space-y-3.5 hidden">
-                <div class="w-16 h-16 mx-auto bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center border-4 border-emerald-200 shadow-md animate-bounce">
-                    <span class="material-icons text-3xl">check_circle</span>
-                </div>
-                <div>
-                    <span class="text-[10px] font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full uppercase tracking-wider">Aprobado</span>
-                    <h3 class="text-xl font-black text-emerald-700 mt-2">Pago Móvil Validado</h3>
-                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto leading-relaxed">
-                        ¡Tu pago móvil ha sido verificado con éxito! Tu pedido <strong id="validated-order-id" class="text-slate-900"></strong> ya está en preparación en cocina.
-                    </p>
-                </div>
-                <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-3 text-xs text-emerald-900 font-bold flex items-center justify-center gap-2">
-                    <span class="material-icons text-base text-emerald-600">outdoor_grill</span> Cocina preparando tu orden
-                </div>
-                <div class="pt-2 flex flex-col gap-2">
-                    <button type="button" onclick="openTicketPdfFromClient()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-full font-bold text-xs transition shadow-md flex items-center justify-center gap-2 active:scale-95">
-                        <span class="material-icons text-sm text-amber-400">picture_as_pdf</span> Ver / Descargar Ticket PDF
-                    </button>
-                    <button type="button" onclick="closeOrderStatusModal()" class="w-full bg-[#6750a4] hover:bg-[#4f378b] text-white py-3 rounded-full font-bold text-xs transition shadow-lg flex items-center justify-center gap-1.5 active:scale-95">
-                        <span class="material-icons text-sm">restaurant_menu</span> Continuar Pidiendo / Menú
-                    </button>
-                </div>
-            </div>
-
-            <!-- Vista 3: Pedido Estándar Confirmado -->
-            <div id="status-standard-view" class="text-center space-y-3.5 hidden">
-                <div class="w-16 h-16 mx-auto bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center border-4 border-indigo-200 shadow-md">
-                    <span class="material-icons text-3xl">restaurant</span>
-                </div>
-                <div>
-                    <h3 class="text-lg font-black text-slate-900 mt-2">¡Pedido Enviado a Cocina!</h3>
-                    <p class="text-xs text-slate-600 mt-1 max-w-xs mx-auto leading-relaxed">
-                        Tu comanda <strong id="standard-order-id"></strong> ha sido recibida exitosamente.
-                    </p>
-                </div>
-                <div class="pt-2 flex flex-col gap-2">
-                    <button type="button" onclick="openTicketPdfFromClient()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-full font-bold text-xs transition shadow-md flex items-center justify-center gap-2 active:scale-95">
-                        <span class="material-icons text-sm text-amber-400">picture_as_pdf</span> Ver / Descargar Ticket PDF
-                    </button>
-                    <button type="button" onclick="closeOrderStatusModal()" class="w-full bg-[#6750a4] hover:bg-[#4f378b] text-white py-3 rounded-full font-bold text-xs transition shadow-lg flex items-center justify-center gap-1.5 active:scale-95">
-                        <span class="material-icons text-sm">restaurant_menu</span> Continuar Pidiendo
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL DE QR PAGO MÓVIL -->
-    <div id="pago-movil-qr-modal" class="gastro-modal fixed inset-0 bg-slate-950/85 backdrop-blur-md z-50 items-center justify-center p-3 sm:p-4">
-        <div class="bg-white rounded-3xl w-full max-w-sm p-6 shadow-2xl border border-indigo-200 text-center space-y-4 animate-in fade-in zoom-in-95 duration-200">
-            <div class="flex justify-between items-center border-b border-slate-100 pb-3">
-                <div class="flex items-center gap-2">
-                    <span class="material-icons text-purple-600 text-xl">qr_code_2</span>
-                    <h3 class="text-sm font-extrabold text-slate-800">Escanea el QR Pago Móvil</h3>
-                </div>
-                <button type="button" onclick="closePagoMovilQrModal()" class="text-slate-400 hover:text-slate-600 text-sm p-1">
-                    <span class="material-icons">close</span>
+            <!-- Botones de Acción -->
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+                <button type="button" onclick="closeOrderModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-2xl text-xs font-bold transition">
+                    Seguir pidiendo
+                </button>
+                <button type="button" id="btn-submit-order" onclick="submitOrder()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-2xl text-xs font-black shadow-lg shadow-purple-900/30 transition active:scale-95 flex items-center justify-center gap-1">
+                    <span>Enviar a Cocina</span>
+                    <span class="material-icons text-sm">send</span>
                 </button>
             </div>
-            <p class="text-xs text-slate-500">Escanea este código desde la app de tu banco o cámara para obtener los datos de la transferencia:</p>
-            <div class="p-3 bg-white border-2 border-purple-100 rounded-2xl inline-block shadow-md">
-                <img id="pm-qr-img" src="" alt="QR Pago Movil" class="w-52 h-52 object-contain mx-auto">
-            </div>
-            <div class="bg-indigo-50/80 rounded-2xl p-3 text-xs text-left space-y-1 font-mono">
-                <div class="flex justify-between"><span class="text-slate-500 font-sans">Banco:</span><strong id="qr-pm-bank" class="text-indigo-950 font-bold"></strong></div>
-                <div class="flex justify-between"><span class="text-slate-500 font-sans">Teléfono:</span><strong id="qr-pm-phone" class="text-indigo-950 font-bold"></strong></div>
-                <div class="flex justify-between"><span class="text-slate-500 font-sans">Cédula / RIF:</span><strong id="qr-pm-id" class="text-indigo-950 font-bold"></strong></div>
-                <div class="flex justify-between"><span class="text-slate-500 font-sans">Monto:</span><strong id="qr-pm-total" class="text-purple-700 font-extrabold"></strong></div>
-            </div>
-            <button type="button" onclick="closePagoMovilQrModal()" class="w-full bg-slate-900 hover:bg-slate-800 text-white py-2.5 rounded-full text-xs font-bold transition active:scale-95 shadow-md">
-                Cerrar QR
-            </button>
         </div>
     </div>
 
-    <!-- Notificación Toast -->
-    <div id="toast" class="fixed bottom-24 left-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-full shadow-2xl flex items-center justify-between text-xs font-bold transition-all transform translate-y-32 hidden z-50">
-        <span id="toast-message">Pedido realizado con éxito</span>
-        <span class="material-icons text-amber-400 text-sm">check_circle</span>
+    <!-- Modal de Llamado de Mozo / Cuenta -->
+    <div id="table-call-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center space-y-4">
+            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto">
+                <span class="material-icons text-3xl">room_service</span>
+            </div>
+            <div>
+                <h3 class="text-lg font-black text-slate-900">Atención en Mesa</h3>
+                <p class="text-xs text-slate-500 mt-1">¿En qué podemos ayudarte?</p>
+            </div>
+            <div class="space-y-2">
+                <button onclick="sendTableCall('WAITER_CALL')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-icons text-sm">hail</span>
+                    <span>Llamar al Camarero / Mozo</span>
+                </button>
+                <button onclick="sendTableCall('BILL_REQUEST')" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-icons text-sm">receipt_long</span>
+                    <span>Solicitar la Cuenta</span>
+                </button>
+                <button onclick="closeTableCallModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-2xl text-xs transition">
+                    Cancelar
+                </button>
+            </div>
+        </div>
     </div>
 
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-24 left-4 right-4 max-w-sm mx-auto bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center justify-between text-xs font-bold transition-all z-50 border border-slate-700">
+        <span id="toast-message">Mensaje</span>
+        <span class="material-icons text-emerald-400 text-sm">check_circle</span>
+    </div>
+
+    <!-- SCRIPTS JAVASCRIPT DEL CLIENTE -->
     <script>
         const categories = {categories_json};
         const products = {products_json};
         const exchangeRate = {exchange_rate};
-        const pagoMovilConfig = {pago_movil_json};
-
-        let cart = {{}}; // productId -> quantity
-        let cartItems = []; // Array of cart item objects
-        let selectedCategoryId = 0;
-        let selectedOrderType = "DINE_IN";
-        let activeTrackingOrderId = localStorage.getItem('gastrolocal_last_order_id') || null;
-        let statusPollTimer = null;
-        let lastOrderStatus = null;
+        const pagoMovilConfig = {pm_json};
+        
+        // Estructura de items en carrito: cartId, productId, productName, quantity, priceUsd, selectedModifiers, unitTotalUsd
+        let cartItems = [];
+        let currentCategory = 'ALL';
+        let searchQuery = '';
+        let tableNumber = "Mesa 1";
+        
+        // Estado del modal de plato activo
+        let activeModalProduct = null;
+        let activeModalQty = 1;
 
         // Inicialización
         document.addEventListener('DOMContentLoaded', () => {{
-            renderCategories();
-            renderProducts();
+            // Leer número de mesa desde la URL (ej: /?table=3)
+            const urlParams = new URLSearchParams(window.location.search);
+            const tableParam = urlParams.get('table');
+            if (tableParam) {{
+                tableNumber = isNaN(tableParam) ? tableParam : `Mesa ${{tableParam}}`;
+            }}
+            
+            const displayTable = document.getElementById('display-table-number');
+            if (displayTable) displayTable.textContent = tableNumber;
+            const inputTable = document.getElementById('order-table-input');
+            if (inputTable) inputTable.value = tableNumber;
+
+            renderCategoriesBar();
+            renderProductsGrid();
             updateCartUI();
-            initPagoMovilCard();
-            handlePaymentMethodChange();
         }});
 
-        function renderCategories() {{
-            const container = document.getElementById('categories-container');
-            categories.forEach(cat => {{
-                const btn = document.createElement('button');
-                btn.id = `cat-btn-${{cat.id}}`;
-                btn.className = "px-4 py-2 bg-white text-[#49454f] border border-[#cac4d0] rounded-full text-xs font-bold shadow-sm shrink-0 whitespace-nowrap transition-colors";
-                btn.textContent = cat.name;
-                btn.onclick = () => filterCategory(cat.id);
-                container.appendChild(btn);
-            }});
-        }}
-
-        function filterCategory(catId) {{
-            selectedCategoryId = catId;
-            document.querySelectorAll('#categories-container button').forEach(btn => {{
-                btn.classList.remove('bg-[#6750a4]', 'text-white', 'border-transparent');
-                btn.classList.add('bg-white', 'text-[#49454f]', 'border-[#cac4d0]');
-            }});
-            const activeBtn = document.getElementById(`cat-btn-${{catId}}`);
-            if (activeBtn) {{
-                activeBtn.classList.remove('bg-white', 'text-[#49454f]', 'border-[#cac4d0]');
-                activeBtn.classList.add('bg-[#6750a4]', 'text-white');
-            }}
-            renderProducts();
-        }}
-
-        function getVisualAssetForProduct(p, sizeClass = "w-16 h-16", isLarge = false) {{
-            const imgUri = (p.imageUri || p.imageUrl || p.image || "").trim();
-            const isDataImg = imgUri.startsWith("data:image");
-            const isHttpImg = imgUri.startsWith("http://") || imgUri.startsWith("https://");
-            const bs = String.fromCharCode(92);
-            const isLocalPath = imgUri.startsWith("/") || imgUri.includes("product_images") || (imgUri.indexOf(bs) !== -1) || /^[a-zA-Z]:/.test(imgUri);
-
-            const roundClass = isLarge ? "rounded-3xl" : "rounded-2xl";
-            const iconSize = isLarge ? "text-7xl" : "text-2xl";
-            const textSize = isLarge ? "text-6xl" : "text-2xl";
-
-            if (isDataImg || isHttpImg) {{
-                return `<img src="${{imgUri}}" alt="${{p.name}}" class="${{sizeClass}} object-cover ${{roundClass}} shrink-0 border border-[#cac4d0] shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="${{sizeClass}} bg-[#eaddff] text-[#21005d] flex items-center justify-center ${{roundClass}} font-black ${{textSize}} uppercase shrink-0 border border-[#cac4d0]">${{p.name.charAt(0)}}</div>`;
-            }} else if (isLocalPath) {{
-                const fileName = imgUri.split('/').pop().split(bs).pop();
-                return `<img src="/api/images?file=${{encodeURIComponent(fileName)}}" alt="${{p.name}}" class="${{sizeClass}} object-cover ${{roundClass}} shrink-0 border border-[#cac4d0] shadow-sm" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="${{sizeClass}} bg-[#eaddff] text-[#21005d] flex items-center justify-center ${{roundClass}} font-black ${{textSize}} uppercase shrink-0 border border-[#cac4d0]">${{p.name.charAt(0)}}</div>`;
-            }} else if (imgUri !== "") {{
-                const clean = imgUri.toLowerCase();
-                let grad = "from-[#78909c] to-[#cfd8dc]";
-                let icon = "restaurant_menu";
-                if (clean.includes("pabellon") || clean.includes("plato")) {{
-                    grad = "from-[#e65100] to-[#ff8f00]"; icon = "restaurant";
-                }} else if (clean.includes("asado") || clean.includes("carne")) {{
-                    grad = "from-[#3e2723] to-[#d84315]"; icon = "outdoor_grill";
-                }} else if (clean.includes("arepa") || clean.includes("pan")) {{
-                    grad = "from-[#fbc02d] to-[#ffa000]"; icon = "bakery_dining";
-                }} else if (clean.includes("tequeno") || clean.includes("queso")) {{
-                    grad = "from-[#ffb300] to-[#ff6f00]"; icon = "breakfast_dining";
-                }} else if (clean.includes("empanada") || clean.includes("pastel")) {{
-                    grad = "from-[#f57c00] to-[#ffd54f]"; icon = "lunch_dining";
-                }} else if (clean.includes("chicha") || clean.includes("leche")) {{
-                    grad = "from-[#00838f] to-[#4dd0e1]"; icon = "local_bar";
-                }} else if (clean.includes("papelon") || clean.includes("limon")) {{
-                    grad = "from-[#2e7d32] to-[#81c784]"; icon = "local_cafe";
-                }} else if (clean.includes("quesillo") || clean.includes("flan")) {{
-                    grad = "from-[#8d6e63] to-[#ffb74d]"; icon = "cake";
-                }} else if (clean.includes("tresleches") || clean.includes("torta") || clean.includes("cake")) {{
-                    grad = "from-[#ec407a] to-[#f8bbd0]"; icon = "icecream";
-                }} else if (clean.includes("bebida") || clean.includes("refresco") || clean.includes("cola")) {{
-                    grad = "from-[#c62828] to-[#e53935]"; icon = "sports_bar";
-                }} else if (clean.includes("burger") || clean.includes("fastfood")) {{
-                    grad = "from-[#d84315] to-[#ffb300]"; icon = "fastfood";
-                }} else if (clean.includes("pizza")) {{
-                    grad = "from-[#c62828] to-[#ff8f00]"; icon = "local_pizza";
-                }} else if (clean.includes("cafe") || clean.includes("coffee")) {{
-                    grad = "from-[#4e342e] to-[#8d6e63]"; icon = "coffee";
-                }}
-                return `
-                    <div class="${{sizeClass}} bg-gradient-to-tr ${{grad}} ${{roundClass}} flex items-center justify-center shrink-0 border border-[#cac4d0] shadow-sm text-white select-none">
-                        <span class="material-icons ${{iconSize}}">${{icon}}</span>
-                    </div>
-                `;
-            }} else {{
-                return `
-                    <div class="${{sizeClass}} bg-[#eaddff] text-[#21005d] flex items-center justify-center ${{roundClass}} font-black ${{textSize}} uppercase shrink-0 border border-[#cac4d0]">
-                        ${{p.name.charAt(0)}}
-                    </div>
-                `;
-            }}
-        }}
-
-        function renderProducts() {{
-            const container = document.getElementById('products-container');
-            container.innerHTML = "";
-            
-            const filtered = selectedCategoryId === 0 
-                ? products 
-                : products.filter(p => p.categoryId === selectedCategoryId);
-
-            document.getElementById('products-count-label').textContent = `${{filtered.length}} platos`;
-
-            if (filtered.length === 0) {{
-                container.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-dashed border-[#cac4d0]">
-                        <span class="material-icons text-slate-300 text-5xl mb-2">inventory_2</span>
-                        <p class="text-slate-400 text-sm font-medium">No hay productos disponibles en esta categoría</p>
-                    </div>
-                `;
-                return;
-            }}
-
-            filtered.forEach(p => {{
-                const qty = cart[p.id] || 0;
-                const isOutOfStock = p.stock <= 0;
-                const priceBs = (p.priceUsd * exchangeRate).toFixed(2);
-                
-                const card = document.createElement('div');
-                card.className = "bg-white p-3.5 sm:p-4 rounded-3xl border border-[#cac4d0] shadow-sm flex gap-3.5 items-start transition-all hover:border-[#6750a4]/40 hover:shadow-md";
-                
-                let controlHtml = "";
-                const hasMods = (p.modifiers && p.modifiers.length > 0);
-                if (isOutOfStock) {{
-                    controlHtml = `<span class="text-[11px] bg-rose-50 text-rose-600 px-2.5 py-1 rounded-md font-bold">Agotado</span>`;
-                }} else if (qty > 0 && !hasMods) {{
-                    controlHtml = `
-                        <div class="flex items-center gap-1.5 bg-[#eaddff] border border-[#cac4d0] rounded-full p-0.5">
-                            <button onclick="event.stopPropagation(); decrementCart(${{p.id}})" class="text-[#6750a4] hover:bg-white rounded-full p-1 flex items-center justify-center transition">
-                                <span class="material-icons text-sm">remove</span>
-                            </button>
-                            <span class="text-xs font-black text-[#21005d] px-1">${{qty}}</span>
-                            <button onclick="event.stopPropagation(); incrementCart(${{p.id}})" class="text-[#6750a4] hover:bg-white rounded-full p-1 flex items-center justify-center transition">
-                                <span class="material-icons text-sm">add</span>
-                            </button>
-                        </div>
-                    `;
-                }} else if (hasMods) {{
-                    controlHtml = `
-                        <button onclick="event.stopPropagation(); openImageModal(${{p.id}})" class="bg-purple-600 hover:bg-purple-700 text-white px-3.5 py-1.5 rounded-full text-xs font-bold transition flex items-center gap-1 shadow-sm active:scale-95">
-                            <span class="material-icons text-xs">tune</span> Opciones
-                        </button>
-                    `;
-                }} else {{
-                    controlHtml = `
-                        <button onclick="event.stopPropagation(); incrementCart(${{p.id}})" class="bg-[#6750a4] text-white px-3.5 py-1.5 rounded-full text-xs font-bold hover:bg-[#4f378b] transition flex items-center gap-1 shadow-sm active:scale-95">
-                            <span class="material-icons text-xs">add_shopping_cart</span> Agregar
-                        </button>
-                    `;
-                }}
-
-                const visualHtml = getVisualAssetForProduct(p, "w-16 h-16 sm:w-20 sm:h-20");
-
-                card.innerHTML = `
-                    <div class="relative cursor-pointer group shrink-0" onclick="openImageModal(${{p.id}})" title="Toca para ampliar imagen">
-                        ${{visualHtml}}
-                        <div class="absolute inset-0 bg-black/30 group-hover:bg-black/40 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                            <span class="material-icons text-white text-lg">zoom_in</span>
-                        </div>
-                    </div>
-                    <div class="flex-1 min-w-0">
-                        <div class="flex justify-between items-start gap-1">
-                            <div>
-                                <h4 class="font-extrabold text-slate-800 text-sm truncate cursor-pointer hover:text-[#6750a4] transition" onclick="openImageModal(${{p.id}})">${{p.name}}</h4>
-                                ${{p.modifiers && p.modifiers.length > 0 ? '<span class="text-[9px] font-black text-purple-700 bg-purple-100 border border-purple-200 px-1.5 py-0.5 rounded-md inline-block mt-0.5">🧀 Personalizable / Extras</span>' : ''}}
-                            </div>
-                            <span class="text-[10px] font-bold text-slate-400 shrink-0">Stock: ${{p.stock}}</span>
-                        </div>
-                        <p class="text-slate-500 text-xs mt-0.5 line-clamp-2 cursor-pointer" onclick="openImageModal(${{p.id}})">${{p.description || "Deliciosa especialidad de la casa preparada al momento."}}</p>
-                        <div class="flex items-center justify-between mt-3 gap-2">
-                            <div>
-                                <span class="text-sm font-black text-slate-900">$${{p.priceUsd.toFixed(2)}}</span>
-                                <span class="text-[10px] text-slate-400 font-bold block">${{priceBs}} Bs</span>
-                            </div>
-                            <div>${{controlHtml}}</div>
-                        </div>
-                    </div>
-                `;
-                container.appendChild(card);
-            }});
-        }}
-
-        function showModal(modalId) {{
-            const el = document.getElementById(modalId);
-            if (!el) return;
-            el.classList.remove('hidden');
-            el.classList.add('modal-visible');
-        }}
-
-        function hideModal(modalId) {{
-            const el = document.getElementById(modalId);
-            if (!el) return;
-            el.classList.remove('modal-visible');
-            el.classList.add('hidden');
-        }}
-
-        // LIGHTBOX: Abrir modal con la imagen expandida y modificadores
-        function openImageModal(productId) {{
-            const p = products.find(prod => prod.id === productId);
-            if (!p) return;
-
-            const priceBs = (p.priceUsd * exchangeRate).toFixed(2);
-            const cat = categories.find(c => c.id === p.categoryId);
-
-            document.getElementById('image-modal-title').textContent = p.name;
-            document.getElementById('image-modal-category').textContent = cat ? cat.name : "Especialidad";
-            document.getElementById('image-modal-desc').textContent = p.description || "Deliciosa especialidad de la casa preparada con ingredientes frescos del día.";
-            document.getElementById('image-modal-price-usd').textContent = `$${{p.priceUsd.toFixed(2)}}`;
-            document.getElementById('image-modal-price-bs').textContent = `${{priceBs}} Bs`;
-            document.getElementById('image-modal-stock').textContent = p.stock > 0 ? `${{p.stock}} unidades disponibles` : "Agotado temporalmente";
-
-            // Visual grande
-            const visualContainer = document.getElementById('image-modal-visual');
-            visualContainer.innerHTML = getVisualAssetForProduct(p, "w-full h-64", true);
-
-            // Renderizar modificadores / extras
-            const modContainer = document.getElementById('image-modal-modifiers-container');
-            const modList = document.getElementById('image-modal-modifiers-list');
-            if (modContainer && modList) {{
-                modList.innerHTML = '';
-                if (p.modifiers && p.modifiers.length > 0) {{
-                    modContainer.classList.remove('hidden');
-                    p.modifiers.forEach((m, idx) => {{
-                        const mPriceBs = (m.priceUsd * exchangeRate).toFixed(2);
-                        const label = document.createElement('label');
-                        label.className = "flex items-center justify-between p-2.5 bg-purple-50/70 hover:bg-purple-100/70 border border-purple-200/80 rounded-xl cursor-pointer transition shadow-sm";
-                        label.innerHTML = `
-                            <div class="flex items-center gap-2">
-                                <input type="checkbox" id="client-mod-check-${{idx}}" data-name="${{m.name}}" data-price="${{m.priceUsd}}" class="w-4 h-4 rounded border-purple-300 text-purple-600 focus:ring-purple-500 accent-purple-600">
-                                <span class="text-xs font-bold text-slate-800">${{m.name}}</span>
-                            </div>
-                            <span class="text-xs font-mono font-extrabold text-purple-700">${{m.priceUsd > 0 ? '+$' + m.priceUsd.toFixed(2) + ' (' + mPriceBs + ' Bs)' : '¡Gratis! ($0.00)'}}</span>
-                        `;
-                        modList.appendChild(label);
-                    }});
-                }} else {{
-                    modContainer.classList.add('hidden');
-                }}
-            }}
-
-            // Botón de agregar
-            const addBtn = document.getElementById('image-modal-add-btn');
-            if (p.stock <= 0) {{
-                addBtn.disabled = true;
-                addBtn.className = "flex-1 bg-slate-300 text-slate-500 py-2.5 rounded-2xl font-bold text-xs cursor-not-allowed flex items-center justify-center gap-1";
-                addBtn.innerHTML = `<span class="material-icons text-sm">block</span> Agotado`;
-            }} else {{
-                addBtn.disabled = false;
-                addBtn.className = "flex-1 bg-[#6750a4] hover:bg-[#4f378b] text-white py-2.5 rounded-2xl font-bold text-xs transition shadow-md flex items-center justify-center gap-1 active:scale-95";
-                addBtn.innerHTML = `<span class="material-icons text-sm">add_shopping_cart</span> Agregar al Pedido`;
-                addBtn.onclick = () => {{
-                    addCartItemFromModal(p);
-                    closeImageModal();
-                }};
-            }}
-
-            showModal('image-modal');
-        }}
-
-        function closeImageModal() {{
-            hideModal('image-modal');
-        }}
-
-        function handleImageModalBackdrop(e) {{
-            if (e.target.id === 'image-modal') {{
-                closeImageModal();
-            }}
-        }}
-
-        function addCartItemFromModal(p) {{
-            const selectedMods = [];
-            let extraUsd = 0;
-            const modChecks = document.querySelectorAll('#image-modal-modifiers-list input[type="checkbox"]:checked');
-            modChecks.forEach(cb => {{
-                const mName = cb.getAttribute('data-name');
-                const mPrice = parseFloat(cb.getAttribute('data-price') || 0);
-                selectedMods.push({{ name: mName, priceUsd: mPrice }});
-                extraUsd += mPrice;
-            }});
-
-            const currentQty = cartItems.filter(ci => ci.productId === p.id).reduce((sum, item) => sum + item.quantity, 0);
-            if (currentQty >= p.stock) {{
-                showToast("¡Inventario límite alcanzado!");
-                return;
-            }}
-
-            const cartItemId = Date.now().toString() + '_' + Math.random().toString(36).substr(2, 5);
-            cartItems.push({{
-                cartItemId: cartItemId,
-                productId: p.id,
-                productName: p.name,
-                basePriceUsd: p.priceUsd,
-                unitTotalUsd: p.priceUsd + extraUsd,
-                quantity: 1,
-                selectedModifiers: selectedMods
-            }});
-
-            cart[p.id] = (cart[p.id] || 0) + 1;
-            updateCartUI();
-            renderProducts();
-            showToast("¡Agregado al pedido!", true);
-        }}
-
-        function removeCartItem(cartItemId) {{
-            const idx = cartItems.findIndex(ci => ci.cartItemId === cartItemId);
-            if (idx !== -1) {{
-                const pId = cartItems[idx].productId;
-                const qty = cartItems[idx].quantity;
-                cartItems.splice(idx, 1);
-                if (cart[pId]) {{
-                    cart[pId] = Math.max(0, cart[pId] - qty);
-                    if (cart[pId] === 0) delete cart[pId];
-                }}
-                updateCartUI();
-                renderProducts();
-                if (cartItems.length > 0) {{
-                    openOrderModal();
-                }} else {{
-                    closeOrderModal();
-                }}
-            }}
-        }}
-
-        function incrementCart(productId) {{
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-
-            if (product.modifiers && product.modifiers.length > 0) {{
-                openImageModal(productId);
-                return;
-            }}
-
-            const currentQty = cartItems.filter(ci => ci.productId === productId).reduce((sum, item) => sum + item.quantity, 0);
-            if (currentQty >= product.stock) {{
-                showToast("¡Inventario límite alcanzado!");
-                return;
-            }}
-
-            const existing = cartItems.find(ci => ci.productId === productId && (!ci.selectedModifiers || ci.selectedModifiers.length === 0));
-            if (existing) {{
-                existing.quantity += 1;
-            }} else {{
-                const cartItemId = Date.now().toString() + '_' + Math.random().toString(36).substr(2, 5);
-                cartItems.push({{
-                    cartItemId: cartItemId,
-                    productId: product.id,
-                    productName: product.name,
-                    basePriceUsd: product.priceUsd,
-                    unitTotalUsd: product.priceUsd,
-                    quantity: 1,
-                    selectedModifiers: []
-                }});
-            }}
-            cart[productId] = (cart[productId] || 0) + 1;
-            updateCartUI();
-            renderProducts();
-        }}
-
-        function decrementCart(productId) {{
-            const existingIdx = cartItems.findIndex(ci => ci.productId === productId && (!ci.selectedModifiers || ci.selectedModifiers.length === 0));
-            if (existingIdx !== -1) {{
-                if (cartItems[existingIdx].quantity > 1) {{
-                    cartItems[existingIdx].quantity -= 1;
-                }} else {{
-                    cartItems.splice(existingIdx, 1);
-                }}
-                if (cart[productId]) {{
-                    cart[productId] = Math.max(0, cart[productId] - 1);
-                    if (cart[productId] === 0) delete cart[productId];
-                }}
-            }}
-            updateCartUI();
-            renderProducts();
-        }}
-
-        function getCartStats() {{
-            let totalUsd = 0;
-            let count = 0;
-            cartItems.forEach(item => {{
-                totalUsd += item.unitTotalUsd * item.quantity;
-                count += item.quantity;
-            }});
-            return {{ totalUsd, count, totalBs: totalUsd * exchangeRate }};
-        }}
-
-        function updateCartUI() {{
-            const stats = getCartStats();
-            const footer = document.getElementById('cart-footer');
-            if (stats.count > 0) {{
-                footer.classList.remove('hidden');
-                document.getElementById('cart-count').textContent = `${{stats.count}} ` + (stats.count === 1 ? 'plato seleccionado' : 'platos seleccionados');
-                document.getElementById('cart-total').textContent = `$${{stats.totalUsd.toFixed(2)}} / ${{stats.totalBs.toFixed(2)}} Bs`;
-            }} else {{
-                footer.classList.add('hidden');
-            }}
-        }}
-
-        function showToast(message, isSuccess = false) {{
+        // Toast de notificación
+        function showToast(message, isSuccess = true) {{
             const toast = document.getElementById('toast');
             const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
             toastMsg.textContent = message;
-            toast.classList.remove('hidden', 'translate-y-32', 'bg-slate-900', 'bg-emerald-600');
-            toast.classList.add(isSuccess ? 'bg-emerald-600' : 'bg-slate-900', 'translate-y-0');
+            toast.classList.remove('hidden');
             setTimeout(() => {{
-                toast.classList.add('translate-y-32');
-                setTimeout(() => toast.classList.add('hidden'), 300);
+                toast.classList.add('hidden');
             }}, 2500);
         }}
 
-        // Inicializar datos bancarios de Pago Móvil
-        function initPagoMovilCard() {{
-            document.getElementById('pm-bank-display').textContent = pagoMovilConfig.bank || "Banesco";
-            document.getElementById('pm-phone-display').textContent = pagoMovilConfig.phone || "0414-1234567";
-            document.getElementById('pm-id-display').textContent = pagoMovilConfig.idNumber || "V-12345678";
-            document.getElementById('pm-name-display').textContent = pagoMovilConfig.accountName || "Restaurante Local C.A.";
-        }}
-
-        // Mostrar u ocultar datos de pago móvil según selección
-        function handlePaymentMethodChange() {{
-            const method = document.getElementById('select-payment').value;
-            const pmBox = document.getElementById('pago-movil-box');
-            const isPm = (method === 'Pago Movil' || method.toLowerCase().includes('pago'));
-            if (isPm) {{
-                pmBox.classList.remove('hidden');
-                const stats = getCartStats();
-                document.getElementById('pm-total-bs-display').textContent = `${{stats.totalBs.toFixed(2)}} Bs`;
-            }} else {{
-                pmBox.classList.add('hidden');
-            }}
-        }}
-
-        // Copiar datos de Pago Móvil al portapapeles
-        function copyPagoMovilData() {{
-            const stats = getCartStats();
-            const nl = String.fromCharCode(10);
-            const textToCopy = "PAGO MÓVIL:" + nl + "Banco: " + (pagoMovilConfig.bank || "Banesco") + nl + "Teléfono: " + (pagoMovilConfig.phone || "0414-1234567") + nl + "Cédula/RIF: " + (pagoMovilConfig.idNumber || "V-12345678") + nl + "Titular: " + (pagoMovilConfig.accountName || "Restaurante Local") + nl + "Monto a transferir: " + stats.totalBs.toFixed(2) + " Bs";
+        // Renderizado de barra de categorías
+        function renderCategoriesBar() {{
+            const bar = document.getElementById('categories-bar');
+            if (!bar) return;
             
-            navigator.clipboard.writeText(textToCopy).then(() => {{
-                const btn = document.getElementById('btn-copy-pm');
-                btn.innerHTML = `<span class="material-icons text-xs">done</span> ¡Copiado!`;
-                btn.classList.remove('bg-indigo-600', 'hover:bg-indigo-700');
-                btn.classList.add('bg-emerald-600');
-                setTimeout(() => {{
-                    btn.innerHTML = `<span class="material-icons text-xs">content_copy</span> Copiar Datos`;
-                    btn.classList.remove('bg-emerald-600');
-                    btn.classList.add('bg-indigo-600', 'hover:bg-indigo-700');
-                }}, 2000);
-            }}).catch(() => {{
-                alert("Por favor copia los datos manualmente:" + nl + textToCopy);
-            }});
-        }}
-
-        function openPagoMovilQrModal() {{
-            const stats = getCartStats();
-            const totalBs = stats.totalBs.toFixed(2);
-
-            const bank = pagoMovilConfig.bank || "Banesco";
-            const phone = pagoMovilConfig.phone || "0414-1234567";
-            const idNumber = pagoMovilConfig.idNumber || "V-12345678";
-            const name = pagoMovilConfig.accountName || "Restaurante Local C.A.";
-
-            document.getElementById('qr-pm-bank').textContent = bank;
-            document.getElementById('qr-pm-phone').textContent = phone;
-            document.getElementById('qr-pm-id').textContent = idNumber;
-            document.getElementById('qr-pm-total').textContent = `${{totalBs}} Bs`;
-
-            const qrText = `PAGO MOVIL\nBanco: ${{bank}}\nTelefono: ${{phone}}\nCI/RIF: ${{idNumber}}\nTitular: ${{name}}\nMonto: ${{totalBs}} Bs`;
-            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&margin=10&data=` + encodeURIComponent(qrText);
-
-            document.getElementById('pm-qr-img').src = qrUrl;
-            showModal('pago-movil-qr-modal');
-        }}
-
-        function closePagoMovilQrModal() {{
-            hideModal('pago-movil-qr-modal');
-        }}
-
-        // Abrir modal de pedido con la lista de platos
-        function openOrderModal() {{
-            const stats = getCartStats();
-            if (stats.count === 0) return;
-
-            document.getElementById('order-modal-item-count').textContent = `${{stats.count}} items`;
-            document.getElementById('modal-total-usd').textContent = `$${{stats.totalUsd.toFixed(2)}}`;
-            document.getElementById('modal-total-bs').textContent = `${{stats.totalBs.toFixed(2)}} Bs`;
-            document.getElementById('pm-total-bs-display').textContent = `${{stats.totalBs.toFixed(2)}} Bs`;
-
-            // Renderizar desglose de platos con modificadores
-            const listContainer = document.getElementById('order-modal-items-list');
-            listContainer.innerHTML = "";
-            cartItems.forEach((item, idx) => {{
-                const subUsd = (item.unitTotalUsd * item.quantity).toFixed(2);
-                const itemRow = document.createElement('div');
-                itemRow.className = "flex flex-col py-1.5 border-b border-slate-200 last:border-0";
-                
-                let modsHtml = "";
-                if (item.selectedModifiers && item.selectedModifiers.length > 0) {{
-                    modsHtml = `<div class="pl-6 space-y-0.5 text-[10px] text-purple-700 font-semibold mt-0.5">` +
-                        item.selectedModifiers.map(m => `<div>+ ${{m.name}} ${{m.priceUsd > 0 ? '(+$' + m.priceUsd.toFixed(2) + ')' : ''}}</div>`).join('') +
-                        `</div>`;
-                }}
-
-                itemRow.innerHTML = `
-                    <div class="flex items-center justify-between text-xs">
-                        <div class="flex items-center gap-1.5 truncate">
-                            <button onclick="removeCartItem('${{item.cartItemId}}')" class="text-rose-500 hover:text-rose-700 p-0.5 rounded-full transition" title="Eliminar ítem">
-                                <span class="material-icons text-xs">delete</span>
-                            </button>
-                            <span class="font-black text-[#6750a4]">${{item.quantity}}x</span>
-                            <span class="font-bold text-slate-800 truncate">${{item.productName}}</span>
-                        </div>
-                        <span class="font-mono font-bold text-slate-700 shrink-0">$${{subUsd}}</span>
-                    </div>
-                    ${{modsHtml}}
+            let html = `
+                <button onclick="filterCategory('ALL')" class="category-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${{currentCategory === 'ALL' ? 'bg-[#6750a4] text-white' : 'bg-white text-slate-700 border border-slate-200'}}">
+                    Todos
+                </button>
+            `;
+            
+            categories.forEach(c => {{
+                const isActive = currentCategory === String(c.id);
+                html += `
+                    <button onclick="filterCategory('${{c.id}}')" class="category-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${{isActive ? 'bg-[#6750a4] text-white' : 'bg-white text-slate-700 border border-slate-200'}}">
+                        ${{c.name}}
+                    </button>
                 `;
-                listContainer.appendChild(itemRow);
+            }});
+            
+            bar.innerHTML = html;
+        }}
+
+        function filterCategory(catId) {{
+            currentCategory = catId;
+            renderCategoriesBar();
+            renderProductsGrid();
+        }}
+
+        function handleSearchInput(val) {{
+            searchQuery = (val || '').trim().toLowerCase();
+            const clearBtn = document.getElementById('menu-search-clear');
+            if (clearBtn) {{
+                if (searchQuery) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+            }}
+            renderProductsGrid();
+        }}
+
+        function clearSearch() {{
+            const input = document.getElementById('menu-search-input');
+            if (input) input.value = '';
+            handleSearchInput('');
+        }}
+
+        // Renderizado de la cuadrícula de productos
+        function renderProductsGrid() {{
+            const container = document.getElementById('products-container');
+            if (!container) return;
+
+            let filtered = products.filter(p => {{
+                const matchCat = (currentCategory === 'ALL') || (String(p.categoryId) === String(currentCategory));
+                const matchSearch = !searchQuery || (p.name && p.name.toLowerCase().includes(searchQuery)) || (p.description && p.description.toLowerCase().includes(searchQuery));
+                return matchCat && matchSearch;
             }});
 
-            handlePaymentMethodChange();
-            showModal('order-modal');
-        }}
-
-        function closeOrderModal() {{
-            hideModal('order-modal');
-        }}
-
-        function setOrderType(type) {{
-            selectedOrderType = type;
-            const btnDine = document.getElementById('type-dinein');
-            const btnTake = document.getElementById('type-takeaway');
-            const tableGroup = document.getElementById('table-number-group');
-            
-            if (type === 'DINE_IN') {{
-                btnDine.className = "border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition";
-                btnTake.className = "border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]";
-                tableGroup.classList.remove('hidden');
-            }} else {{
-                btnTake.className = "border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition";
-                btnDine.className = "border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]";
-                tableGroup.classList.add('hidden');
-                document.getElementById('input-table').value = "";
-            }}
-        }}
-
-        function submitOrder() {{
-            const stats = getCartStats();
-            if (stats.count === 0) return;
-
-            let tableNumber = "Para llevar";
-            if (selectedOrderType === "DINE_IN") {{
-                tableNumber = document.getElementById('input-table').value.trim();
-                if (!tableNumber) {{
-                    alert("Por favor ingresa tu número de mesa o ubicación.");
-                    document.getElementById('input-table').focus();
-                    return;
-                }}
-            }}
-
-            const paymentMethod = document.getElementById('select-payment').value;
-            const isPm = (paymentMethod === "Pago Movil" || paymentMethod.toLowerCase().includes("pago"));
-            const paymentRef = document.getElementById('input-payment-ref').value.trim();
-
-            if (isPm && !paymentRef) {{
-                alert("Por favor ingresa el número de referencia del Pago Móvil para que el administrador pueda validar tu pago.");
-                document.getElementById('input-payment-ref').focus();
+            if (filtered.length === 0) {{
+                container.innerHTML = `
+                    <div class="col-span-full text-center py-12 text-slate-400">
+                        <span class="material-icons text-5xl block mb-2 text-slate-300">search_off</span>
+                        <p class="text-sm font-bold">No se encontraron platos disponibles</p>
+                    </div>
+                `;
                 return;
             }}
 
-            const notes = document.getElementById('input-notes').value.trim();
+            container.innerHTML = filtered.map(p => {{
+                const priceBs = (p.priceUsd * exchangeRate).toFixed(2);
+                const hasStock = (p.stock === undefined || p.stock === null || p.stock > 0);
+                const hasModifiers = p.modifiers && Array.isArray(p.modifiers) && p.modifiers.length > 0;
+                
+                // Buscar cantidad actual en el carrito
+                const totalInCart = cartItems.filter(item => item.productId === p.id).reduce((sum, item) => sum + item.quantity, 0);
+
+                const imageHtml = p.imageUrl 
+                    ? `<img src="${{p.imageUrl}}" alt="${{p.name}}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">`
+                    : `<div class="w-full h-full flex items-center justify-center text-slate-300 bg-slate-100"><span class="material-icons text-4xl">restaurant</span></div>`;
+
+                return `
+                    <div class="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="relative aspect-video bg-slate-100 cursor-pointer overflow-hidden" onclick="openProductModal(${{p.id}})">
+                            ${{imageHtml}}
+                            ${{hasModifiers ? `<span class="absolute top-2.5 left-2.5 bg-purple-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">Personalizable</span>` : ''}}
+                            ${{!hasStock ? `<div class="absolute inset-0 bg-black/60 flex items-center justify-center text-white text-xs font-black uppercase tracking-wider">Agotado</div>` : ''}}
+                        </div>
+
+                        <div class="p-4 flex-1 flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-black text-slate-900 text-sm sm:text-base leading-snug cursor-pointer" onclick="openProductModal(${{p.id}})">${{p.name}}</h3>
+                                ${{p.description ? `<p class="text-slate-500 text-xs mt-1 line-clamp-2">${{p.description}}</p>` : ''}}
+                            </div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-black text-purple-700 font-mono">$${{p.priceUsd.toFixed(2)}}</span>
+                                    <span class="text-[11px] font-semibold text-slate-400 font-mono">${{priceBs}} Bs</span>
+                                </div>
+
+                                ${{hasStock ? `
+                                    <div class="flex items-center gap-1.5">
+                                        ${{totalInCart > 0 ? `
+                                            <button onclick="decrementProductSimple(${{p.id}})" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center active:scale-95 transition">-</button>
+                                            <span class="text-xs font-black text-purple-900 px-1.5">${{totalInCart}}</span>
+                                        ` : ''}}
+                                        <button onclick="handleCardAddClick(${{p.id}})" class="bg-[#6750a4] hover:bg-[#523e85] text-white font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow-sm active:scale-95 transition">
+                                            <span class="material-icons text-xs">add</span>
+                                            <span>${{totalInCart > 0 ? 'Más' : 'Agregar'}}</span>
+                                        </button>
+                                    </div>
+                                ` : `
+                                    <span class="text-xs font-bold text-slate-400">No disponible</span>
+                                `}}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }}).join('');
+        }}
+
+        // Manejo de clic en botón rápido de tarjeta
+        function handleCardAddClick(productId) {{
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+
+            // Si tiene modificadores / extras, abrimos el modal para que los elija
+            if (prod.modifiers && prod.modifiers.length > 0) {{
+                openProductModal(productId);
+            }} else {{
+                // Si es un producto simple, lo agregamos directo al carrito
+                addSimpleProductToCart(prod);
+            }}
+        }}
+
+        function addSimpleProductToCart(prod) {{
+            // Buscar si ya existe el item simple en el carrito
+            const existing = cartItems.find(item => item.productId === prod.id && (!item.selectedModifiers || item.selectedModifiers.length === 0));
+            if (existing) {{
+                existing.quantity += 1;
+            }} else {{
+                cartItems.push({{
+                    cartId: Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                    productId: prod.id,
+                    productName: prod.name,
+                    quantity: 1,
+                    priceUsd: prod.priceUsd,
+                    selectedModifiers: [],
+                    unitTotalUsd: prod.priceUsd
+                }});
+            }}
+            updateCartUI();
+            renderProductsGrid();
+            showToast(`Agregado: ${{prod.name}}`);
+        }}
+
+        function decrementProductSimple(productId) {{
+            // Buscar el último item agregado de ese producto
+            const index = cartItems.map(item => item.productId).lastIndexOf(productId);
+            if (index !== -1) {{
+                if (cartItems[index].quantity > 1) {{
+                    cartItems[index].quantity -= 1;
+                }} else {{
+                    cartItems.splice(index, 1);
+                }}
+            }}
+            updateCartUI();
+            renderProductsGrid();
+        }}
+
+        // Modal de Producto (Detalle, Zoom y Extras)
+        function openProductModal(productId) {{
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+            
+            activeModalProduct = prod;
+            activeModalQty = 1;
+
+            const modal = document.getElementById('image-modal');
+            const img = document.getElementById('image-modal-img');
+            const title = document.getElementById('image-modal-title');
+            const desc = document.getElementById('image-modal-desc');
+            const price = document.getElementById('image-modal-price');
+            const stock = document.getElementById('image-modal-stock');
+            const qty = document.getElementById('image-modal-qty');
+            const modSection = document.getElementById('image-modal-modifiers-section');
+            const modList = document.getElementById('image-modal-modifiers-list');
+
+            if (img) img.src = prod.imageUrl || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80';
+            if (title) title.textContent = prod.name;
+            if (desc) desc.textContent = prod.description || 'Delicioso plato preparado al momento con los mejores ingredientes.';
+            if (price) price.textContent = `$${{prod.priceUsd.toFixed(2)}} / ${{(prod.priceUsd * exchangeRate).toFixed(2)}} Bs`;
+            if (stock) stock.textContent = (prod.stock !== undefined && prod.stock !== null) ? `Stock: ${{prod.stock}} disponibles` : 'Disponible';
+            if (qty) qty.textContent = "1";
+
+            // Modificadores / Extras
+            if (prod.modifiers && prod.modifiers.length > 0 && modSection && modList) {{
+                modSection.classList.remove('hidden');
+                modList.innerHTML = prod.modifiers.map((m, idx) => `
+                    <label class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200 hover:bg-purple-50/50 cursor-pointer transition">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="modal-modifier" value="${{idx}}" onchange="recalcModalTotal()" class="w-4 h-4 text-purple-600 rounded focus:ring-purple-500">
+                            <span class="text-xs font-bold text-slate-800">${{m.name}}</span>
+                        </div>
+                        <span class="text-xs font-black text-purple-700 font-mono">+ $${{m.priceUsd.toFixed(2)}}</span>
+                    </label>
+                `).join('');
+            }} else if (modSection) {{
+                modSection.classList.add('hidden');
+            }}
+
+            recalcModalTotal();
+            if (modal) modal.classList.remove('hidden');
+        }}
+
+        function closeImageModal() {{
+            const modal = document.getElementById('image-modal');
+            if (modal) modal.classList.add('hidden');
+            activeModalProduct = null;
+        }}
+
+        function modalChangeQty(delta) {{
+            activeModalQty = Math.max(1, activeModalQty + delta);
+            const qty = document.getElementById('image-modal-qty');
+            if (qty) qty.textContent = activeModalQty;
+            recalcModalTotal();
+        }}
+
+        function recalcModalTotal() {{
+            if (!activeModalProduct) return;
+            let unitTotal = activeModalProduct.priceUsd;
+            
+            const checkboxes = document.querySelectorAll('input[name="modal-modifier"]:checked');
+            checkboxes.forEach(cb => {{
+                const modIdx = parseInt(cb.value, 10);
+                if (activeModalProduct.modifiers && activeModalProduct.modifiers[modIdx]) {{
+                    unitTotal += activeModalProduct.modifiers[modIdx].priceUsd;
+                }}
+            }});
+
+            const fullTotal = unitTotal * activeModalQty;
+            const calc = document.getElementById('image-modal-total-calc');
+            if (calc) {{
+                calc.textContent = `$${{fullTotal.toFixed(2)}} / ${{(fullTotal * exchangeRate).toFixed(2)}} Bs`;
+            }}
+        }}
+
+        function confirmAddClientModalProduct() {{
+            if (!activeModalProduct) return;
+            
+            let selectedMods = [];
+            let unitTotal = activeModalProduct.priceUsd;
+
+            const checkboxes = document.querySelectorAll('input[name="modal-modifier"]:checked');
+            checkboxes.forEach(cb => {{
+                const modIdx = parseInt(cb.value, 10);
+                if (activeModalProduct.modifiers && activeModalProduct.modifiers[modIdx]) {{
+                    const m = activeModalProduct.modifiers[modIdx];
+                    selectedMods.push({{ name: m.name, priceUsd: m.priceUsd }});
+                    unitTotal += m.priceUsd;
+                }}
+            }});
+
+            cartItems.push({{
+                cartId: Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                productId: activeModalProduct.id,
+                productName: activeModalProduct.name,
+                quantity: activeModalQty,
+                priceUsd: activeModalProduct.priceUsd,
+                selectedModifiers: selectedMods,
+                unitTotalUsd: unitTotal
+            }});
+
+            updateCartUI();
+            renderProductsGrid();
+            closeImageModal();
+            showToast(`Agregado al carrito: ${{activeModalProduct.name}}`);
+        }}
+
+        // Actualización de la barra flotante y estado del carrito
+        function updateCartUI() {{
+            const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalUsd = cartItems.reduce((sum, item) => sum + (item.unitTotalUsd * item.quantity), 0);
+            const totalBs = (totalUsd * exchangeRate).toFixed(2);
+
+            const footer = document.getElementById('cart-footer');
+            const countEl = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cart-total');
+
+            if (totalCount > 0) {{
+                if (footer) footer.classList.remove('hidden');
+                if (countEl) countEl.textContent = `${{totalCount}} ${{totalCount === 1 ? 'artículo' : 'artículos'}} en el carrito`;
+                if (totalEl) totalEl.textContent = `$${{totalUsd.toFixed(2)}} / ${{totalBs}} Bs`;
+            }} else {{
+                if (footer) footer.classList.add('hidden');
+            }}
+        }}
+
+        // Modal de Pedido / Carrito (Renderiza la lista completa de platos)
+        function openOrderModal() {{
+            if (cartItems.length === 0) {{
+                showToast("El carrito está vacío. Agrega platos para pedir.");
+                return;
+            }}
+
+            const modal = document.getElementById('order-modal');
+            const summaryContainer = document.getElementById('modal-order-items-summary');
+            
+            // Rellenar lista de items en el modal
+            if (summaryContainer) {{
+                summaryContainer.innerHTML = cartItems.map((item, idx) => {{
+                    const itemTotalUsd = (item.unitTotalUsd * item.quantity).toFixed(2);
+                    const itemTotalBs = (item.unitTotalUsd * item.quantity * exchangeRate).toFixed(2);
+                    const modsText = (item.selectedModifiers && item.selectedModifiers.length > 0)
+                        ? item.selectedModifiers.map(m => `+ ${{m.name}}`).join(', ')
+                        : '';
+
+                    return `
+                        <div class="flex items-center justify-between bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+                            <div class="flex-1 pr-2">
+                                <h4 class="text-xs font-black text-slate-900 leading-tight">${{item.productName}}</h4>
+                                ${{modsText ? `<p class="text-[10px] text-purple-700 font-medium leading-tight mt-0.5">${{modsText}}</p>` : ''}}
+                                <span class="text-[11px] font-black text-purple-900 font-mono mt-0.5 block">$${{itemTotalUsd}} / ${{itemTotalBs}} Bs</span>
+                            </div>
+
+                            <div class="flex items-center gap-2 shrink-0">
+                                <div class="flex items-center bg-white border border-slate-200 rounded-xl p-0.5 shadow-sm">
+                                    <button onclick="changeCartItemQty(${{idx}}, -1)" class="w-6 h-6 rounded-lg text-slate-700 font-black text-xs hover:bg-slate-100 flex items-center justify-center">-</button>
+                                    <span class="text-xs font-black text-purple-900 px-2 font-mono">${{item.quantity}}</span>
+                                    <button onclick="changeCartItemQty(${{idx}}, 1)" class="w-6 h-6 rounded-lg bg-purple-600 text-white font-black text-xs hover:bg-purple-700 flex items-center justify-center">+</button>
+                                </div>
+                                <button onclick="removeCartItem(${{idx}})" class="text-rose-400 hover:text-rose-600 p-1">
+                                    <span class="material-icons text-base">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }}).join('');
+            }}
+
+            // Actualizar totales en el modal
+            const totalUsd = cartItems.reduce((sum, item) => sum + (item.unitTotalUsd * item.quantity), 0);
+            const totalBs = (totalUsd * exchangeRate).toFixed(2);
+
+            const totalUsdEl = document.getElementById('order-modal-total-usd');
+            const totalBsEl = document.getElementById('order-modal-total-bs');
+            if (totalUsdEl) totalUsdEl.textContent = `$${{totalUsd.toFixed(2)}}`;
+            if (totalBsEl) totalBsEl.textContent = `${{totalBs}} Bs`;
+
+            togglePagoMovilRefBox();
+            if (modal) modal.classList.remove('hidden');
+        }}
+
+        function closeOrderModal() {{
+            const modal = document.getElementById('order-modal');
+            if (modal) modal.classList.add('hidden');
+        }}
+
+        function changeCartItemQty(index, delta) {{
+            if (cartItems[index]) {{
+                cartItems[index].quantity += delta;
+                if (cartItems[index].quantity <= 0) {{
+                    cartItems.splice(index, 1);
+                }}
+            }}
+            updateCartUI();
+            renderProductsGrid();
+            if (cartItems.length === 0) {{
+                closeOrderModal();
+            }} else {{
+                openOrderModal();
+            }}
+        }}
+
+        function removeCartItem(index) {{
+            if (cartItems[index]) {{
+                cartItems.splice(index, 1);
+            }}
+            updateCartUI();
+            renderProductsGrid();
+            if (cartItems.length === 0) {{
+                closeOrderModal();
+            }} else {{
+                openOrderModal();
+            }}
+        }}
+
+        function togglePagoMovilRefBox() {{
+            const method = document.getElementById('order-payment-method').value;
+            const box = document.getElementById('client-pm-info-box');
+            if (box) {{
+                if (method === 'PAGO_MOVIL') box.classList.remove('hidden');
+                else box.classList.add('hidden');
+            }}
+        }}
+
+        function copyPagoMovilDetails() {{
+            const text = `Pago Móvil:\\nBanco: ${{pagoMovilConfig.bank || 'N/A'}}\\nTeléfono: ${{pagoMovilConfig.phone || 'N/A'}}\\nRIF/CI: ${{pagoMovilConfig.idNumber || 'N/A'}}`;
+            if (navigator.clipboard && navigator.clipboard.writeText) {{
+                navigator.clipboard.writeText(text).then(() => showToast("Datos de Pago Móvil copiados"));
+            }} else {{
+                showToast("Datos copiados");
+            }}
+        }}
+
+        // Envío del Pedido al Backend
+        function submitOrder() {{
+            if (cartItems.length === 0) {{
+                showToast("Tu carrito está vacío.");
+                return;
+            }}
+
+            const tableInput = document.getElementById('order-table-input');
+            const finalTable = (tableInput && tableInput.value.trim()) ? tableInput.value.trim() : tableNumber;
+            const notes = document.getElementById('order-notes').value.trim();
+            const paymentMethod = document.getElementById('order-payment-method').value;
+            const pmRef = document.getElementById('order-pm-ref') ? document.getElementById('order-pm-ref').value.trim() : '';
+
+            const btn = document.getElementById('btn-submit-order');
+            if (btn) {{
+                btn.disabled = true;
+                btn.innerHTML = `<span class="material-icons text-sm animate-spin">sync</span> <span>Enviando a Cocina...</span>`;
+            }}
+
+            // Construir payload con modificadores
             const itemsPayload = cartItems.map(item => ({{
                 productId: item.productId,
                 quantity: item.quantity,
-                selectedModifiers: item.selectedModifiers || []
+                priceUsd: item.priceUsd,
+                selectedModifiers: item.selectedModifiers || [],
+                unitTotalUsd: item.unitTotalUsd
             }}));
 
             const payload = {{
-                tableNumber: tableNumber,
-                orderType: selectedOrderType,
+                tableNumber: finalTable,
+                items: itemsPayload,
+                orderType: "DINE_IN",
                 paymentMethod: paymentMethod,
-                paymentReference: paymentRef,
-                notes: notes,
-                items: itemsPayload
+                paymentRef: pmRef,
+                notes: notes
             }};
 
             fetch('/api/order', {{
                 method: 'POST',
-                headers: {{
-                    'Content-Type': 'application/json'
-                }},
+                headers: {{ 'Content-Type': 'application/json' }},
                 body: JSON.stringify(payload)
             }})
             .then(res => res.json())
             .then(data => {{
+                if (btn) {{
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>Enviar a Cocina</span><span class="material-icons text-sm">send</span>`;
+                }}
+
                 if (data.status === 'success') {{
-                    const orderId = data.orderId;
-                    const totalBsFormatted = stats.totalBs.toFixed(2);
-                    closeOrderModal();
-                    cart = {{}};
                     cartItems = [];
                     updateCartUI();
-                    renderProducts();
-                    trackOrderStatus(orderId, isPm, paymentRef, totalBsFormatted);
-                    renderProducts();
-                    trackOrderStatus(orderId, isPm, paymentRef, totalBsFormatted);
+                    renderProductsGrid();
+                    closeOrderModal();
+                    
+                    alert(`✅ ¡PEDIDO #${{data.orderId}} ENVIADO CON ÉXITO!\\n\\nTu comanda ha sido enviada directamente a cocina para preparación.`);
                 }} else {{
-                    alert("Error al realizar pedido: " + (data.message || "Error desconocido"));
+                    alert("❌ No se pudo enviar el pedido: " + (data.message || "Error desconocido"));
                 }}
             }})
             .catch(err => {{
-                console.error(err);
-                alert("Error de conexión con el servidor del restaurante.");
+                if (btn) {{
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>Enviar a Cocina</span><span class="material-icons text-sm">send</span>`;
+                }}
+                console.error("Error al enviar pedido:", err);
+                alert("⚠️ Error de conexión al enviar el pedido a la PC principal.");
             }});
         }}
 
-        // TRACKING DE ESTADO EN TIEMPO REAL
-        function trackOrderStatus(orderId, isPagoMovil, ref, totalBs) {{
-            activeTrackingOrderId = orderId;
-            try {{
-                localStorage.setItem('gastrolocal_last_order_id', orderId);
-            }} catch (e) {{}}
-            checkStoredTicket();
-            if (statusPollTimer) clearInterval(statusPollTimer);
-
-            const statusModal = document.getElementById('order-status-modal');
-            const viewWaiting = document.getElementById('status-waiting-view');
-            const viewValidated = document.getElementById('status-validated-view');
-            const viewStandard = document.getElementById('status-standard-view');
-
-            const floatingPill = document.getElementById('order-floating-status');
-            const floatingLabel = document.getElementById('floating-status-label');
-            const floatingText = document.getElementById('floating-status-text');
-            const floatingIcon = document.getElementById('floating-status-icon');
-
-            if (isPagoMovil) {{
-                document.getElementById('waiting-order-id').textContent = `#${{orderId}}`;
-                document.getElementById('waiting-order-ref').textContent = ref || 'Pendiente';
-                document.getElementById('waiting-order-total').textContent = `${{totalBs}} Bs`;
-
-                viewWaiting.classList.remove('hidden');
-                viewValidated.classList.add('hidden');
-                viewStandard.classList.add('hidden');
-                showModal('order-status-modal');
-
-                // Configurar píldora flotante
-                floatingPill.classList.remove('hidden');
-                floatingPill.className = "fixed top-16 right-4 bg-white/95 backdrop-blur-md border-2 border-amber-300 shadow-2xl rounded-2xl px-4 py-2 flex items-center gap-2.5 text-xs font-bold z-40 cursor-pointer transition active:scale-95";
-                floatingLabel.textContent = `Pedido #${{orderId}}`;
-                floatingText.textContent = "En espera por confirmar Pago Móvil";
-                floatingIcon.className = "material-icons text-amber-600 text-base animate-spin";
-                floatingIcon.textContent = "hourglass_top";
-
-                // Polling en tiempo real al endpoint del servidor
-                statusPollTimer = setInterval(() => {{
-                    fetch(`/api/order/status?id=${{orderId}}`)
-                        .then(res => res.json())
-                        .then(resData => {{
-                            if (resData.status === 'success') {{
-                                const vStatus = (resData.paymentVerificationStatus || "").toUpperCase();
-                                const pStatus = (resData.paymentStatus || "").toUpperCase();
-                                
-                                if (vStatus === 'VERIFIED' || pStatus === 'PAID') {{
-                                    clearInterval(statusPollTimer);
-                                    statusPollTimer = null;
-                                    lastOrderStatus = 'VERIFIED';
-
-                                    // Transición a PAGO MÓVIL VALIDADO
-                                    document.getElementById('validated-order-id').textContent = `#${{orderId}}`;
-                                    viewWaiting.classList.add('hidden');
-                                    viewValidated.classList.remove('hidden');
-                                    showModal('order-status-modal');
-
-                                    // Actualizar píldora flotante a verde
-                                    floatingPill.className = "fixed top-16 right-4 bg-emerald-50 backdrop-blur-md border-2 border-emerald-400 shadow-2xl rounded-2xl px-4 py-2 flex items-center gap-2.5 text-xs font-bold z-40 cursor-pointer transition active:scale-95";
-                                    floatingText.textContent = "Pago Móvil Validado";
-                                    floatingText.className = "text-emerald-800 font-extrabold";
-                                    floatingIcon.className = "material-icons text-emerald-600 text-base";
-                                    floatingIcon.textContent = "check_circle";
-
-                                    showToast("¡Pago Móvil Validado! Tu orden está en preparación.", true);
-                                }}
-                            }}
-                        }})
-                        .catch(() => {{}});
-                }}, 2500);
-
-            }} else {{
-                document.getElementById('standard-order-id').textContent = `#${{orderId}}`;
-                viewWaiting.classList.add('hidden');
-                viewValidated.classList.add('hidden');
-                viewStandard.classList.remove('hidden');
-                showModal('order-status-modal');
-                floatingPill.classList.add('hidden');
-            }}
+        // Llamado de Mozo / Cuenta
+        function openTableCallModal() {{
+            const modal = document.getElementById('table-call-modal');
+            if (modal) modal.classList.remove('hidden');
         }}
 
-        function checkStoredTicket() {{
-            const btn = document.getElementById('btn-my-ticket');
-            const storedId = activeTrackingOrderId || localStorage.getItem('gastrolocal_last_order_id');
-            if (btn) {{
-                if (storedId) {{
-                    btn.classList.remove('hidden');
-                    btn.title = 'Ver Comprobante PDF del Pedido #' + storedId;
+        function closeTableCallModal() {{
+            const modal = document.getElementById('table-call-modal');
+            if (modal) modal.classList.add('hidden');
+        }}
+
+        function sendTableCall(type) {{
+            const tableInput = document.getElementById('order-table-input');
+            const finalTable = (tableInput && tableInput.value.trim()) ? tableInput.value.trim() : tableNumber;
+
+            fetch('/api/client/table-call', {{
+                method: 'POST',
+                headers: {{ 'Content-Type': 'application/json' }},
+                body: JSON.stringify({{ tableNumber: finalTable, type: type }})
+            }})
+            .then(res => res.json())
+            .then(data => {{
+                closeTableCallModal();
+                if (data.status === 'success') {{
+                    if (type === 'WAITER_CALL') {{
+                        alert("🔔 ¡Llamado enviado!\\nUn camarero se acercará a tu mesa en breve.");
+                    }} else {{
+                        alert("🧾 ¡Solicitud enviada!\\nEl mozo te llevará la cuenta a tu mesa.");
+                    }}
                 }} else {{
-                    btn.classList.add('hidden');
+                    alert("No se pudo enviar la solicitud: " + (data.message || "Error"));
                 }}
-            }}
+            }})
+            .catch(err => {{
+                closeTableCallModal();
+                alert("Error de conexión al llamar al mozo.");
+            }});
         }}
-
-        function openLastTicketPdf() {{
-            const storedId = activeTrackingOrderId || localStorage.getItem('gastrolocal_last_order_id');
-            if (storedId) {{
-                window.open('/ticket?id=' + storedId, '_blank');
-            }} else {{
-                alert("Aún no has realizado un pedido en esta sesión.");
-            }}
-        }}
-
-        function openTicketPdfFromClient() {{
-            const storedId = activeTrackingOrderId || localStorage.getItem('gastrolocal_last_order_id');
-            if (storedId) {{
-                window.open('/ticket?id=' + storedId, '_blank');
-            }} else {{
-                alert("No hay un pedido activo para visualizar el ticket.");
-            }}
-        }}
-
-        function closeOrderStatusModal() {{
-            hideModal('order-status-modal');
-        }}
-
-        function reopenOrderStatusModal() {{
-            showModal('order-status-modal');
-        }}
-
-        window.addEventListener('DOMContentLoaded', () => {{
-            checkStoredTicket();
-        }});
     </script>
 </body>
 </html>"""
+
 
     def get_ticket_html(self, db, order):
         cfg = db.get("config", {})
@@ -3316,7 +2883,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             const element = document.getElementById('printable-ticket-wrapper');
             const opt = {{
                 margin:       [5, 5, 5, 5],
-                filename:     'Ticket_GastroLocal_{order_id:05d}.pdf',
+                filename:     'Ticket_GastroLocal_{{order_id:05d}}.pdf',
                 image:        {{ type: 'jpeg', quality: 0.98 }},
                 html2canvas:  {{ scale: 2, useCORS: true }},
                 jsPDF:        {{ unit: 'mm', format: [80, 240], orientation: 'portrait' }}
@@ -6653,103 +6220,106 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
 
         </div>
     </div>
-    <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md p-6 border border-slate-200 m-4">
-            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+    <div id="product-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-3 sm:p-4 hidden">
+        <div class="bg-white rounded-3xl shadow-2xl w-full max-w-lg p-5 sm:p-6 border border-slate-200 max-h-[92vh] flex flex-col overflow-hidden">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-3 shrink-0">
                 <h3 id="modal-title" class="text-base font-bold text-slate-900">Agregar Producto</h3>
                 <button onclick="closeProductModal()" class="text-slate-400 hover:text-slate-600 transition">
                     <span class="material-icons">close</span>
                 </button>
             </div>
             
-            <form id="product-form" onsubmit="saveProduct(event)" class="space-y-4">
+            <form id="product-form" onsubmit="saveProduct(event)" class="flex flex-col min-h-0 flex-1">
                 <input type="hidden" id="form-product-id">
                 
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 mb-1">Nombre del Producto</label>
-                    <input type="text" id="form-product-name" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
-                </div>
-                
-                <div>
-                    <label class="block text-xs font-bold text-slate-500 mb-1">Descripción</label>
-                    <textarea id="form-product-desc" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600" placeholder="Ingredientes, acompañantes..."></textarea>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3">
+                <div class="space-y-4 overflow-y-auto pr-1.5 flex-1 max-h-full">
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Precio (USD)</label>
-                        <input type="number" id="form-product-price" step="0.01" required min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Nombre del Producto</label>
+                        <input type="text" id="form-product-name" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
                     </div>
+                    
                     <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Stock Inicial</label>
-                        <input type="number" id="form-product-stock" required min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
+                        <label class="block text-xs font-bold text-slate-500 mb-1">Descripción</label>
+                        <textarea id="form-product-desc" rows="3" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600" placeholder="Ingredientes, acompañantes..."></textarea>
                     </div>
-                </div>
-                
-                <div class="grid grid-cols-2 gap-3">
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Categoría</label>
-                        <select id="form-product-category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
-                            <!-- Categorías dinámicas -->
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-xs font-bold text-slate-500 mb-1">Ilustración</label>
-                        <select id="form-product-image" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
-                            <option value="plato">Plato General</option>
-                            <option value="pabellon">Pabellón Criollo</option>
-                            <option value="asado">Asado Negro</option>
-                            <option value="arepa">Arepa</option>
-                            <option value="tequenos">Tequeños</option>
-                            <option value="empanadas">Empanadas</option>
-                            <option value="chicha">Chicha</option>
-                            <option value="papelon">Papelón</option>
-                            <option value="quesillo">Quesillo</option>
-                            <option value="tresleches">Tres Leches</option>
-                            <option value="burger">Hamburguesa</option>
-                            <option value="pizza">Pizza</option>
-                            <option value="cafe">Café</option>
-                            <option value="bebida">Bebida Refrescante</option>
-                        </select>
-                    </div>
-                </div>
-                
-                                <!-- Sección de Modificadores y Extras del Producto -->
-                <div class="bg-purple-50/50 border border-purple-100 rounded-2xl p-3.5 space-y-2.5">
-                    <div class="flex items-center justify-between">
+                    
+                    <div class="grid grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-black text-purple-950">🧀 Opciones y Modificadores (Extras / Términos)</label>
-                            <p class="text-[10px] text-purple-700">Agrega toppings o variantes con precio adicional (ej: Queso Extra +$1.00, Sin Cebolla $0.00)</p>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">Precio (USD)</label>
+                            <input type="number" id="form-product-price" step="0.01" required min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
                         </div>
-                        <button type="button" onclick="addFormModifierRow()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-[11px] px-2.5 py-1 rounded-xl transition flex items-center gap-1 active:scale-95 shadow-sm">
-                            <span class="material-icons text-xs">add</span> Agregar
-                        </button>
-                    </div>
-                    <div id="form-modifiers-container" class="space-y-1.5 max-h-40 overflow-y-auto pr-1">
-                        <!-- Filas de modificadores dinámicas -->
-                    </div>
-                </div>
-                <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 space-y-2">
-                    <div class="flex items-center justify-between">
-                        <label class="block text-xs font-bold text-slate-500">📸 Opcional: Subir Foto Real</label>
-                        <button type="button" onclick="clearCustomImage()" id="btn-clear-image" class="text-xs text-rose-500 font-bold hover:underline hidden">Quitar Foto</button>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div id="custom-image-preview" class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 font-bold shrink-0 overflow-hidden">
-                            <span class="material-icons text-xl" id="preview-icon">image</span>
-                            <img id="preview-img" class="w-full h-full object-cover hidden">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">Stock Inicial</label>
+                            <input type="number" id="form-product-stock" required min="0" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
                         </div>
-                        <div class="flex-1">
-                            <input type="file" id="form-image-file" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
-                            <button type="button" onclick="document.getElementById('form-image-file').click()" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl px-3 py-1.5 text-xs font-bold transition flex items-center gap-1.5">
-                                <span class="material-icons text-sm">photo_camera</span> Seleccionar Foto
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">Categoría</label>
+                            <select id="form-product-category" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
+                                <!-- Categorías dinámicas -->
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">Ilustración</label>
+                            <select id="form-product-image" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600/20 focus:border-purple-600">
+                                <option value="plato">Plato General</option>
+                                <option value="pabellon">Pabellón Criollo</option>
+                                <option value="asado">Asado Negro</option>
+                                <option value="arepa">Arepa</option>
+                                <option value="tequenos">Tequeños</option>
+                                <option value="empanadas">Empanadas</option>
+                                <option value="chicha">Chicha</option>
+                                <option value="papelon">Papelón</option>
+                                <option value="quesillo">Quesillo</option>
+                                <option value="tresleches">Tres Leches</option>
+                                <option value="burger">Hamburguesa</option>
+                                <option value="pizza">Pizza</option>
+                                <option value="cafe">Café</option>
+                                <option value="bebida">Bebida Refrescante</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <!-- Sección de Modificadores y Extras del Producto -->
+                    <div class="bg-purple-50/50 border border-purple-100 rounded-2xl p-3.5 space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <label class="block text-xs font-black text-purple-950">🧀 Opciones y Modificadores (Extras / Términos)</label>
+                                <p class="text-[10px] text-purple-700">Agrega toppings o variantes con precio adicional (ej: Queso Extra +$1.00, Sin Cebolla $0.00)</p>
+                            </div>
+                            <button type="button" onclick="addFormModifierRow()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold text-[11px] px-2.5 py-1 rounded-xl transition flex items-center gap-1 active:scale-95 shadow-sm shrink-0">
+                                <span class="material-icons text-xs">add</span> Agregar
                             </button>
-                            <p class="text-[9px] text-slate-400 mt-1">¡Cualquier tamaño! Se optimiza automáticamente.</p>
+                        </div>
+                        <div id="form-modifiers-container" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                            <!-- Filas de modificadores dinámicas -->
+                        </div>
+                    </div>
+                    
+                    <div class="bg-slate-50 border border-slate-200 rounded-2xl p-3 space-y-2">
+                        <div class="flex items-center justify-between">
+                            <label class="block text-xs font-bold text-slate-500">📸 Opcional: Subir Foto Real</label>
+                            <button type="button" onclick="clearCustomImage()" id="btn-clear-image" class="text-xs text-rose-500 font-bold hover:underline hidden">Quitar Foto</button>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div id="custom-image-preview" class="w-12 h-12 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-center text-purple-600 font-bold shrink-0 overflow-hidden">
+                                <span class="material-icons text-xl" id="preview-icon">image</span>
+                                <img id="preview-img" class="w-full h-full object-cover hidden">
+                            </div>
+                            <div class="flex-1">
+                                <input type="file" id="form-image-file" accept="image/*" onchange="handleImageUpload(event)" class="hidden">
+                                <button type="button" onclick="document.getElementById('form-image-file').click()" class="bg-purple-50 hover:bg-purple-100 text-purple-700 border border-purple-200 rounded-xl px-3 py-1.5 text-xs font-bold transition flex items-center gap-1.5">
+                                    <span class="material-icons text-sm">photo_camera</span> Seleccionar Foto
+                                </button>
+                                <p class="text-[9px] text-slate-400 mt-1">¡Cualquier tamaño! Se optimiza automáticamente.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
                 
-                <div class="flex gap-3 pt-2">
+                <div class="flex gap-3 pt-3 mt-3 border-t border-slate-100 shrink-0">
                     <button type="button" onclick="closeProductModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-2.5 rounded-xl text-sm font-bold transition">
                         Cancelar
                     </button>
@@ -8615,14 +8185,6 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                     `;
                 }}
 
-                if (o.paymentVerificationStatus === 'PENDING') {{
-                    actionButtons = `
-                        <button onclick="verifyPaymentRef(${{o.id}}, 'VERIFIED')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs px-3 py-1.5 rounded-lg font-bold transition flex items-center gap-1 shadow-sm active:scale-95 mr-1" title="Validar Pago Móvil">
-                            <span class="material-icons text-sm">check_circle</span> Validar Pago Móvil
-                        </button>
-                    ` + actionButtons;
-                }}
-
                 // If not finalized but paid, also give quick ticket access
                 const ticketQuickBtn = (o.paymentStatus === 'PAID' || o.status === 'READY' || o.status === 'DELIVERED') ? `
                     <button onclick="openAdminTicketModal(${{o.id}})" class="bg-slate-100 hover:bg-purple-100 text-slate-700 hover:text-purple-800 font-bold text-xs p-1.5 rounded-lg transition" title="Ver / Imprimir Ticket">
@@ -8635,10 +8197,8 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                 orderCard.className = `p-5 bg-white border rounded-2xl shadow-sm space-y-4 transition-all ${{o.status === 'PENDING' ? 'ring-2 ring-yellow-400' : ''}}`;
                 
                 let paymentLabel = "";
-                if (o.paymentVerificationStatus === 'VERIFIED' || o.paymentStatus === 'PAID') {{
-                    paymentLabel = `<span class="text-xs font-bold text-emerald-600 flex items-center gap-1"><span class="material-icons text-xs">check_circle</span> ${{o.paymentVerificationStatus === 'VERIFIED' ? 'PAGO MÓVIL VALIDADO' : 'PAGADO'}}</span>`;
-                }} else if (o.paymentVerificationStatus === 'PENDING') {{
-                    paymentLabel = `<span class="text-xs font-bold text-amber-600 flex items-center gap-1 animate-pulse"><span class="material-icons text-xs">hourglass_top</span> Espera por confirmar Pago Móvil (Ref: ${{o.paymentReference || 'Pendiente'}})</span>`;
+                if (o.paymentStatus === "PAID") {{
+                    paymentLabel = `<span class="text-xs font-bold text-green-600 flex items-center gap-1"><span class="material-icons text-xs">check_circle</span> PAGADO</span>`;
                 }} else {{
                     paymentLabel = `<span class="text-xs font-bold text-rose-600 flex items-center gap-1"><span class="material-icons text-xs">pending</span> Por Cobrar</span>`;
                 }}
@@ -8687,17 +8247,10 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                     ? `<button onclick="toggleProduct(${{p.id}})" class="bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-[10px] px-2 py-1 rounded font-bold transition">Habilitado</button>`
                     : `<button onclick="toggleProduct(${{p.id}})" class="bg-rose-100 hover:bg-rose-200 text-rose-800 text-[10px] px-2 py-1 rounded font-bold transition">Deshabilitado</button>`;
 
-                const aUri = (p.imageUri || p.imageUrl || p.image || "").trim();
-                let imgHtml = "";
-                const bs = String.fromCharCode(92);
-                if (aUri.startsWith('data:image') || aUri.startsWith('http://') || aUri.startsWith('https://')) {{
-                    imgHtml = `<img src="${{aUri}}" class="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0">`;
-                }} else if (aUri.startsWith('/') || aUri.includes('product_images') || (aUri.indexOf(bs) !== -1) || /^[a-zA-Z]:/.test(aUri)) {{
-                    const cleanF = aUri.split('/').pop().split(bs).pop();
-                    imgHtml = `<img src="/api/images?file=${{encodeURIComponent(cleanF)}}" class="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><div style="display:none;" class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-200">${{p.name.charAt(0).toUpperCase()}}</div>`;
-                }} else {{
-                    imgHtml = `<div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-200">${{p.name.charAt(0).toUpperCase()}}</div>`;
-                }}
+                const imgIsBase64 = p.imageUri && p.imageUri.startsWith('data:image');
+                const imgHtml = imgIsBase64
+                    ? `<img src="${{p.imageUri}}" class="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0">`
+                    : `<div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center font-bold text-xs shrink-0 border border-slate-200">${{p.name.charAt(0).toUpperCase()}}</div>`;
 
                 const prodCard = document.createElement('div');
                 prodCard.className = `p-3 rounded-xl border border-slate-200 bg-white flex items-center justify-between gap-3 ${{!p.isAvailable ? 'opacity-60 bg-slate-50' : ''}}`;
@@ -9326,9 +8879,6 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             document.getElementById('form-product-image').value = "plato";
             clearCustomImage();
             
-            const modContainer = document.getElementById('form-modifiers-container');
-            if (modContainer) modContainer.innerHTML = '';
-
             // Llenar categorías
             const catSelect = document.getElementById('form-product-category');
             catSelect.innerHTML = categories.map(c => `<option value="${{c.id}}">${{c.name}}</option>`).join('');
@@ -9349,14 +8899,6 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             
             clearCustomImage();
             
-            const modContainer = document.getElementById('form-modifiers-container');
-            if (modContainer) {{
-                modContainer.innerHTML = '';
-                if (p.modifiers && p.modifiers.length > 0) {{
-                    p.modifiers.forEach(m => addFormModifierRow(m.name, m.priceUsd));
-                }}
-            }}
-
             if (p.imageUri && p.imageUri.startsWith('data:image')) {{
                 uploadedImageBase64 = p.imageUri;
                 document.getElementById('preview-icon').classList.add('hidden');
@@ -9390,8 +8932,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
             const categoryId = parseInt(document.getElementById('form-product-category').value);
             
             const imageUri = uploadedImageBase64 !== "" ? uploadedImageBase64 : document.getElementById('form-product-image').value;
-            const modifiers = typeof getFormModifiers === 'function' ? getFormModifiers() : [];
-
+            
             const isEdit = id !== "";
             const url = isEdit ? '/api/admin/edit-product' : '/api/admin/add-product';
             const payload = {{
@@ -9400,8 +8941,7 @@ class GastroRequestHandler(BaseHTTPRequestHandler):
                 priceUsd: price,
                 stock: stock,
                 categoryId: categoryId,
-                imageUri: imageUri,
-                modifiers: modifiers
+                imageUri: imageUri
             }};
             if (isEdit) {{
                 payload.productId = parseInt(id);

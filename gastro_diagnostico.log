@@ -47,83 +47,23 @@ OSError: [Errno 98] Address already in use
 [2026-08-27 16:15:36] [INFO] Paso 5: Lanzando hilo para abrir el navegador en http://localhost:{port}/admin...
 [2026-08-27 16:15:36] [INFO] Paso 6: Servidor en funcionamiento. Iniciando bucle principal (serve_forever)...
 [2026-08-27 16:15:37] [INFO] Abriendo navegador en: http://localhost:8080/admin
-[2026-09-18 23:14:53] [INFO] ============================================================
-[2026-09-18 23:14:53] [INFO] INICIANDO GASTROLOCAL CON ENVOLTORIO DE DIAGNÓSTICO
-[2026-09-18 23:14:53] [INFO] Python Version: 3.13.0rc1 (tags/v3.13.0rc1:e4a3e78, Jul 31 2024, 20:58:38) [MSC v.1940 64 bit (AMD64)]
-[2026-09-18 23:14:53] [INFO] Ejecutable: C:\Users\144DG\AppData\Local\Programs\Python\Python313\python.exe
-[2026-09-18 23:14:53] [INFO] Base Dir: C:\Users\144DG\Downloads\restaurante-local
-[2026-09-18 23:14:53] [INFO] Log Dir: C:\Users\144DG\Downloads\restaurante-local
-[2026-09-18 23:14:53] [INFO] Log Path: C:\Users\144DG\Downloads\restaurante-local\gastro_diagnostico.log
-[2026-09-18 23:14:53] [INFO] Argumentos: ['diagnostico_lanzador.py']
-[2026-09-18 23:14:53] [INFO] ============================================================
-[2026-09-18 23:14:53] [INFO] Paso 1: Verificando dependencias e importando el módulo del servidor...
-[2026-09-18 23:14:53] [INFO] Paso 1: Módulo 'gastro_local_pc_server' importado con éxito.
-[2026-09-18 23:14:53] [INFO] Paso 2: Verificando la carga de la base de datos local...
-[2026-09-18 23:14:53] [INFO] Paso 2: Base de datos cargada (4 categorías, 12 productos).
-[2026-09-18 23:14:53] [INFO] Paso 3: Verificando dirección IP y puerto de red...
-[2026-09-18 23:14:53] [INFO] Paso 3: IP detectada: 192.168.1.80 | Puerto configurado: 8080
-[2026-09-18 23:14:53] [INFO] Paso 4: Creando instancia del servidor HTTP...
-[2026-09-18 23:14:53] [INFO] Paso 4: Servidor HTTP vinculado exitosamente a 0.0.0.0:8080
-[2026-09-18 23:14:53] [INFO] Paso 5: Lanzando hilo para abrir el navegador en http://localhost:{port}/admin...
-[2026-09-18 23:14:53] [INFO] Paso 6: Servidor en funcionamiento. Iniciando bucle principal (serve_forever)...
-[2026-09-18 23:14:54] [INFO] Abriendo navegador en: http://localhost:8080/admin
-[2026-09-18 23:25:36] [STDERR] Traceback (most recent call last):
-[2026-09-18 23:25:36] [STDERR]   File "C:\Users\144DG\Downloads\restaurante-local\diagnostico_lanzador.py", line 155, in <module>
-    main()
-    ~~~~^^
-[2026-09-18 23:25:36] [STDERR]   File "C:\Users\144DG\Downloads\restaurante-local\diagnostico_lanzador.py", line 137, in main
-    server.serve_forever()
-    ~~~~~~~~~~~~~~~~~~~~^^
-[2026-09-18 23:25:36] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 235, in serve_forever
-    ready = selector.select(poll_interval)
-[2026-09-18 23:25:36] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\selectors.py", line 314, in select
-    r, w, _ = self._select(self._readers, self._writers, [], timeout)
-              ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2026-09-18 23:25:36] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\selectors.py", line 305, in _select
-    r, w, x = select.select(r, w, w, timeout)
-              ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
-[2026-09-18 23:25:36] [STDERR] KeyboardInterrupt
-[2026-09-18 23:26:06] [INFO] ============================================================
-[2026-09-18 23:26:06] [INFO] INICIANDO GASTROLOCAL CON ENVOLTORIO DE DIAGNÓSTICO
-[2026-09-18 23:26:06] [INFO] Python Version: 3.13.0rc1 (tags/v3.13.0rc1:e4a3e78, Jul 31 2024, 20:58:38) [MSC v.1940 64 bit (AMD64)]
-[2026-09-18 23:26:06] [INFO] Ejecutable: C:\Users\144DG\AppData\Local\Programs\Python\Python313\python.exe
-[2026-09-18 23:26:06] [INFO] Base Dir: C:\Users\144DG\Downloads\restaurante-local
-[2026-09-18 23:26:06] [INFO] Log Dir: C:\Users\144DG\Downloads\restaurante-local
-[2026-09-18 23:26:06] [INFO] Log Path: C:\Users\144DG\Downloads\restaurante-local\gastro_diagnostico.log
-[2026-09-18 23:26:06] [INFO] Argumentos: ['diagnostico_lanzador.py']
-[2026-09-18 23:26:06] [INFO] ============================================================
-[2026-09-18 23:26:06] [INFO] Paso 1: Verificando dependencias e importando el módulo del servidor...
-[2026-09-18 23:26:07] [INFO] Paso 1: Módulo 'gastro_local_pc_server' importado con éxito.
-[2026-09-18 23:26:07] [INFO] Paso 2: Verificando la carga de la base de datos local...
-[2026-09-18 23:26:07] [INFO] Paso 2: Base de datos cargada (4 categorías, 12 productos).
-[2026-09-18 23:26:07] [INFO] Paso 3: Verificando dirección IP y puerto de red...
-[2026-09-18 23:26:07] [INFO] Paso 3: IP detectada: 192.168.1.80 | Puerto configurado: 8080
-[2026-09-18 23:26:07] [INFO] Paso 4: Creando instancia del servidor HTTP...
-[2026-09-18 23:26:07] [INFO] Paso 4: Servidor HTTP vinculado exitosamente a 0.0.0.0:8080
-[2026-09-18 23:26:07] [INFO] Paso 5: Lanzando hilo para abrir el navegador en http://localhost:{port}/admin...
-[2026-09-18 23:26:07] [INFO] Paso 6: Servidor en funcionamiento. Iniciando bucle principal (serve_forever)...
-[2026-09-18 23:26:08] [INFO] Abriendo navegador en: http://localhost:8080/admin
-[2026-09-18 23:31:01] [STDERR] ----------------------------------------
-[2026-09-18 23:31:01] [STDERR] Exception occurred during processing of request from
-[2026-09-18 23:31:01] [STDERR] ('192.168.1.77', 50452)
-[2026-09-18 23:31:01] [STDERR] Traceback (most recent call last):
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 692, in process_request_thread
-    self.finish_request(request, client_address)
-    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 362, in finish_request
-    self.RequestHandlerClass(request, client_address, self)
-    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socketserver.py", line 761, in __init__
-    self.handle()
-    ~~~~~~~~~~~^^
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 436, in handle
-    self.handle_one_request()
-    ~~~~~~~~~~~~~~~~~~~~~~~^^
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\http\server.py", line 404, in handle_one_request
-    self.raw_requestline = self.rfile.readline(65537)
-                           ~~~~~~~~~~~~~~~~~~~^^^^^^^
-[2026-09-18 23:31:01] [STDERR]   File "C:\Users\144DG\AppData\Local\Programs\Python\Python313\Lib\socket.py", line 719, in readinto
-    return self._sock.recv_into(b)
-           ~~~~~~~~~~~~~~~~~~~~^^^
-[2026-09-18 23:31:01] [STDERR] ConnectionResetError: [WinError 10054] Se ha forzado la interrupción de una conexión existente por el host remoto
-[2026-09-18 23:31:02] [STDERR] ----------------------------------------
+[2026-09-01 13:29:50] [INFO] ============================================================
+[2026-09-01 13:29:50] [INFO] INICIANDO GASTROLOCAL CON ENVOLTORIO DE DIAGNÓSTICO
+[2026-09-01 13:29:50] [INFO] Python Version: 3.13.0rc1 (tags/v3.13.0rc1:e4a3e78, Jul 31 2024, 20:58:38) [MSC v.1940 64 bit (AMD64)]
+[2026-09-01 13:29:50] [INFO] Ejecutable: C:\Users\144DG\AppData\Local\Programs\Python\Python313\python.exe
+[2026-09-01 13:29:50] [INFO] Base Dir: C:\Users\144DG\Downloads\restaurante-local
+[2026-09-01 13:29:50] [INFO] Log Dir: C:\Users\144DG\Downloads\restaurante-local
+[2026-09-01 13:29:50] [INFO] Log Path: C:\Users\144DG\Downloads\restaurante-local\gastro_diagnostico.log
+[2026-09-01 13:29:50] [INFO] Argumentos: ['C:\\Users\\144DG\\Downloads\\restaurante-local\\diagnostico_lanzador.py']
+[2026-09-01 13:29:50] [INFO] ============================================================
+[2026-09-01 13:29:50] [INFO] Paso 1: Verificando dependencias e importando el módulo del servidor...
+[2026-09-01 13:29:50] [INFO] Paso 1: Módulo 'gastro_local_pc_server' importado con éxito.
+[2026-09-01 13:29:50] [INFO] Paso 2: Verificando la carga de la base de datos local...
+[2026-09-01 13:29:50] [INFO] Paso 2: Base de datos cargada (4 categorías, 12 productos).
+[2026-09-01 13:29:50] [INFO] Paso 3: Verificando dirección IP y puerto de red...
+[2026-09-01 13:29:50] [INFO] Paso 3: IP detectada: 192.168.1.30 | Puerto configurado: 8080
+[2026-09-01 13:29:50] [INFO] Paso 4: Creando instancia del servidor HTTP...
+[2026-09-01 13:29:50] [INFO] Paso 4: Servidor HTTP vinculado exitosamente a 0.0.0.0:8080
+[2026-09-01 13:29:50] [INFO] Paso 5: Lanzando hilo para abrir el navegador en http://localhost:{port}/admin...
+[2026-09-01 13:29:50] [INFO] Paso 6: Servidor en funcionamiento. Iniciando bucle principal (serve_forever)...
+[2026-09-01 13:29:51] [INFO] Abriendo navegador en: http://localhost:8080/admin

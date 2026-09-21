@@ -313,12 +313,12 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
         paymentMethod: String,
         paymentStatus: String,
         notes: String,
-        onSuccess: (orderId: Long) -> Unit
+        onSuccess: () -> Unit
     ) {
         viewModelScope.launch {
             val itemsList = _cart.value.map { Pair(it.key, it.value) }
             if (itemsList.isNotEmpty()) {
-                val orderId = repository.placeOrder(
+                repository.placeOrder(
                     tableNumber = if (orderType == "DINE_IN") tableNumber else "Para llevar",
                     orderType = orderType,
                     paymentMethod = paymentMethod,
@@ -327,7 +327,7 @@ class RestaurantViewModel(application: Application) : AndroidViewModel(applicati
                     items = itemsList
                 )
                 clearCart()
-                onSuccess(orderId)
+                onSuccess()
             }
         }
     }

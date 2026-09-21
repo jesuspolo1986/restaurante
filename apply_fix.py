@@ -1,442 +1,858 @@
 import json
 import re
 
-client_menu_code = r'''# RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Diseño original del Modo de Desarrollo)
+client_menu_code = r'''    # RETORNA EL HTML DEL MENÚ DIGITAL DEL CLIENTE (Elegante, Responsivo, Estilo M3)
     def get_client_menu_html(self, db, categories_json, products_json, exchange_rate):
-        restaurant_name = db["config"].get("restaurantName", "Restaurante Local")
+        restaurant_name = db["config"].get("restaurantName", "GastroLocal")
+        restaurant_slogan = db["config"].get("restaurantSlogan", "Menú Digital & Autoservicio")
+        restaurant_logo = db["config"].get("restaurantLogo", "")
+        restaurant_rif = db["config"].get("restaurantRif", "J-00000000-0")
+        restaurant_address = db["config"].get("restaurantAddress", "")
+        restaurant_phone = db["config"].get("restaurantPhone", "")
+        pago_movil = db["config"].get("pagoMovil", {
+            "bank": "",
+            "phone": "",
+            "idNumber": "",
+            "accountName": ""
+        })
+        pm_json = json.dumps(pago_movil, ensure_ascii=False)
+
+        logo_header_html = f'<img src="{restaurant_logo}" class="w-full h-full object-contain" alt="Logo">' if restaurant_logo else '<span class="material-icons text-xl">restaurant</span>'
+
         return f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Digital - {restaurant_name}</title>
+    <title>{restaurant_name} - Menú Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <style>
         body {{ font-family: 'Inter', sans-serif; }}
         .scrollbar-none::-webkit-scrollbar {{ display: none; }}
         .scrollbar-none {{ -ms-overflow-style: none; scrollbar-width: none; }}
     </style>
 </head>
-<body class="bg-[#fef7ff] text-[#1d1b20] pb-24 font-sans">
+<body class="bg-[#fef7ff] text-[#1d1b20] pb-28 font-sans antialiased">
+    <!-- Header Principal -->
     <header class="bg-[#6750a4] text-white shadow-md sticky top-0 z-40">
-        <div class="max-w-4xl mx-auto px-4 py-4 flex items-center justify-between">
-            <div class="flex flex-col">
-                <span class="text-[11px] font-medium tracking-wider text-[#eaddff] uppercase">Autoservicio Digital</span>
-                <h1 class="text-xl font-bold tracking-tight">{restaurant_name}</h1>
-            </div>
+        <div class="max-w-4xl mx-auto px-4 py-3.5 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="text-right hidden sm:block">
-                    <span class="text-xs bg-white/20 px-2 py-1 rounded-full">Tasa: $1 = {exchange_rate:.2f} Bs</span>
+                <div class="w-10 h-10 rounded-2xl bg-white/10 flex items-center justify-center text-white overflow-hidden shrink-0 border border-white/20 shadow-inner">
+                    {logo_header_html}
                 </div>
-                <div class="w-10 h-10 rounded-full bg-[#eaddff] flex items-center justify-center text-[#21005d]">
-                    <span class="material-icons">person</span>
+                <div class="flex flex-col">
+                    <h1 class="text-base sm:text-lg font-black tracking-tight leading-tight">{restaurant_name}</h1>
+                    <span class="text-[10px] sm:text-[11px] font-medium text-[#eaddff] leading-none mt-0.5">{restaurant_slogan}</span>
                 </div>
+            </div>
+            
+            <div class="flex items-center gap-2">
+                <!-- Botón Llamar al Mozo / Cuenta -->
+                <button onclick="openTableCallModal()" class="bg-white/10 hover:bg-white/20 text-[#eaddff] hover:text-white px-2.5 py-1.5 rounded-xl text-xs font-bold transition flex items-center gap-1 border border-white/10 active:scale-95">
+                    <span class="material-icons text-sm text-amber-300">notifications</span>
+                    <span class="hidden sm:inline">Mozo</span>
+                </button>
+                
+                <!-- Identificador de Mesa -->
+                <div class="bg-[#21005d] text-[#eaddff] px-3 py-1.5 rounded-xl text-xs font-black tracking-wide flex items-center gap-1.5 border border-white/10 shadow-sm">
+                    <span class="material-icons text-xs text-[#d0bcff]">table_restaurant</span>
+                    <span id="display-table-number" class="uppercase">Mesa ?</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barra de Tasa y Búsqueda Rápida -->
+        <div class="bg-[#4f378b] px-4 py-2 text-white">
+            <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+                <div class="flex items-center gap-2 text-xs text-[#eaddff]">
+                    <span class="material-icons text-sm text-emerald-400">payments</span>
+                    <span>Tasa oficial: <strong class="text-white font-mono">{exchange_rate:.2f} Bs/$</strong></span>
+                </div>
+                
+                <!-- Buscador de Platos -->
+                <div class="relative w-full sm:w-64">
+                    <span class="material-icons absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-300 text-sm">search</span>
+                    <input type="text" id="menu-search-input" placeholder="Buscar plato o bebida..." 
+                           oninput="handleSearchInput(this.value)"
+                           class="w-full bg-white/10 text-white placeholder:text-purple-200 text-xs rounded-xl pl-8 pr-7 py-1.5 border border-white/20 focus:outline-none focus:bg-white/20">
+                    <button id="menu-search-clear" onclick="clearSearch()" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-purple-200 hover:text-white">
+                        <span class="material-icons text-xs">close</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categorías (Chips con Scroll Horizontal) -->
+        <div class="bg-[#f3edf7] border-b border-[#e7e0ec] py-2.5 px-4 overflow-x-auto scrollbar-none">
+            <div class="max-w-4xl mx-auto flex items-center gap-2" id="categories-bar">
+                <button onclick="filterCategory('ALL')" class="category-chip active shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm bg-[#6750a4] text-white">
+                    Todos
+                </button>
             </div>
         </div>
     </header>
 
-    <main class="max-w-4xl mx-auto px-4 py-6 space-y-6">
-        <!-- Analysis & Recommendations Tooltip (Context Injection) -->
-        <div class="p-4 bg-[#d0e4ff] rounded-2xl flex gap-3 items-start border border-[#aac7eb]">
-            <span class="material-icons text-[#001d35]">info</span>
-            <div class="text-xs leading-relaxed text-[#001d35]">
-                <strong>Análisis Pro:</strong> El modelo local garantiza cero latencia. Se recomienda usar <strong>WebSockets</strong> para sincronización real en cocina. Implemente <strong>Conciliación Dual</strong> para pagos mixtos (Zelle/Bs).
-            </div>
-        </div>
-
-        <!-- Categorias -->
-        <div>
-            <div class="flex items-center justify-between mb-3">
-                <h2 class="text-sm font-medium text-[#49454f]">Categorías del Sistema</h2>
-            </div>
-            <div class="overflow-x-auto flex space-x-2 pb-2 scrollbar-none" id="categories-container">
-                <button onclick="filterCategory(0)" id="cat-btn-0" class="px-4 py-2 bg-[#6750a4] text-white rounded-full text-sm font-semibold shadow-sm shrink-0 whitespace-nowrap transition-colors">Todos</button>
-            </div>
-        </div>
-
-        <!-- Platos -->
-        <div>
-            <h2 class="text-lg font-bold mb-4 flex items-center gap-2 text-[#1d1b20]">
-                <span class="material-icons text-[#6750a4]">restaurant_menu</span> Nuestro Menú
-            </h2>
-            <div id="products-container" class="grid gap-4 md:grid-cols-2"></div>
+    <!-- Contenido Principal (Catálogo de Platos) -->
+    <main class="max-w-4xl mx-auto px-4 py-6">
+        <div id="products-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            <!-- Rellenado dinámicamente por JavaScript -->
         </div>
     </main>
 
-    <!-- Carrito Flotante -->
-    <div id="cart-footer" class="fixed bottom-0 left-0 right-0 bg-[#f3edf7] border-t border-[#e7e0ec] shadow-xl px-4 py-3 hidden z-50">
-        <div class="max-w-4xl mx-auto flex items-center justify-between">
-            <div>
+    <!-- Barra Flotante de Carrito / Footer -->
+    <div id="cart-footer" class="hidden fixed bottom-0 left-0 right-0 bg-[#f3edf7] border-t border-[#e7e0ec] shadow-2xl p-4 z-40 backdrop-blur-lg bg-opacity-95">
+        <div class="max-w-4xl mx-auto flex items-center justify-between gap-4">
+            <div class="flex flex-col cursor-pointer" onclick="openOrderModal()">
                 <span class="text-xs text-[#49454f] font-medium" id="cart-count">0 artículos</span>
-                <div class="text-lg font-bold text-[#6750a4]" id="cart-total">$0.00 / 0.00 Bs</div>
+                <div class="text-lg font-black text-[#6750a4]" id="cart-total">$0.00 / 0.00 Bs</div>
             </div>
-            <button onclick="openOrderModal()" class="bg-[#6750a4] text-white px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-[#4f378b] transition shadow-md flex items-center gap-1">
-                <span class="material-icons text-sm">shopping_cart_checkout</span> Hacer Pedido
+            <button onclick="openOrderModal()" class="bg-[#6750a4] hover:bg-[#523e85] text-white font-bold px-6 py-3 rounded-2xl text-sm shadow-lg shadow-purple-900/20 flex items-center gap-2 transition active:scale-95">
+                <span class="material-icons text-base">shopping_cart_checkout</span>
+                <span>Ver Carrito / Pedir</span>
             </button>
         </div>
     </div>
 
-    <!-- Modal de Pedido -->
-    <div id="order-modal" class="fixed inset-0 bg-black/60 z-50 items-center justify-center p-4 hidden flex">
-        <div class="bg-white rounded-3xl w-full max-w-md p-6 max-h-[90vh] overflow-y-auto shadow-2xl border border-[#cac4d0]">
-            <div class="flex items-center justify-between border-b border-[#e7e0ec] pb-3 mb-4">
-                <h3 class="text-lg font-bold text-[#1d1b20]">Confirmar tu Pedido</h3>
-                <button onclick="closeOrderModal()" class="text-slate-400 hover:text-[#1d1b20]">
-                    <span class="material-icons">close</span>
+    <!-- Modal de Detalle y Modificadores de Producto (Zoom / Extras) -->
+    <div id="image-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl flex flex-col max-h-[90vh]">
+            <div class="relative bg-slate-900 aspect-video flex items-center justify-center overflow-hidden shrink-0">
+                <img id="image-modal-img" src="" alt="" class="w-full h-full object-cover">
+                <button onclick="closeImageModal()" class="absolute top-3 right-3 bg-black/50 hover:bg-black/80 text-white rounded-full p-2 transition">
+                    <span class="material-icons text-base">close</span>
                 </button>
+                <div id="image-modal-stock" class="absolute bottom-3 left-3 bg-slate-900/80 backdrop-blur-md text-emerald-400 px-3 py-1 rounded-full text-xs font-bold border border-emerald-500/30">
+                    Disponible
+                </div>
             </div>
             
-            <div class="space-y-4">
-                <!-- Ubicacion -->
+            <div class="p-6 overflow-y-auto space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-[#49454f] uppercase tracking-wider mb-1">¿Dónde comerás?</label>
-                    <div class="grid grid-cols-2 gap-2">
-                        <button id="type-dinein" onclick="setOrderType('DINE_IN')" class="border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition">
-                            <span class="material-icons text-lg">restaurant</span>
-                            <span class="text-xs font-semibold mt-1">En la Mesa</span>
-                        </button>
-                        <button id="type-takeaway" onclick="setOrderType('TAKEAWAY')" class="border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]">
-                            <span class="material-icons text-lg">takeout_dining</span>
-                            <span class="text-xs font-semibold mt-1">Para Llevar</span>
-                        </button>
+                    <h3 id="image-modal-title" class="text-xl font-black text-slate-900">Nombre del Plato</h3>
+                    <p id="image-modal-desc" class="text-xs text-slate-500 mt-1">Descripción detallada</p>
+                    <div id="image-modal-price" class="text-lg font-black text-purple-700 mt-2">$0.00 / 0.00 Bs</div>
+                </div>
+
+                <!-- Sección de Modificadores / Extras -->
+                <div id="image-modal-modifiers-section" class="hidden border-t border-slate-100 pt-3">
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Personaliza tu plato (Extras)</label>
+                    <div id="image-modal-modifiers-list" class="space-y-2">
+                        <!-- Rellenado dinámico con checkboxes -->
                     </div>
                 </div>
 
-                <!-- Mesa -->
-                <div id="table-number-group">
-                    <label class="block text-xs font-semibold text-[#49454f] uppercase tracking-wider mb-1">Número de Mesa</label>
-                    <input type="text" id="input-table" placeholder="Ej. Mesa 3" class="w-full border border-[#cac4d0] rounded-2xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6750a4]">
-                </div>
-
-                <!-- Metodo de pago -->
-                <div>
-                    <label class="block text-xs font-semibold text-[#49454f] uppercase tracking-wider mb-1">Método de Pago Sugerido</label>
-                    <select id="select-payment" class="w-full border border-[#cac4d0] rounded-2xl px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6750a4] bg-white">
-                        <option value="Pago Movil">Pago Móvil</option>
-                        <option value="Efectivo Bs">Efectivo Bs</option>
-                        <option value="Punto de Venta">Punto de Venta</option>
-                        <option value="Efectivo $">Efectivo $</option>
-                        <option value="Zelle">Zelle</option>
-                        <option value="Credito">Crédito</option>
-                    </select>
-                </div>
-
-                <!-- Notas -->
-                <div>
-                    <label class="block text-xs font-semibold text-[#49454f] uppercase tracking-wider mb-1">Notas especiales</label>
-                    <textarea id="input-notes" rows="2" placeholder="Sin cebolla, extra salsa, etc." class="w-full border border-[#cac4d0] rounded-2xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#6750a4]"></textarea>
-                </div>
-
-                <!-- Resumen del Pago -->
-                <div class="bg-[#f7f2fa] rounded-2xl p-3 border border-dashed border-[#cac4d0]">
-                    <div class="flex justify-between text-xs text-[#49454f]">
-                        <span>Total USD:</span>
-                        <span class="font-bold text-[#1d1b20]" id="modal-total-usd">$0.00</span>
-                    </div>
-                    <div class="flex justify-between text-sm mt-1">
-                        <span class="font-medium text-[#1d1b20]">Total en Bs:</span>
-                        <span class="font-bold text-[#6750a4]" id="modal-total-bs">0.00 Bs</span>
+                <!-- Selector de Cantidad en Modal -->
+                <div class="border-t border-slate-100 pt-3 flex items-center justify-between">
+                    <span class="text-xs font-bold text-slate-600">Cantidad:</span>
+                    <div class="flex items-center gap-3 bg-slate-100 p-1.5 rounded-2xl">
+                        <button onclick="modalChangeQty(-1)" class="w-8 h-8 rounded-xl bg-white text-slate-700 font-black flex items-center justify-center shadow-sm active:scale-95">-</button>
+                        <span id="image-modal-qty" class="text-sm font-black text-slate-900 px-2">1</span>
+                        <button onclick="modalChangeQty(1)" class="w-8 h-8 rounded-xl bg-purple-600 text-white font-black flex items-center justify-center shadow-sm active:scale-95">+</button>
                     </div>
                 </div>
+            </div>
 
-                <!-- Boton Enviar -->
-                <button onclick="submitOrder()" class="w-full bg-[#6750a4] text-white py-3 rounded-full font-bold hover:bg-[#4f378b] transition shadow-lg flex items-center justify-center gap-2">
-                    <span class="material-icons">send</span> Enviar Pedido a Cocina
+            <div class="p-4 bg-slate-50 border-t border-slate-100 flex items-center justify-between gap-4">
+                <div class="flex flex-col">
+                    <span class="text-[10px] text-slate-400 uppercase font-bold">Total con extras</span>
+                    <span id="image-modal-total-calc" class="text-base font-black text-purple-700">$0.00</span>
+                </div>
+                <button onclick="confirmAddClientModalProduct()" class="bg-purple-600 hover:bg-purple-700 text-white font-bold px-6 py-3 rounded-2xl text-sm shadow-md transition flex items-center gap-2 active:scale-95">
+                    <span class="material-icons text-base">add_shopping_cart</span>
+                    <span>Agregar al Pedido</span>
                 </button>
             </div>
         </div>
     </div>
 
-    <!-- Notificacion Toast -->
-    <div id="toast" class="fixed bottom-24 left-4 right-4 bg-slate-900 text-white px-4 py-3 rounded-full shadow-2xl flex items-center justify-between text-sm font-medium transition-all transform translate-y-32 hidden z-50">
-        <span id="toast-message">Pedido realizado con éxito</span>
-        <span class="material-icons text-amber-500">check_circle</span>
+    <!-- Modal de Confirmación y Envío de Pedido -->
+    <div id="order-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl flex flex-col max-h-[92vh]">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3 mb-4">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons text-purple-600">shopping_bag</span>
+                    <h3 class="text-lg font-black text-slate-900">Tu Pedido</h3>
+                </div>
+                <button onclick="closeOrderModal()" class="text-slate-400 hover:text-slate-600 p-1">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+
+            <div class="overflow-y-auto space-y-4 flex-1 pr-1">
+                <!-- Lista de Productos en el Carrito (ESTO ERA LO QUE NO APARECÍA) -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Platos y Bebidas seleccionados</label>
+                    <div id="modal-order-items-summary" class="space-y-2.5 max-h-48 overflow-y-auto pr-1">
+                        <!-- Rellenado dinámicamente con los items del pedido -->
+                    </div>
+                </div>
+
+                <!-- Selección / Confirmación de Mesa -->
+                <div class="bg-purple-50 p-3.5 rounded-2xl border border-purple-100">
+                    <label class="block text-xs font-bold text-purple-900 mb-1">Mesa o Ubicación:</label>
+                    <input type="text" id="order-table-input" placeholder="Ej: Mesa 1, Barra, Terraza" 
+                           class="w-full bg-white border border-purple-200 rounded-xl px-3 py-2 text-xs font-bold text-slate-800 focus:outline-none focus:border-purple-600">
+                </div>
+
+                <!-- Notas para Cocina -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Instrucciones especiales para cocina:</label>
+                    <textarea id="order-notes" rows="2" placeholder="Ej: Sin cebolla, salsa aparte, bien cocido..."
+                              class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:border-purple-600 resize-none"></textarea>
+                </div>
+
+                <!-- Método de Pago -->
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">¿Cómo deseas pagar?</label>
+                    <select id="order-payment-method" onchange="togglePagoMovilRefBox()" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-3 py-2.5 text-xs font-bold text-slate-800 focus:outline-none focus:border-purple-600">
+                        <option value="CASH_USD">💵 Efectivo USD ($)</option>
+                        <option value="CASH_BS">💵 Efectivo Bolívares (Bs)</option>
+                        <option value="PAGO_MOVIL">📱 Pago Móvil (Venezuela)</option>
+                        <option value="PUNTO">💳 Punto de Venta / Tarjeta</option>
+                        <option value="ZELLE">⚡ Zelle</option>
+                        <option value="OTROS">🔄 Otro método / Por definir</option>
+                    </select>
+                </div>
+
+                <!-- Recuadro informativo de Pago Móvil -->
+                <div id="client-pm-info-box" class="hidden bg-emerald-50 border border-emerald-200 rounded-2xl p-3.5 space-y-2">
+                    <div class="text-xs font-bold text-emerald-900 flex items-center justify-between">
+                        <span>Datos de Pago Móvil:</span>
+                        <button type="button" onclick="copyPagoMovilDetails()" class="text-[10px] text-emerald-700 bg-emerald-100 hover:bg-emerald-200 px-2 py-0.5 rounded-lg font-bold">Copiar</button>
+                    </div>
+                    <div class="text-[11px] text-emerald-800 font-mono space-y-0.5" id="client-pm-details-text">
+                        <div><strong>Banco:</strong> {pago_movil.get('bank', 'N/A')}</div>
+                        <div><strong>Teléfono:</strong> {pago_movil.get('phone', 'N/A')}</div>
+                        <div><strong>C.I / RIF:</strong> {pago_movil.get('idNumber', 'N/A')}</div>
+                    </div>
+                    <input type="text" id="order-pm-ref" placeholder="Nº de Referencia (últimos 4 u 8 dígitos)"
+                           class="w-full bg-white border border-emerald-300 rounded-xl px-3 py-1.5 text-xs font-mono font-bold focus:outline-none focus:border-emerald-600">
+                </div>
+
+                <!-- Total a Pagar -->
+                <div class="bg-slate-900 text-white p-4 rounded-2xl flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] text-slate-400 block font-bold">TOTAL A PAGAR</span>
+                        <span id="order-modal-total-usd" class="text-lg font-black text-amber-400">$0.00</span>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-[10px] text-slate-400 block font-bold">EN BOLÍVARES</span>
+                        <span id="order-modal-total-bs" class="text-sm font-bold text-slate-200">0.00 Bs</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Botones de Acción -->
+            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2">
+                <button type="button" onclick="closeOrderModal()" class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 py-3 rounded-2xl text-xs font-bold transition">
+                    Seguir pidiendo
+                </button>
+                <button type="button" id="btn-submit-order" onclick="submitOrder()" class="flex-1 bg-purple-600 hover:bg-purple-700 text-white py-3 rounded-2xl text-xs font-black shadow-lg shadow-purple-900/30 transition active:scale-95 flex items-center justify-center gap-1">
+                    <span>Enviar a Cocina</span>
+                    <span class="material-icons text-sm">send</span>
+                </button>
+            </div>
+        </div>
     </div>
 
+    <!-- Modal de Llamado de Mozo / Cuenta -->
+    <div id="table-call-modal" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 shadow-2xl text-center space-y-4">
+            <div class="w-14 h-14 bg-amber-100 text-amber-600 rounded-2xl flex items-center justify-center mx-auto">
+                <span class="material-icons text-3xl">room_service</span>
+            </div>
+            <div>
+                <h3 class="text-lg font-black text-slate-900">Atención en Mesa</h3>
+                <p class="text-xs text-slate-500 mt-1">¿En qué podemos ayudarte?</p>
+            </div>
+            <div class="space-y-2">
+                <button onclick="sendTableCall('WAITER_CALL')" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-icons text-sm">hail</span>
+                    <span>Llamar al Camarero / Mozo</span>
+                </button>
+                <button onclick="sendTableCall('BILL_REQUEST')" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold py-3 rounded-2xl text-xs transition flex items-center justify-center gap-2 shadow-sm">
+                    <span class="material-icons text-sm">receipt_long</span>
+                    <span>Solicitar la Cuenta</span>
+                </button>
+                <button onclick="closeTableCallModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold py-2.5 rounded-2xl text-xs transition">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="hidden fixed bottom-24 left-4 right-4 max-w-sm mx-auto bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center justify-between text-xs font-bold transition-all z-50 border border-slate-700">
+        <span id="toast-message">Mensaje</span>
+        <span class="material-icons text-emerald-400 text-sm">check_circle</span>
+    </div>
+
+    <!-- SCRIPTS JAVASCRIPT DEL CLIENTE -->
     <script>
         const categories = {categories_json};
         const products = {products_json};
         const exchangeRate = {exchange_rate};
+        const pagoMovilConfig = {pm_json};
+        
+        // Estructura de items en carrito: cartId, productId, productName, quantity, priceUsd, selectedModifiers, unitTotalUsd
+        let cartItems = [];
+        let currentCategory = 'ALL';
+        let searchQuery = '';
+        let tableNumber = "Mesa 1";
+        
+        // Estado del modal de plato activo
+        let activeModalProduct = null;
+        let activeModalQty = 1;
 
-        let cart = {{}}; // productId -> quantity
-        let selectedCategoryId = 0;
-        let selectedOrderType = "DINE_IN";
-
-        // Initialize
+        // Inicialización
         document.addEventListener('DOMContentLoaded', () => {{
-            renderCategories();
-            renderProducts();
+            // Leer número de mesa desde la URL (ej: /?table=3)
+            const urlParams = new URLSearchParams(window.location.search);
+            const tableParam = urlParams.get('table');
+            if (tableParam) {{
+                tableNumber = isNaN(tableParam) ? tableParam : `Mesa ${{tableParam}}`;
+            }}
+            
+            const displayTable = document.getElementById('display-table-number');
+            if (displayTable) displayTable.textContent = tableNumber;
+            const inputTable = document.getElementById('order-table-input');
+            if (inputTable) inputTable.value = tableNumber;
+
+            renderCategoriesBar();
+            renderProductsGrid();
             updateCartUI();
         }});
 
-        function renderCategories() {{
-            const container = document.getElementById('categories-container');
-            categories.forEach(cat => {{
-                const btn = document.createElement('button');
-                btn.id = `cat-btn-${{cat.id}}`;
-                btn.className = "px-4 py-2 bg-white text-[#49454f] border border-[#cac4d0] rounded-full text-sm font-semibold shadow-sm shrink-0 whitespace-nowrap transition-colors";
-                btn.textContent = cat.name;
-                btn.onclick = () => filterCategory(cat.id);
-                container.appendChild(btn);
+        // Toast de notificación
+        function showToast(message, isSuccess = true) {{
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+            toastMsg.textContent = message;
+            toast.classList.remove('hidden');
+            setTimeout(() => {{
+                toast.classList.add('hidden');
+            }}, 2500);
+        }}
+
+        // Renderizado de barra de categorías
+        function renderCategoriesBar() {{
+            const bar = document.getElementById('categories-bar');
+            if (!bar) return;
+            
+            let html = `
+                <button onclick="filterCategory('ALL')" class="category-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${{currentCategory === 'ALL' ? 'bg-[#6750a4] text-white' : 'bg-white text-slate-700 border border-slate-200'}}">
+                    Todos
+                </button>
+            `;
+            
+            categories.forEach(c => {{
+                const isActive = currentCategory === String(c.id);
+                html += `
+                    <button onclick="filterCategory('${{c.id}}')" class="category-chip shrink-0 px-4 py-1.5 rounded-full text-xs font-bold transition-all shadow-sm ${{isActive ? 'bg-[#6750a4] text-white' : 'bg-white text-slate-700 border border-slate-200'}}">
+                        ${{c.name}}
+                    </button>
+                `;
             }});
+            
+            bar.innerHTML = html;
         }}
 
         function filterCategory(catId) {{
-            selectedCategoryId = catId;
-            document.querySelectorAll('#categories-container button').forEach(btn => {{
-                btn.classList.remove('bg-[#6750a4]', 'text-white', 'border-transparent');
-                btn.classList.add('bg-white', 'text-[#49454f]', 'border-[#cac4d0]');
-            }});
-            const activeBtn = document.getElementById(`cat-btn-${{catId}}`);
-            if (activeBtn) {{
-                activeBtn.classList.remove('bg-white', 'text-[#49454f]', 'border-[#cac4d0]');
-                activeBtn.classList.add('bg-[#6750a4]', 'text-white');
-            }}
-            renderProducts();
+            currentCategory = catId;
+            renderCategoriesBar();
+            renderProductsGrid();
         }}
 
-        function renderProducts() {{
+        function handleSearchInput(val) {{
+            searchQuery = (val || '').trim().toLowerCase();
+            const clearBtn = document.getElementById('menu-search-clear');
+            if (clearBtn) {{
+                if (searchQuery) clearBtn.classList.remove('hidden');
+                else clearBtn.classList.add('hidden');
+            }}
+            renderProductsGrid();
+        }}
+
+        function clearSearch() {{
+            const input = document.getElementById('menu-search-input');
+            if (input) input.value = '';
+            handleSearchInput('');
+        }}
+
+        // Renderizado de la cuadrícula de productos
+        function renderProductsGrid() {{
             const container = document.getElementById('products-container');
-            container.innerHTML = "";
-            
-            const filtered = selectedCategoryId === 0 
-                ? products 
-                : products.filter(p => p.categoryId === selectedCategoryId);
+            if (!container) return;
+
+            let filtered = products.filter(p => {{
+                const matchCat = (currentCategory === 'ALL') || (String(p.categoryId) === String(currentCategory));
+                const matchSearch = !searchQuery || (p.name && p.name.toLowerCase().includes(searchQuery)) || (p.description && p.description.toLowerCase().includes(searchQuery));
+                return matchCat && matchSearch;
+            }});
 
             if (filtered.length === 0) {{
                 container.innerHTML = `
-                    <div class="col-span-full text-center py-12 bg-white rounded-3xl border border-dashed border-[#cac4d0]">
-                        <span class="material-icons text-slate-300 text-5xl mb-2">inventory_2</span>
-                        <p class="text-slate-400 text-sm">No hay productos disponibles</p>
+                    <div class="col-span-full text-center py-12 text-slate-400">
+                        <span class="material-icons text-5xl block mb-2 text-slate-300">search_off</span>
+                        <p class="text-sm font-bold">No se encontraron platos disponibles</p>
                     </div>
                 `;
                 return;
             }}
 
-            filtered.forEach(p => {{
-                const qty = cart[p.id] || 0;
-                const isOutOfStock = p.stock <= 0;
+            container.innerHTML = filtered.map(p => {{
                 const priceBs = (p.priceUsd * exchangeRate).toFixed(2);
+                const hasStock = (p.stock === undefined || p.stock === null || p.stock > 0);
+                const hasModifiers = p.modifiers && Array.isArray(p.modifiers) && p.modifiers.length > 0;
                 
-                const card = document.createElement('div');
-                card.className = "bg-white p-4 rounded-3xl border border-[#cac4d0] shadow-sm flex gap-4 items-start transition-all active:scale-[0.98]";
-                
-                let controlHtml = "";
-                if (isOutOfStock) {{
-                    controlHtml = `<span class="text-xs bg-rose-50 text-rose-600 px-2 py-1 rounded-md font-bold">Agotado</span>`;
-                }} else if (qty > 0) {{
-                    controlHtml = `
-                        <div class="flex items-center gap-2 bg-[#eaddff] border border-[#cac4d0] rounded-full p-1">
-                            <button onclick="decrementCart(${{p.id}})" class="text-[#6750a4] hover:bg-[#eaddff] rounded-full p-1 flex items-center justify-center">
-                                <span class="material-icons text-base">remove</span>
-                            </button>
-                            <span class="text-xs font-bold text-[#21005d] px-1">${{qty}}</span>
-                            <button onclick="incrementCart(${{p.id}})" class="text-[#6750a4] hover:bg-[#eaddff] rounded-full p-1 flex items-center justify-center">
-                                <span class="material-icons text-base">add</span>
-                            </button>
-                        </div>
-                    `;
-                }} else {{
-                    controlHtml = `
-                        <button onclick="incrementCart(${{p.id}})" class="bg-[#6750a4] text-white px-4 py-1.5 rounded-full text-xs font-semibold hover:bg-[#4f378b] transition flex items-center gap-0.5 shadow-sm">
-                            <span class="material-icons text-sm">add_shopping_cart</span> Agregar
-                        </button>
-                    `;
-                }}
+                // Buscar cantidad actual en el carrito
+                const totalInCart = cartItems.filter(item => item.productId === p.id).reduce((sum, item) => sum + item.quantity, 0);
 
-                let imgHtml = "";
-                const imgUri = p.imageUri || p.imageUrl || p.image || "";
-                if (imgUri && (imgUri.startsWith("/") || imgUri.includes("product_images") || imgUri.startsWith("http") || imgUri.startsWith("data:"))) {{
-                    const fileName = imgUri.substring(imgUri.lastIndexOf('/') + 1);
-                    const src = (imgUri.startsWith("http") || imgUri.startsWith("data:")) ? imgUri : `/api/images?file=${{encodeURIComponent(fileName)}}`;
-                    imgHtml = `<img src="${{src}}" class="w-16 h-16 object-cover rounded-2xl shrink-0 border border-[#cac4d0]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="w-16 h-16 bg-[#eaddff] text-[#21005d] flex items-center justify-center rounded-2xl font-bold text-2xl uppercase shrink-0 border border-[#cac4d0]">${{p.name.charAt(0)}}</div>`;
-                }} else if (imgUri && imgUri.trim() !== "") {{
-                    const emojis = {{
-                        pabellon: "🍛", asado: "🍖", arepa: "🫓", tequenos: "🥖", empanadas: "🥟",
-                        chicha: "🥤", papelon: "🍹", quesillo: "🍮", tresleches: "🍰",
-                        burger: "🍔", pizza: "🍕", cafe: "☕", bebida: "🥤"
-                    }};
-                    const emoji = emojis[imgUri.toLowerCase()] || "🍛";
-                    imgHtml = `
-                        <div class="w-16 h-16 bg-gradient-to-tr from-[#eaddff] to-[#f3edf7] text-3xl flex items-center justify-center rounded-2xl shrink-0 border border-[#cac4d0] select-none">
-                            ${{emoji}}
-                        </div>
-                    `;
-                }} else {{
-                    imgHtml = `
-                        <div class="w-16 h-16 bg-[#eaddff] text-[#21005d] flex items-center justify-center rounded-2xl font-bold text-2xl uppercase shrink-0 border border-[#cac4d0]">
-                            ${{p.name.charAt(0)}}
-                        </div>
-                    `;
-                }}
+                const imageHtml = p.imageUrl 
+                    ? `<img src="${{p.imageUrl}}" alt="${{p.name}}" class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105">`
+                    : `<div class="w-full h-full flex items-center justify-center text-slate-300 bg-slate-100"><span class="material-icons text-4xl">restaurant</span></div>`;
 
-                card.innerHTML = `
-                    ${{imgHtml}}
-                    <div class="flex-1 min-w-0">
-                        <div class="flex justify-between items-start gap-1">
-                            <h4 class="font-bold text-slate-800 text-sm truncate">${{p.name}}</h4>
-                            <span class="text-xs text-slate-400 shrink-0">Stock: ${{p.stock}}</span>
+                return `
+                    <div class="group bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-md transition flex flex-col justify-between">
+                        <div class="relative aspect-video bg-slate-100 cursor-pointer overflow-hidden" onclick="openProductModal(${{p.id}})">
+                            ${{imageHtml}}
+                            ${{hasModifiers ? `<span class="absolute top-2.5 left-2.5 bg-purple-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">Personalizable</span>` : ''}}
+                            ${{!hasStock ? `<div class="absolute inset-0 bg-black/60 flex items-center justify-center text-white text-xs font-black uppercase tracking-wider">Agotado</div>` : ''}}
                         </div>
-                        <p class="text-slate-500 text-xs mt-0.5 line-clamp-2">${{p.description}}</p>
-                        <div class="flex items-center justify-between mt-3 gap-2">
+
+                        <div class="p-4 flex-1 flex flex-col justify-between">
                             <div>
-                                <span class="text-sm font-extrabold text-slate-800">$${{p.priceUsd.toFixed(2)}}</span>
-                                <span class="text-[10px] text-slate-400 block">${{priceBs}} Bs</span>
+                                <h3 class="font-black text-slate-900 text-sm sm:text-base leading-snug cursor-pointer" onclick="openProductModal(${{p.id}})">${{p.name}}</h3>
+                                ${{p.description ? `<p class="text-slate-500 text-xs mt-1 line-clamp-2">${{p.description}}</p>` : ''}}
                             </div>
-                            <div>${{controlHtml}}</div>
+
+                            <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+                                <div class="flex flex-col">
+                                    <span class="text-sm font-black text-purple-700 font-mono">$${{p.priceUsd.toFixed(2)}}</span>
+                                    <span class="text-[11px] font-semibold text-slate-400 font-mono">${{priceBs}} Bs</span>
+                                </div>
+
+                                ${{hasStock ? `
+                                    <div class="flex items-center gap-1.5">
+                                        ${{totalInCart > 0 ? `
+                                            <button onclick="decrementProductSimple(${{p.id}})" class="w-7 h-7 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-black text-xs flex items-center justify-center active:scale-95 transition">-</button>
+                                            <span class="text-xs font-black text-purple-900 px-1.5">${{totalInCart}}</span>
+                                        ` : ''}}
+                                        <button onclick="handleCardAddClick(${{p.id}})" class="bg-[#6750a4] hover:bg-[#523e85] text-white font-bold px-3 py-1.5 rounded-xl text-xs flex items-center gap-1 shadow-sm active:scale-95 transition">
+                                            <span class="material-icons text-xs">add</span>
+                                            <span>${{totalInCart > 0 ? 'Más' : 'Agregar'}}</span>
+                                        </button>
+                                    </div>
+                                ` : `
+                                    <span class="text-xs font-bold text-slate-400">No disponible</span>
+                                `}}
+                            </div>
                         </div>
                     </div>
                 `;
-                container.appendChild(card);
-            }});
+            }}).join('');
         }}
 
-        function incrementCart(productId) {{
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-            const qty = cart[productId] || 0;
-            if (qty < product.stock) {{
-                cart[productId] = qty + 1;
-                updateCartUI();
-                renderProducts();
+        // Manejo de clic en botón rápido de tarjeta
+        function handleCardAddClick(productId) {{
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+
+            // Si tiene modificadores / extras, abrimos el modal para que los elija
+            if (prod.modifiers && prod.modifiers.length > 0) {{
+                openProductModal(productId);
             }} else {{
-                showToast("¡Inventario límite alcanzado!");
+                // Si es un producto simple, lo agregamos directo al carrito
+                addSimpleProductToCart(prod);
             }}
         }}
 
-        function decrementCart(productId) {{
-            const qty = cart[productId] || 0;
-            if (qty > 1) {{
-                cart[productId] = qty - 1;
+        function addSimpleProductToCart(prod) {{
+            // Buscar si ya existe el item simple en el carrito
+            const existing = cartItems.find(item => item.productId === prod.id && (!item.selectedModifiers || item.selectedModifiers.length === 0));
+            if (existing) {{
+                existing.quantity += 1;
             }} else {{
-                delete cart[productId];
+                cartItems.push({{
+                    cartId: Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                    productId: prod.id,
+                    productName: prod.name,
+                    quantity: 1,
+                    priceUsd: prod.priceUsd,
+                    selectedModifiers: [],
+                    unitTotalUsd: prod.priceUsd
+                }});
             }}
             updateCartUI();
-            renderProducts();
+            renderProductsGrid();
+            showToast(`Agregado: ${{prod.name}}`);
         }}
 
-        function getCartStats() {{
-            let totalUsd = 0;
-            let count = 0;
-            for (const id in cart) {{
-                const p = products.find(prod => prod.id == id);
-                if (p) {{
-                    totalUsd += p.priceUsd * cart[id];
-                    count += cart[id];
+        function decrementProductSimple(productId) {{
+            // Buscar el último item agregado de ese producto
+            const index = cartItems.map(item => item.productId).lastIndexOf(productId);
+            if (index !== -1) {{
+                if (cartItems[index].quantity > 1) {{
+                    cartItems[index].quantity -= 1;
+                }} else {{
+                    cartItems.splice(index, 1);
                 }}
             }}
-            return {{ totalUsd, count, totalBs: totalUsd * exchangeRate }};
+            updateCartUI();
+            renderProductsGrid();
         }}
 
-        function updateCartUI() {{
-            const stats = getCartStats();
-            const footer = document.getElementById('cart-footer');
-            if (stats.count > 0) {{
-                footer.classList.remove('hidden');
-                document.getElementById('cart-count').textContent = `${{stats.count}} ` + (stats.count === 1 ? 'producto' : 'productos');
-                document.getElementById('cart-total').textContent = `$${{stats.totalUsd.toFixed(2)}} / ${{stats.totalBs.toFixed(2)}} Bs`;
-            }} else {{
-                footer.classList.add('hidden');
+        // Modal de Producto (Detalle, Zoom y Extras)
+        function openProductModal(productId) {{
+            const prod = products.find(p => p.id === productId);
+            if (!prod) return;
+            
+            activeModalProduct = prod;
+            activeModalQty = 1;
+
+            const modal = document.getElementById('image-modal');
+            const img = document.getElementById('image-modal-img');
+            const title = document.getElementById('image-modal-title');
+            const desc = document.getElementById('image-modal-desc');
+            const price = document.getElementById('image-modal-price');
+            const stock = document.getElementById('image-modal-stock');
+            const qty = document.getElementById('image-modal-qty');
+            const modSection = document.getElementById('image-modal-modifiers-section');
+            const modList = document.getElementById('image-modal-modifiers-list');
+
+            if (img) img.src = prod.imageUrl || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&auto=format&fit=crop&q=80';
+            if (title) title.textContent = prod.name;
+            if (desc) desc.textContent = prod.description || 'Delicioso plato preparado al momento con los mejores ingredientes.';
+            if (price) price.textContent = `$${{prod.priceUsd.toFixed(2)}} / ${{(prod.priceUsd * exchangeRate).toFixed(2)}} Bs`;
+            if (stock) stock.textContent = (prod.stock !== undefined && prod.stock !== null) ? `Stock: ${{prod.stock}} disponibles` : 'Disponible';
+            if (qty) qty.textContent = "1";
+
+            // Modificadores / Extras
+            if (prod.modifiers && prod.modifiers.length > 0 && modSection && modList) {{
+                modSection.classList.remove('hidden');
+                modList.innerHTML = prod.modifiers.map((m, idx) => `
+                    <label class="flex items-center justify-between p-2.5 rounded-xl border border-slate-200 hover:bg-purple-50/50 cursor-pointer transition">
+                        <div class="flex items-center gap-2">
+                            <input type="checkbox" name="modal-modifier" value="${{idx}}" onchange="recalcModalTotal()" class="w-4 h-4 text-purple-600 rounded focus:ring-purple-500">
+                            <span class="text-xs font-bold text-slate-800">${{m.name}}</span>
+                        </div>
+                        <span class="text-xs font-black text-purple-700 font-mono">+ $${{m.priceUsd.toFixed(2)}}</span>
+                    </label>
+                `).join('');
+            }} else if (modSection) {{
+                modSection.classList.add('hidden');
+            }}
+
+            recalcModalTotal();
+            if (modal) modal.classList.remove('hidden');
+        }}
+
+        function closeImageModal() {{
+            const modal = document.getElementById('image-modal');
+            if (modal) modal.classList.add('hidden');
+            activeModalProduct = null;
+        }}
+
+        function modalChangeQty(delta) {{
+            activeModalQty = Math.max(1, activeModalQty + delta);
+            const qty = document.getElementById('image-modal-qty');
+            if (qty) qty.textContent = activeModalQty;
+            recalcModalTotal();
+        }}
+
+        function recalcModalTotal() {{
+            if (!activeModalProduct) return;
+            let unitTotal = activeModalProduct.priceUsd;
+            
+            const checkboxes = document.querySelectorAll('input[name="modal-modifier"]:checked');
+            checkboxes.forEach(cb => {{
+                const modIdx = parseInt(cb.value, 10);
+                if (activeModalProduct.modifiers && activeModalProduct.modifiers[modIdx]) {{
+                    unitTotal += activeModalProduct.modifiers[modIdx].priceUsd;
+                }}
+            }});
+
+            const fullTotal = unitTotal * activeModalQty;
+            const calc = document.getElementById('image-modal-total-calc');
+            if (calc) {{
+                calc.textContent = `$${{fullTotal.toFixed(2)}} / ${{(fullTotal * exchangeRate).toFixed(2)}} Bs`;
             }}
         }}
 
-        function showToast(message, isSuccess = false) {{
-            const toast = document.getElementById('toast');
-            const toastMsg = document.getElementById('toast-message');
-            toastMsg.textContent = message;
-            toast.classList.remove('hidden', 'translate-y-32', 'bg-slate-900', 'bg-emerald-600');
-            toast.classList.add(isSuccess ? 'bg-emerald-600' : 'bg-slate-900', 'translate-y-0');
-            setTimeout(() => {{
-                toast.classList.add('translate-y-32');
-                setTimeout(() => toast.classList.add('hidden'), 300);
-            }}, 2500);
+        function confirmAddClientModalProduct() {{
+            if (!activeModalProduct) return;
+            
+            let selectedMods = [];
+            let unitTotal = activeModalProduct.priceUsd;
+
+            const checkboxes = document.querySelectorAll('input[name="modal-modifier"]:checked');
+            checkboxes.forEach(cb => {{
+                const modIdx = parseInt(cb.value, 10);
+                if (activeModalProduct.modifiers && activeModalProduct.modifiers[modIdx]) {{
+                    const m = activeModalProduct.modifiers[modIdx];
+                    selectedMods.push({{ name: m.name, priceUsd: m.priceUsd }});
+                    unitTotal += m.priceUsd;
+                }}
+            }});
+
+            cartItems.push({{
+                cartId: Date.now() + '_' + Math.random().toString(36).substr(2, 5),
+                productId: activeModalProduct.id,
+                productName: activeModalProduct.name,
+                quantity: activeModalQty,
+                priceUsd: activeModalProduct.priceUsd,
+                selectedModifiers: selectedMods,
+                unitTotalUsd: unitTotal
+            }});
+
+            updateCartUI();
+            renderProductsGrid();
+            closeImageModal();
+            showToast(`Agregado al carrito: ${{activeModalProduct.name}}`);
         }}
 
+        // Actualización de la barra flotante y estado del carrito
+        function updateCartUI() {{
+            const totalCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+            const totalUsd = cartItems.reduce((sum, item) => sum + (item.unitTotalUsd * item.quantity), 0);
+            const totalBs = (totalUsd * exchangeRate).toFixed(2);
+
+            const footer = document.getElementById('cart-footer');
+            const countEl = document.getElementById('cart-count');
+            const totalEl = document.getElementById('cart-total');
+
+            if (totalCount > 0) {{
+                if (footer) footer.classList.remove('hidden');
+                if (countEl) countEl.textContent = `${{totalCount}} ${{totalCount === 1 ? 'artículo' : 'artículos'}} en el carrito`;
+                if (totalEl) totalEl.textContent = `$${{totalUsd.toFixed(2)}} / ${{totalBs}} Bs`;
+            }} else {{
+                if (footer) footer.classList.add('hidden');
+            }}
+        }}
+
+        // Modal de Pedido / Carrito (Renderiza la lista completa de platos)
         function openOrderModal() {{
-            const stats = getCartStats();
-            document.getElementById('modal-total-usd').textContent = `$${{stats.totalUsd.toFixed(2)}}`;
-            document.getElementById('modal-total-bs').textContent = `${{stats.totalBs.toFixed(2)}} Bs`;
-            document.getElementById('order-modal').classList.remove('hidden');
+            if (cartItems.length === 0) {{
+                showToast("El carrito está vacío. Agrega platos para pedir.");
+                return;
+            }}
+
+            const modal = document.getElementById('order-modal');
+            const summaryContainer = document.getElementById('modal-order-items-summary');
+            
+            // Rellenar lista de items en el modal
+            if (summaryContainer) {{
+                summaryContainer.innerHTML = cartItems.map((item, idx) => {{
+                    const itemTotalUsd = (item.unitTotalUsd * item.quantity).toFixed(2);
+                    const itemTotalBs = (item.unitTotalUsd * item.quantity * exchangeRate).toFixed(2);
+                    const modsText = (item.selectedModifiers && item.selectedModifiers.length > 0)
+                        ? item.selectedModifiers.map(m => `+ ${{m.name}}`).join(', ')
+                        : '';
+
+                    return `
+                        <div class="flex items-center justify-between bg-slate-50 p-2.5 rounded-2xl border border-slate-100">
+                            <div class="flex-1 pr-2">
+                                <h4 class="text-xs font-black text-slate-900 leading-tight">${{item.productName}}</h4>
+                                ${{modsText ? `<p class="text-[10px] text-purple-700 font-medium leading-tight mt-0.5">${{modsText}}</p>` : ''}}
+                                <span class="text-[11px] font-black text-purple-900 font-mono mt-0.5 block">$${{itemTotalUsd}} / ${{itemTotalBs}} Bs</span>
+                            </div>
+
+                            <div class="flex items-center gap-2 shrink-0">
+                                <div class="flex items-center bg-white border border-slate-200 rounded-xl p-0.5 shadow-sm">
+                                    <button onclick="changeCartItemQty(${{idx}}, -1)" class="w-6 h-6 rounded-lg text-slate-700 font-black text-xs hover:bg-slate-100 flex items-center justify-center">-</button>
+                                    <span class="text-xs font-black text-purple-900 px-2 font-mono">${{item.quantity}}</span>
+                                    <button onclick="changeCartItemQty(${{idx}}, 1)" class="w-6 h-6 rounded-lg bg-purple-600 text-white font-black text-xs hover:bg-purple-700 flex items-center justify-center">+</button>
+                                </div>
+                                <button onclick="removeCartItem(${{idx}})" class="text-rose-400 hover:text-rose-600 p-1">
+                                    <span class="material-icons text-base">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                }}).join('');
+            }}
+
+            // Actualizar totales en el modal
+            const totalUsd = cartItems.reduce((sum, item) => sum + (item.unitTotalUsd * item.quantity), 0);
+            const totalBs = (totalUsd * exchangeRate).toFixed(2);
+
+            const totalUsdEl = document.getElementById('order-modal-total-usd');
+            const totalBsEl = document.getElementById('order-modal-total-bs');
+            if (totalUsdEl) totalUsdEl.textContent = `$${{totalUsd.toFixed(2)}}`;
+            if (totalBsEl) totalBsEl.textContent = `${{totalBs}} Bs`;
+
+            togglePagoMovilRefBox();
+            if (modal) modal.classList.remove('hidden');
         }}
 
         function closeOrderModal() {{
-            document.getElementById('order-modal').classList.add('hidden');
+            const modal = document.getElementById('order-modal');
+            if (modal) modal.classList.add('hidden');
         }}
 
-        function setOrderType(type) {{
-            selectedOrderType = type;
-            const btnDine = document.getElementById('type-dinein');
-            const btnTake = document.getElementById('type-takeaway');
-            const tableGroup = document.getElementById('table-number-group');
-            
-            if (type === 'DINE_IN') {{
-                btnDine.className = "border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition";
-                btnTake.className = "border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]";
-                tableGroup.classList.remove('hidden');
-            }} else {{
-                btnTake.className = "border-2 border-[#6750a4] bg-[#eaddff] text-[#21005d] p-3 rounded-2xl flex flex-col items-center justify-center transition";
-                btnDine.className = "border-2 border-[#cac4d0] p-3 rounded-2xl flex flex-col items-center justify-center transition text-[#49454f]";
-                tableGroup.classList.add('hidden');
-                document.getElementById('input-table').value = "";
-            }}
-        }}
-
-        function submitOrder() {{
-            const stats = getCartStats();
-            if (stats.count === 0) return;
-            let tableNumber = "Para llevar";
-            if (selectedOrderType === "DINE_IN") {{
-                tableNumber = document.getElementById('input-table').value.trim();
-                if (!tableNumber) {{
-                    alert("Por favor ingresa tu número de mesa o ubicación.");
-                    return;
+        function changeCartItemQty(index, delta) {{
+            if (cartItems[index]) {{
+                cartItems[index].quantity += delta;
+                if (cartItems[index].quantity <= 0) {{
+                    cartItems.splice(index, 1);
                 }}
             }}
-            const paymentMethod = document.getElementById('select-payment').value;
-            const notes = document.getElementById('input-notes').value.trim();
-            const itemsPayload = [];
-            for (const id in cart) {{
-                itemsPayload.push({{
-                    productId: parseInt(id),
-                    quantity: cart[id]
-                }});
+            updateCartUI();
+            renderProductsGrid();
+            if (cartItems.length === 0) {{
+                closeOrderModal();
+            }} else {{
+                openOrderModal();
             }}
+        }}
+
+        function removeCartItem(index) {{
+            if (cartItems[index]) {{
+                cartItems.splice(index, 1);
+            }}
+            updateCartUI();
+            renderProductsGrid();
+            if (cartItems.length === 0) {{
+                closeOrderModal();
+            }} else {{
+                openOrderModal();
+            }}
+        }}
+
+        function togglePagoMovilRefBox() {{
+            const method = document.getElementById('order-payment-method').value;
+            const box = document.getElementById('client-pm-info-box');
+            if (box) {{
+                if (method === 'PAGO_MOVIL') box.classList.remove('hidden');
+                else box.classList.add('hidden');
+            }}
+        }}
+
+        function copyPagoMovilDetails() {{
+            const text = `Pago Móvil:\\nBanco: ${{pagoMovilConfig.bank || 'N/A'}}\\nTeléfono: ${{pagoMovilConfig.phone || 'N/A'}}\\nRIF/CI: ${{pagoMovilConfig.idNumber || 'N/A'}}`;
+            if (navigator.clipboard && navigator.clipboard.writeText) {{
+                navigator.clipboard.writeText(text).then(() => showToast("Datos de Pago Móvil copiados"));
+            }} else {{
+                showToast("Datos copiados");
+            }}
+        }}
+
+        // Envío del Pedido al Backend
+        function submitOrder() {{
+            if (cartItems.length === 0) {{
+                showToast("Tu carrito está vacío.");
+                return;
+            }}
+
+            const tableInput = document.getElementById('order-table-input');
+            const finalTable = (tableInput && tableInput.value.trim()) ? tableInput.value.trim() : tableNumber;
+            const notes = document.getElementById('order-notes').value.trim();
+            const paymentMethod = document.getElementById('order-payment-method').value;
+            const pmRef = document.getElementById('order-pm-ref') ? document.getElementById('order-pm-ref').value.trim() : '';
+
+            const btn = document.getElementById('btn-submit-order');
+            if (btn) {{
+                btn.disabled = true;
+                btn.innerHTML = `<span class="material-icons text-sm animate-spin">sync</span> <span>Enviando a Cocina...</span>`;
+            }}
+
+            // Construir payload con modificadores
+            const itemsPayload = cartItems.map(item => ({{
+                productId: item.productId,
+                quantity: item.quantity,
+                priceUsd: item.priceUsd,
+                selectedModifiers: item.selectedModifiers || [],
+                unitTotalUsd: item.unitTotalUsd
+            }}));
+
             const payload = {{
-                tableNumber: tableNumber,
-                orderType: selectedOrderType,
+                tableNumber: finalTable,
+                items: itemsPayload,
+                orderType: "DINE_IN",
                 paymentMethod: paymentMethod,
-                notes: notes,
-                items: itemsPayload
+                paymentRef: pmRef,
+                notes: notes
             }};
+
             fetch('/api/order', {{
                 method: 'POST',
-                headers: {{
-                    'Content-Type': 'application/json'
-                }},
+                headers: {{ 'Content-Type': 'application/json' }},
                 body: JSON.stringify(payload)
             }})
             .then(res => res.json())
             .then(data => {{
+                if (btn) {{
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>Enviar a Cocina</span><span class="material-icons text-sm">send</span>`;
+                }}
+
                 if (data.status === 'success') {{
-                    closeOrderModal();
-                    cart = {{}};
+                    cartItems = [];
                     updateCartUI();
-                    renderProducts();
-                    showToast("¡Pedido enviado a cocina! Espera confirmación.", true);
+                    renderProductsGrid();
+                    closeOrderModal();
+                    
+                    alert(`✅ ¡PEDIDO #${{data.orderId}} ENVIADO CON ÉXITO!\\n\\nTu comanda ha sido enviada directamente a cocina para preparación.`);
                 }} else {{
-                    alert("Error al realizar pedido: " + (data.message || "Error desconocido"));
+                    alert("❌ No se pudo enviar el pedido: " + (data.message || "Error desconocido"));
                 }}
             }})
             .catch(err => {{
-                console.error(err);
-                alert("Error de conexión con el servidor del restaurante.");
+                if (btn) {{
+                    btn.disabled = false;
+                    btn.innerHTML = `<span>Enviar a Cocina</span><span class="material-icons text-sm">send</span>`;
+                }}
+                console.error("Error al enviar pedido:", err);
+                alert("⚠️ Error de conexión al enviar el pedido a la PC principal.");
+            }});
+        }}
+
+        // Llamado de Mozo / Cuenta
+        function openTableCallModal() {{
+            const modal = document.getElementById('table-call-modal');
+            if (modal) modal.classList.remove('hidden');
+        }}
+
+        function closeTableCallModal() {{
+            const modal = document.getElementById('table-call-modal');
+            if (modal) modal.classList.add('hidden');
+        }}
+
+        function sendTableCall(type) {{
+            const tableInput = document.getElementById('order-table-input');
+            const finalTable = (tableInput && tableInput.value.trim()) ? tableInput.value.trim() : tableNumber;
+
+            fetch('/api/client/table-call', {{
+                method: 'POST',
+                headers: {{ 'Content-Type': 'application/json' }},
+                body: JSON.stringify({{ tableNumber: finalTable, type: type }})
+            }})
+            .then(res => res.json())
+            .then(data => {{
+                closeTableCallModal();
+                if (data.status === 'success') {{
+                    if (type === 'WAITER_CALL') {{
+                        alert("🔔 ¡Llamado enviado!\\nUn camarero se acercará a tu mesa en breve.");
+                    }} else {{
+                        alert("🧾 ¡Solicitud enviada!\\nEl mozo te llevará la cuenta a tu mesa.");
+                    }}
+                }} else {{
+                    alert("No se pudo enviar la solicitud: " + (data.message || "Error"));
+                }}
+            }})
+            .catch(err => {{
+                closeTableCallModal();
+                alert("Error de conexión al llamar al mozo.");
             }});
         }}
     </script>
 </body>
-</html>"""'''
+</html>"""
+'''
 
 with open('gastro_local_pc_server.py', 'r', encoding='utf-8') as f:
     lines = f.readlines()
@@ -450,11 +866,7 @@ for idx, line in enumerate(lines):
         func_end = idx
         break
 
-assert func_start != -1 and func_end != -1, "No se encontraron las funciones en gastro_local_pc_server.py"
-
-# retroceder comentarios previos
-while func_start > 0 and lines[func_start - 1].strip().startswith('#'):
-    func_start -= 1
+assert func_start != -1 and func_end != -1
 
 new_lines = lines[:func_start] + [client_menu_code + "\n\n"] + lines[func_end:]
 new_content = "".join(new_lines)
@@ -462,4 +874,7 @@ new_content = "".join(new_lines)
 with open('gastro_local_pc_server.py', 'w', encoding='utf-8') as f:
     f.write(new_content)
 
-print(f"SUCCESS: Replaced get_client_menu_html with Development Mode UI cleanly. Line count: {len(new_lines)}")
+print(f"SUCCESS: Replaced get_client_menu_html cleanly. New line count: {len(new_lines)}")
+
+
+

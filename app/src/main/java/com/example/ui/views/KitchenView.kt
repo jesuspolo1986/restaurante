@@ -428,7 +428,7 @@ fun KitchenOrderCard(
     isProcessing: Boolean,
     onCompleteClick: () -> Unit
 ) {
-    val items by remember(order.id) { viewModel.getItemsForOrder(order.id) }.collectAsState(initial = emptyList())
+    val items by viewModel.getItemsForOrder(order.id).collectAsState(initial = emptyList())
     
     val timeElapsed = remember(order.timestamp) {
         val diffMs = System.currentTimeMillis() - order.timestamp

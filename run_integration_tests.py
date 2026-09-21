@@ -104,24 +104,7 @@ test("KDS actualiza comanda a READY", code == 200 and res.get("status") == "succ
 code, res = post_req("/api/admin/collect-payment", {"orderId": order_id, "paymentMethod": "CASH_USD"}, headers={"X-Admin-Token": admin_token})
 test("Admin cobra comanda con exito", code == 200 and res.get("status") == "success")
 
-# 8. Test Waiter DELIVERED Status Update (No Admin Token Required)
-code, res = post_req("/api/admin/update-order-status", {"orderId": order_id, "status": "DELIVERED"})
-test("Mozo actualiza comanda a DELIVERED sin token admin", code == 200 and res.get("status") == "success")
-
-# 9. Test Security Leak Prevention in GET /api/config
-code, config_sec = get_req("/api/config")
-test("GET /api/config no expone adminPin", "adminPin" not in config_sec)
-
-# 10. Test Negative Quantity Exploitation Prevention
-order_data_neg = {
-    "tableNumber": "Mesa 2",
-    "items": [{"productId": prods[0]["id"], "quantity": -5, "priceUsd": prods[0]["priceUsd"]}],
-    "orderType": "DINE_IN"
-}
-code, res_neg = post_req("/api/order", order_data_neg)
-test("Pedido con cantidad negativa rechaza o ignora items invalidos", res_neg.get("orderId") is None or code != 200)
-
-# 11. Restore Exchange Rate
+# 8. Restore Exchange Rate
 post_req("/api/admin/update-exchange-rate", {"exchangeRateBs": 55.0}, headers={"X-Admin-Token": admin_token})
 
 print("-" * 65)

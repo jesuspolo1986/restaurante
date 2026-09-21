@@ -18,15 +18,19 @@ echo.
 
 :: 1. Verificar si existe el archivo ejecutable GastroLocal.exe en la misma carpeta
 if exist "%~dp0GastroLocal.exe" (
-    echo Iniciando GastroLocal.exe...
+    echo Iniciando GastroLocal en segundo plano...
+    echo Abriendo Panel de Administrador en el navegador...
     start "" "%~dp0GastroLocal.exe" %PORT%
+    timeout /t 2 >nul
     exit /b
 )
 
 :: 2. Verificar si existe en la carpeta dist\
 if exist "%~dp0dist\GastroLocal.exe" (
-    echo Iniciando dist\GastroLocal.exe...
+    echo Iniciando dist\GastroLocal en segundo plano...
+    echo Abriendo Panel de Administrador en el navegador...
     start "" "%~dp0dist\GastroLocal.exe" %PORT%
+    timeout /t 2 >nul
     exit /b
 )
 

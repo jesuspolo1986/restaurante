@@ -203,9 +203,8 @@ class LocalWebServer(
                         scope.launch {
                             try {
                                 val directory = java.io.File(context.filesDir, "product_images")
-                                val safeName = java.io.File(fileParam).name
-                                val file = java.io.File(directory, safeName)
-                                if (file.canonicalFile.toPath().startsWith(directory.canonicalFile.toPath()) && file.exists() && file.isFile) {
+                                val file = java.io.File(directory, fileParam)
+                                if (file.exists() && file.isFile) {
                                     val bytes = file.readBytes()
                                     sendResponse(outputStream, 200, "OK", "image/jpeg", bytes)
                                 } else {
@@ -602,51 +601,19 @@ class LocalWebServer(
                             }
 
                             let imgHtml = "";
-                            const imgUri = (p.imageUri || p.imageUrl || p.image || "").trim();
-                            const isDataImg = imgUri.startsWith("data:image");
-                            const isHttpImg = imgUri.startsWith("http://") || imgUri.startsWith("https://");
-                            const bs = String.fromCharCode(92);
-                            const isLocalPath = imgUri.startsWith("/") || imgUri.includes("product_images") || (imgUri.indexOf(bs) !== -1) || /^[a-zA-Z]:/.test(imgUri);
-
-                            if (isDataImg || isHttpImg) {
-                                imgHtml = `<img src="${'$'}{imgUri}" alt="${'$'}{p.name}" class="w-16 h-16 object-cover rounded-2xl shrink-0 border border-[#cac4d0]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="w-16 h-16 bg-[#eaddff] text-[#21005d] flex items-center justify-center rounded-2xl font-bold text-2xl uppercase shrink-0 border border-[#cac4d0]">${'$'}{p.name.charAt(0)}</div>`;
-                            } else if (isLocalPath) {
-                                const fileName = imgUri.split('/').pop().split(bs).pop();
-                                imgHtml = `<img src="/api/images?file=${'$'}{encodeURIComponent(fileName)}" alt="${'$'}{p.name}" class="w-16 h-16 object-cover rounded-2xl shrink-0 border border-[#cac4d0]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="w-16 h-16 bg-[#eaddff] text-[#21005d] flex items-center justify-center rounded-2xl font-bold text-2xl uppercase shrink-0 border border-[#cac4d0]">${'$'}{p.name.charAt(0)}</div>`;
-                            } else if (imgUri !== "") {
-                                const clean = imgUri.toLowerCase();
-                                let grad = "from-[#78909c] to-[#cfd8dc]";
-                                let icon = "restaurant_menu";
-                                if (clean.includes("pabellon") || clean.includes("plato")) {
-                                    grad = "from-[#e65100] to-[#ff8f00]"; icon = "restaurant";
-                                } else if (clean.includes("asado") || clean.includes("carne")) {
-                                    grad = "from-[#3e2723] to-[#d84315]"; icon = "outdoor_grill";
-                                } else if (clean.includes("arepa") || clean.includes("pan")) {
-                                    grad = "from-[#fbc02d] to-[#ffa000]"; icon = "bakery_dining";
-                                } else if (clean.includes("tequeno") || clean.includes("queso")) {
-                                    grad = "from-[#ffb300] to-[#ff6f00]"; icon = "breakfast_dining";
-                                } else if (clean.includes("empanada") || clean.includes("pastel")) {
-                                    grad = "from-[#f57c00] to-[#ffd54f]"; icon = "lunch_dining";
-                                } else if (clean.includes("chicha") || clean.includes("leche")) {
-                                    grad = "from-[#00838f] to-[#4dd0e1]"; icon = "local_bar";
-                                } else if (clean.includes("papelon") || clean.includes("limon")) {
-                                    grad = "from-[#2e7d32] to-[#81c784]"; icon = "local_cafe";
-                                } else if (clean.includes("quesillo") || clean.includes("flan")) {
-                                    grad = "from-[#8d6e63] to-[#ffb74d]"; icon = "cake";
-                                } else if (clean.includes("tresleches") || clean.includes("torta") || clean.includes("cake")) {
-                                    grad = "from-[#ec407a] to-[#f8bbd0]"; icon = "icecream";
-                                } else if (clean.includes("bebida") || clean.includes("refresco") || clean.includes("cola")) {
-                                    grad = "from-[#c62828] to-[#e53935]"; icon = "sports_bar";
-                                } else if (clean.includes("burger") || clean.includes("fastfood")) {
-                                    grad = "from-[#d84315] to-[#ffb300]"; icon = "fastfood";
-                                } else if (clean.includes("pizza")) {
-                                    grad = "from-[#c62828] to-[#ff8f00]"; icon = "local_pizza";
-                                } else if (clean.includes("cafe") || clean.includes("coffee")) {
-                                    grad = "from-[#4e342e] to-[#8d6e63]"; icon = "coffee";
-                                }
+                            if (p.imageUri && (p.imageUri.startsWith("/") || p.imageUri.includes("product_images"))) {
+                                const fileName = p.imageUri.substring(p.imageUri.lastIndexOf('/') + 1);
+                                imgHtml = `<img src="/api/images?file=${'$'}{encodeURIComponent(fileName)}" class="w-16 h-16 object-cover rounded-2xl shrink-0 border border-[#cac4d0]" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" /><div style="display:none;" class="w-16 h-16 bg-[#eaddff] text-[#21005d] flex items-center justify-center rounded-2xl font-bold text-2xl uppercase shrink-0 border border-[#cac4d0]">${'$'}{p.name.charAt(0)}</div>`;
+                            } else if (p.imageUri && p.imageUri.trim() !== "") {
+                                const emojis = {
+                                    pabellon: "🍛", asado: "🍖", arepa: "🫓", tequenos: "🥖", empanadas: "🥟",
+                                    chicha: "🥤", papelon: "🍹", quesillo: "🍮", tresleches: "🍰",
+                                    burger: "🍔", pizza: "🍕", cafe: "☕", bebida: "🥤"
+                                };
+                                const emoji = emojis[p.imageUri.toLowerCase()] || "🍛";
                                 imgHtml = `
-                                    <div class="w-16 h-16 bg-gradient-to-tr ${'$'}{grad} rounded-2xl flex items-center justify-center shrink-0 border border-[#cac4d0] shadow-sm text-white select-none">
-                                        <span class="material-icons text-2xl">${'$'}{icon}</span>
+                                    <div class="w-16 h-16 bg-gradient-to-tr from-[#eaddff] to-[#f3edf7] text-3xl flex items-center justify-center rounded-2xl shrink-0 border border-[#cac4d0] select-none">
+                                        ${'$'}{emoji}
                                     </div>
                                 `;
                             } else {

@@ -249,7 +249,7 @@ fun OrderCard(
     onCollectPayment: (Order) -> Unit
 ) {
     val config by viewModel.config.collectAsState()
-    val items by remember(order.id) { viewModel.getItemsForOrder(order.id) }.collectAsState(initial = emptyList())
+    val items by viewModel.getItemsForOrder(order.id).collectAsState(initial = emptyList())
     val rate = config?.exchangeRateBs ?: 42.5
     val totalBs = order.totalUsd * rate
 

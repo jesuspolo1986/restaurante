@@ -1,0 +1,192 @@
+{
+    "categories": [
+        {
+            "id": 1,
+            "name": "Platos Fuertes",
+            "iconName": "restaurant"
+        },
+        {
+            "id": 2,
+            "name": "Entradas",
+            "iconName": "fastfood"
+        },
+        {
+            "id": 3,
+            "name": "Bebidas",
+            "iconName": "wine_bar"
+        },
+        {
+            "id": 4,
+            "name": "Postres",
+            "iconName": "cake"
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Pabellón Criollo",
+            "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
+            "priceUsd": 8.5,
+            "categoryId": 1,
+            "stock": 30,
+            "isAvailable": true,
+            "imageUri": "pabellon"
+        },
+        {
+            "id": 2,
+            "name": "Asado Negro",
+            "description": "Muchacho redondo horneado lentamente en un almíbar de papelón caramelizado con vino tinto y especias.",
+            "priceUsd": 9.5,
+            "categoryId": 1,
+            "stock": 25,
+            "isAvailable": true,
+            "imageUri": "asado"
+        },
+        {
+            "id": 3,
+            "name": "Arepa Reina Pepiada",
+            "description": "Arepa de maíz tostada rellena de ensalada cremosa de pollo desmechado, aguacate maduro, mayonesa casera y un toque de cilantro.",
+            "priceUsd": 4.5,
+            "categoryId": 1,
+            "stock": 100,
+            "isAvailable": true,
+            "imageUri": "arepa"
+        },
+        {
+            "id": 4,
+            "name": "Tequeños de Queso (5 uds)",
+            "description": "Deditos crujientes de masa rellenos de sabroso queso blanco llanero fritos al momento. Se acompañan con salsa de ajo.",
+            "priceUsd": 3.5,
+            "categoryId": 2,
+            "stock": 60,
+            "isAvailable": true,
+            "imageUri": "tequenos"
+        },
+        {
+            "id": 5,
+            "name": "Empanaditas de Cazón (3 uds)",
+            "description": "Empanadas de masa de maíz dulce rellenas de cazón (tiburón pequeño) desmechado, sofrito y frito.",
+            "priceUsd": 3.0,
+            "categoryId": 2,
+            "stock": 40,
+            "isAvailable": true,
+            "imageUri": "empanadas"
+        },
+        {
+            "id": 6,
+            "name": "Chicha Criolla",
+            "description": "Bebida tradicional cremosa hecha a base de arroz cocido con canela, servida fría con hielo y generosa leche condensada.",
+            "priceUsd": 2.5,
+            "categoryId": 3,
+            "stock": 35,
+            "isAvailable": true,
+            "imageUri": "chicha"
+        },
+        {
+            "id": 7,
+            "name": "Papelón con Limón",
+            "description": "Bebida típica ultra refrescante y natural preparada con papelón y jugo de limón fresco recién exprimido.",
+            "priceUsd": 1.5,
+            "categoryId": 3,
+            "stock": 80,
+            "isAvailable": true,
+            "imageUri": "papelon"
+        },
+        {
+            "id": 8,
+            "name": "Quesillo Tradicional",
+            "description": "El postre favorito: flan cremoso de leche condensada aromatizado con ron venezolano y bañado en caramelo oscuro.",
+            "priceUsd": 2.8,
+            "categoryId": 4,
+            "stock": 20,
+            "isAvailable": true,
+            "imageUri": "quesillo"
+        },
+        {
+            "id": 9,
+            "name": "Tres Leches",
+            "description": "Delicioso bizcocho bañado en tres tipos de leche (evaporada, condensada y crema), decorado con merengue y canela molida.",
+            "priceUsd": 3.2,
+            "categoryId": 4,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "tresleches"
+        },
+        {
+            "id": 10,
+            "name": "Pizza Margarita Especial",
+            "description": "Queso mozzarella, salsa de tomate y albahaca fresca",
+            "priceUsd": 12.0,
+            "categoryId": 1,
+            "stock": 25,
+            "isAvailable": true,
+            "imageUri": "pizza"
+        },
+        {
+            "id": 11,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 15,
+            "isAvailable": true,
+            "imageUri": "carne"
+        },
+        {
+            "id": 12,
+            "name": "Parrilla Mixta Familiar",
+            "description": "Carne de res, pollo, chorizo y guarniciones",
+            "priceUsd": 25.0,
+            "categoryId": 1,
+            "stock": 14,
+            "isAvailable": true,
+            "imageUri": "carne"
+        }
+    ],
+    "config": {
+        "exchangeRateBs": 54.5,
+        "totalTables": 10,
+        "restaurantName": "GastroLocal Criollo",
+        "restaurantSlogan": "Sabor Tradicional & Calidad",
+        "restaurantLogo": "",
+        "restaurantRif": "J-50123456-7",
+        "restaurantAddress": "Av. Principal, C.C. Gourmet Plaza, Nivel PB, Local 04",
+        "restaurantPhone": "+58 412-1234567",
+        "restaurantInstagram": "@gastrolocal_criollo",
+        "ticketFooter": "¡Muchas gracias por su visita y preferencia!\nClave WiFi: Gastro2026\nEscanee el código QR para volver a pedir.",
+        "pagoMovil": {
+            "bank": "0134 - Banesco",
+            "phone": "0412-1234567",
+            "idNumber": "V-12345678",
+            "accountName": "Restaurante GastroLocal C.A."
+        },
+        "installationId": "GL-74DD-8CD1",
+        "activeLicenseUntil": "2026-09-11",
+        "lastSeenDate": "2026-08-27"
+    },
+    "orders": [
+        {
+            "id": 1,
+            "tableNumber": 4,
+            "status": "PENDING",
+            "totalUsd": 25.0,
+            "paymentMethod": "Efectivo $",
+            "paymentStatus": "PENDING_CONFIRMATION",
+            "paymentReference": "",
+            "paymentOriginBank": "",
+            "paymentPhone": "",
+            "paymentVerificationStatus": "NONE",
+            "orderType": "TAKEAWAY",
+            "notes": "",
+            "timestamp": "2026-08-27 04:49 PM",
+            "items": [
+                {
+                    "productId": 12,
+                    "productName": "Parrilla Mixta Familiar",
+                    "quantity": 1,
+                    "priceUsd": 25.0
+                }
+            ]
+        }
+    ]
+}

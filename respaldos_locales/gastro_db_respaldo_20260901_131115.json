@@ -23,6 +23,12 @@
             "name": "Postres",
             "iconName": "cake",
             "station": "kitchen"
+        },
+        {
+            "id": 5,
+            "name": "Especialidades Gourmet",
+            "iconName": "star",
+            "station": "kitchen"
         }
     ],
     "products": [
@@ -32,7 +38,7 @@
             "description": "Delicioso plato tradicional venezolano con arroz blanco, caraotas negras guisadas, carne mechada jugosa y tajadas de plátano frito.",
             "priceUsd": 8.5,
             "categoryId": 1,
-            "stock": 4,
+            "stock": 30,
             "isAvailable": true,
             "imageUri": "pabellon",
             "modifiers": []
@@ -157,6 +163,17 @@
             "isAvailable": true,
             "imageUri": "carne",
             "modifiers": []
+        },
+        {
+            "id": 13,
+            "name": "Hamburguesa Mega Crispy",
+            "description": "Doble carne, tocineta y salsa tartara",
+            "priceUsd": 10.0,
+            "categoryId": 5,
+            "stock": 22,
+            "isAvailable": true,
+            "imageUri": "burger",
+            "modifiers": []
         }
     ],
     "config": {
@@ -178,361 +195,10 @@
         },
         "installationId": "GL-74DD-8CD1",
         "activeLicenseUntil": "2026-12-31",
-        "lastSeenDate": "2026-09-20",
+        "lastSeenDate": "2026-09-01",
         "adminPin": "1234"
     },
     "orders": [
-        {
-            "id": 50,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-20 08:59 PM",
-            "createdAtIso": "2026-09-20T20:59:29.916481",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 49,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-20 08:56 PM",
-            "createdAtIso": "2026-09-20T20:56:10.483368",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 48,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:26 PM",
-            "createdAtIso": "2026-09-08T22:26:15.739014",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 47,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:25 PM",
-            "createdAtIso": "2026-09-08T22:25:55.651529",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 46,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:25 PM",
-            "createdAtIso": "2026-09-08T22:25:32.905834",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 45,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:18 PM",
-            "createdAtIso": "2026-09-08T22:18:18.260032",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 44,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:16 PM",
-            "createdAtIso": "2026-09-08T22:16:08.680967",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 43,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:08 PM",
-            "createdAtIso": "2026-09-08T22:08:31.532752",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 42,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:07 PM",
-            "createdAtIso": "2026-09-08T22:07:33.779898",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 41,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 10:00 PM",
-            "createdAtIso": "2026-09-08T22:00:23.502000",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 40,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 09:59 PM",
-            "createdAtIso": "2026-09-08T21:59:02.259418",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 39,
-            "tableNumber": "Mesa 1",
-            "status": "DELIVERED",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PAID",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 09:43 PM",
-            "createdAtIso": "2026-09-08T21:43:29.655354",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
-        {
-            "id": 38,
-            "tableNumber": "Mesa 1",
-            "status": "PENDING",
-            "totalUsd": 17.0,
-            "paymentMethod": "CASH_USD",
-            "paymentStatus": "PENDING_CONFIRMATION",
-            "paymentReference": "",
-            "paymentOriginBank": "",
-            "paymentPhone": "",
-            "paymentVerificationStatus": "NONE",
-            "orderType": "DINE_IN",
-            "waiterName": "",
-            "notes": "Prueba de integracion",
-            "timestamp": "2026-09-08 09:41 PM",
-            "createdAtIso": "2026-09-08T21:41:57.005857",
-            "items": [
-                {
-                    "productId": 1,
-                    "productName": "Pabellón Criollo",
-                    "quantity": 2,
-                    "priceUsd": 8.5,
-                    "selectedModifiers": [],
-                    "unitTotalUsd": 8.5
-                }
-            ]
-        },
         {
             "id": 37,
             "tableNumber": "Para llevar",
